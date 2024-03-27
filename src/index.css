@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media screen and (max-width: 767px) {
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+}
+
+@layer base {
+  .container {
+    @apply max-w-[1212px] xl:max-w-[1140px] lg:max-w-[960px] md:max-w-[720px] sm:max-w-[540px];
+  }
+}
+
+.icon {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(5%) saturate(8%)
+    hue-rotate(336deg) brightness(102%) contrast(91%);
+}
+
+.white-icon {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
+    hue-rotate(290deg) brightness(104%) contrast(101%);
+}
+
+.sidebar-icon {
+  filter: brightness(0) saturate(100%) invert(71%) sepia(0%) saturate(1673%)
+    hue-rotate(330deg) brightness(87%) contrast(82%);
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+img,
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-dots {
+  bottom: 25px;
+}
