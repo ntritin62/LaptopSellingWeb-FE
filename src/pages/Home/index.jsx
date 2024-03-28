@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard';
 import 'react-multi-carousel/lib/styles.css';
 import { Carousel as Car } from '@material-tailwind/react';
 import CategoryCard from '../../components/CategoryCard';
+import { Link } from 'react-router-dom';
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -74,7 +75,7 @@ const Home = () => {
             alt=""
             className="w-[37px] h-[37px]"
           />
-          <h2 className="text-6xl sm:text-4xl text-center text-white font-medium">
+          <h2 className="text-5xlsm:text-4xl text-center text-white font-medium">
             Sản phẩm HOT
           </h2>
         </div>
@@ -158,6 +159,141 @@ const Home = () => {
           <CategoryCard />
           <CategoryCard />
           <CategoryCard />
+        </div>
+      </div>
+      <div className="relative rounded-3xl mt-[60px] p-[20px] bg-[#f5f5f5]">
+        <div className="absolute top-[-32px] left-0 right-0 text-center px-[7px] ">
+          <div className="inline-flex items-center gap-[10px] bg-white px-[20px] py-[5px] rounded-[10px] border-[4px] border-solid  border-[#f5f5f5]">
+            <img
+              src="https://laptopvang.com/wp-content/uploads/2021/laptop.svg"
+              alt=""
+              className="w-[42px] h-[42px]"
+            />
+            <h2 className="text-text text-[34px] font-medium">Laptop Khác</h2>
+          </div>
+        </div>
+        <div className="grid grid-cols-4 lg:grid-cols-2 pt-[30px] px-[10px] gap-[20px]">
+          <section className="col-span-1 rounded-xl bg-white pt-[30px] px-[7px]">
+            <img
+              src="https://laptopvang.com/wp-content/uploads/2021/05/lt_lenovo.png"
+              alt=""
+              className="h-[79px] mx-auto "
+            />
+            <div className="mt-[15px]">
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#f80011] hover:to-[#ffd2d1] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">WORKSTATION</h3>
+                  <p className="text-3xl sm:text-base ">(P Series)</p>
+                </span>
+              </Link>
+              <div className="w-full h-[1px] bg-[#ccc]"></div>
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#f80011] hover:to-[#ffd2d1] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">BUSINESS</h3>
+                  <p className="text-3xl sm:text-base ">(X,T Series)</p>
+                </span>
+              </Link>
+              <div className="w-full h-[1px] bg-[#ccc]"></div>
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#f80011] hover:to-[#ffd2d1] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">GAMING</h3>
+                  <p className="text-3xl sm:text-base ">(Legion)</p>
+                </span>
+              </Link>
+            </div>
+          </section>
+          <section className="col-span-1 rounded-xl bg-white pt-[30px] px-[7px]">
+            <img
+              src="https://laptopvang.com/wp-content/uploads/2021/05/lt_dell.png"
+              alt=""
+              className="h-[79px] mx-auto "
+            />
+            <div className="mt-[15px]">
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#017fbd] hover:to-[#bad8eb] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">WORKSTATION</h3>
+                  <p className="text-3xl sm:text-base">(Precision)</p>
+                </span>
+              </Link>
+              <div className="w-full h-[1px] bg-[#ccc]"></div>
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#017fbd] hover:to-[#bad8eb] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">BUSINESS</h3>
+                  <p className="text-3xl  sm:text-base">(XPS, Latitude)</p>
+                </span>
+              </Link>
+              <div className="w-full h-[1px] bg-[#ccc]"></div>
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#017fbd] hover:to-[#bad8eb] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">GAMING</h3>
+                  <p className="text-3xl  sm:text-base">
+                    (Alienware, G Series)
+                  </p>
+                </span>
+              </Link>
+            </div>
+          </section>
+          <section className="col-span-1 rounded-xl bg-white pt-[30px] px-[7px]">
+            <img
+              src="https://laptopvang.com/wp-content/uploads/2021/05/lt_hp.png"
+              alt=""
+              className="h-[79px] mx-auto "
+            />
+            <div className="mt-[15px]">
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#000000] hover:to-[#a5a5a5] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">WORKSTATION</h3>
+                  <p className="text-3xl sm:text-base ">(ZBook)</p>
+                </span>
+              </Link>
+              <div className="w-full h-[1px] bg-[#ccc]"></div>
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#000000] hover:to-[#a5a5a5] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">BUSINESS</h3>
+                  <p className="text-3xl sm:text-base ">
+                    (Spectre, Elite, ENVY)
+                  </p>
+                </span>
+              </Link>
+              <div className="w-full h-[1px] bg-[#ccc]"></div>
+              <Link>
+                <span className="rounded-[15px] flex flex-col items-center justify-center py-[30px] hover:shadow-[0px_3px_6px_rgba(0,0,0,0.16),0px_3px_6px_rgba(0,0,0,0.23)] hover:bg-gradient-to-b hover:from-[#000000] hover:to-[#a5a5a5] hover:text-white transition-colors duration-150 ease-linear ">
+                  <h3 className="text-5xl sm:text-2xl mb-[7px]">GAMING</h3>
+                  <p className="text-3xl sm:text-base">(OMEN)</p>
+                </span>
+              </Link>
+            </div>
+          </section>
+
+          <section className="col-span-1 rounded-xl bg-white pt-[30px] px-[7px]">
+            <Link>
+              <div className="p-[35px] sm:p-[15px]">
+                <img
+                  src="https://laptopvang.com/wp-content/uploads/2021/05/lt_razer.png"
+                  alt=""
+                  className="w-[173px] mx-auto "
+                />
+              </div>
+            </Link>
+            <Link>
+              <div className="p-[35px] sm:p-[15px] sm:mt-[80px]">
+                <img
+                  src="https://laptopvang.com/wp-content/uploads/2021/05/lt_asus.png"
+                  alt=""
+                  className="w-[173px] mx-auto "
+                />
+              </div>
+            </Link>
+            <Link>
+              <div className="p-[35px] sm:p-[15px] sm:mt-[80px]">
+                <img
+                  src="https://laptopvang.com/wp-content/uploads/2021/05/lt_msi.png"
+                  alt=""
+                  className="w-[173px] mx-auto"
+                />
+              </div>
+            </Link>
+          </section>
         </div>
       </div>
     </main>
