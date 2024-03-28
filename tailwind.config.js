@@ -8,6 +8,9 @@ export default withMT({
   ],
   theme: {
     extend: {
+      scale: {
+        102: '1.02',
+      },
       colors: {
         primary: '#f8ab16',
         secondary: '#54595F',

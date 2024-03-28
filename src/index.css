@@ -71,6 +71,11 @@ select {
   -webkit-tap-highlight-color: transparent;
 }
 
-.slick-dots {
-  bottom: 25px;
+.hot-sales {
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0) 0%,
+    rgb(92 58 0) 69%,
+    rgb(237 160 62) 100%
+  );
 }
