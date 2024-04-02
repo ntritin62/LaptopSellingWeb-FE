@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 const Navbar = ({ name, src, subMenuArr = [] }) => {
-  console.log(subMenuArr);
   return (
     <li className="group">
       <div className="flex items-center justify-center p-[10px] min-w-[100px]  gap-[10px] hover:bg-white hover:text-primary transition-colors ease-in-out duration-500">

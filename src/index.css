@@ -19,6 +19,11 @@
     hue-rotate(336deg) brightness(102%) contrast(91%);
 }
 
+.action-icon {
+  filter: brightness(0) saturate(100%) invert(54%) sepia(16%) saturate(925%)
+    hue-rotate(75deg) brightness(98%) contrast(85%);
+}
+
 .white-icon {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
     hue-rotate(290deg) brightness(104%) contrast(101%);

@@ -60,7 +60,7 @@ const Header = () => {
           >
             <img src="/icons/more.svg" alt="" className="w-[27px] h-27px" />
           </button>
-          <ul className="flex gap-x-[5px] w-full lg:hidden">
+          <ul className="flex  top-0 gap-x-[5px] w-full lg:hidden">
             <Navbar
               name="MAC"
               src="https://laptopvang.com/wp-content/uploads/2019/09/apple.png"
