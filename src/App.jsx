@@ -5,6 +5,7 @@ import { getUser } from './redux/userSlice';
 import { Suspense, useEffect } from 'react';
 import * as ROUTES from './constants/routes';
 import { lazy } from 'react';
+import getAuthToken from './services/getToken';
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -62,6 +63,13 @@ const router = createBrowserRouter([
       },
       {
         path: `${ROUTES.CART}`,
+        loader: () => {
+          const token = getAuthToken();
+          if (!token) {
+            return redirect(ROUTES.LOGIN);
+          }
+          return null;
+        },
         children: [
           {
             index: true,
@@ -145,10 +153,9 @@ const router = createBrowserRouter([
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(getUserCart());
     dispatch(getUser());
+    dispatch(getUserCart());
   }, []);
   return (
     <>

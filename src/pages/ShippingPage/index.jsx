@@ -17,6 +17,7 @@ const ShippingPage = () => {
   const cart = useSelector((state) => state.cart);
 
   const { user } = useSelector((state) => state.user);
+
   const [selectedOption, setSelectedOption] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
@@ -39,7 +40,7 @@ const ShippingPage = () => {
   return (
     <>
       <Helmet>
-        <title>Checkout | Shipping</title>
+        <title>Thanh toán | Giao hàng</title>
       </Helmet>
       {addressModelIsShowed.status && (
         <AddressFormModal
@@ -49,40 +50,40 @@ const ShippingPage = () => {
         />
       )}
       <div className="container pt-[10px]">
-        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[30px] rounded-[10px] bg-white p-[20px] dark:bg-dark-sidebar">
+        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[30px] rounded-[10px] bg-background p-[20px] dark:bg-dark-sidebar">
           <Link to={ROUTES.HOME}>Home</Link>
-          <img src="/icon/arrow-right.svg" alt="" />
+          <img src="/icons/arrow-right.svg" alt="" />
           <Link to={ROUTES.CART}>checkout</Link>
-          <img src="/icon/arrow-right.svg" alt="" />
-          <Link to={ROUTES.SHIPPING} className="text-text dark:text-dark-text">
+          <img src="/icons/arrow-right.svg" alt="" />
+          <Link to={ROUTES.SHIPPING} className="text-primary">
             Shipping
           </Link>
         </div>
       </div>
       <div className="container grid grid-cols-11 xl:flex xl:flex-col my-[30px] gap-[30px] dark:text-checkout-text">
-        <div className="col-span-8 p-[30px] rounded-[20px] bg-white dark:bg-dark-sidebar">
+        <div className="col-span-8 p-[30px] rounded-[20px] bg-background dark:bg-dark-sidebar">
           <div className="flex flex-col gap-[30px]">
             <div className="flex items-center justify-between sm:flex-col sm:gap-[16px] sm:items-start">
               <div>
-                <h2 className="text-3xl font-medium">Shipping address</h2>
-                <p className="text-2xl">Where should we deliver your order?</p>
+                <h2 className="text-3xl font-medium">Địa chỉ nhận hàng</h2>
+                {/* <p className="text-2xl">Where should we deliver your order?</p> */}
               </div>
               <button
                 onClick={() => {
                   showAddressModal({});
                 }}
-                className="flex gap-[10px] py-[10px] px-[20px] bg-active-sidebar text-3xl font-medium rounded-full sm:mx-auto text-text"
+                className="flex gap-[10px] py-[10px] px-[20px] bg-primary text-3xl font-medium rounded-full sm:mx-auto "
               >
                 <img
-                  src="/icon/plus.svg"
+                  src="/icons/cong.svg"
                   alt=""
                   className=" w-[20px] h-[20px] "
                 />
-                Add a new address
+                Thêm địa chỉ mới
               </button>
             </div>
             <ul className="max-h-[200px] overflow-y-auto flex flex-col gap-[30px]">
-              {user.address &&
+              {user.address.length != 0 &&
                 user.address.map((address) => (
                   <li className="flex justify-between sm:flex-col sm:gap-[16px]">
                     <div className="flex gap-[16px]">
@@ -101,7 +102,7 @@ const ShippingPage = () => {
                       >
                         {selectedOption === address._id ? (
                           <img
-                            src="/icon/check.svg"
+                            src="/icons/check.svg"
                             alt=""
                             className="w-full h-full"
                           />
@@ -124,46 +125,50 @@ const ShippingPage = () => {
                       onClick={() => {
                         showAddressModal(address);
                       }}
-                      className="flex gap-[10px] mt-auto mr-[15px]"
+                      className="flex gap-[10px] mt-auto mr-[15px] text-bold-text"
                     >
-                      <img src="/icon/edit.svg" alt="" className="dark-icon" />
-                      <span>Edit</span>
+                      <img
+                        src="/icons/edit.svg"
+                        alt=""
+                        className="action-icon"
+                      />
+                      <span>Sửa</span>
                     </button>
                   </li>
                 ))}
             </ul>
           </div>
 
-          <h2 className="text-3xl font-medium mt-[30px]">Items details</h2>
+          <h2 className="text-3xl font-medium mt-[30px]">Chi tiết sản phẩm</h2>
           <ul className="flex flex-col gap-[30px] mt-[30px]">
             {cart.products.map((product) => (
               <>
                 <CardItem product={product} />
-                <div className="h-[1px] w-full dark:bg-[#B9BABE] bg-top-menu-border"></div>
+                <div className="h-[1px] w-full bg-border bg-top-menu-border"></div>
               </>
             ))}
           </ul>
           <div className="flex mt-[30px] items-end justify-between sm:hidden">
             <Link className="flex gap-[10px] items-center">
               <img
-                src="/icon/arrow-left.svg"
+                src="/icons/arrow-left.svg"
                 alt=""
                 className="dark-icon w-[24px] h-[24px]"
               />
-              <p className="text-3xl font-medium">Continue Shopping</p>
+              <p className="text-3xl font-medium">Tiếp tục mua sắm</p>
             </Link>
             <div className="w-[283px]">
               <div className="flex justify-between text-3xl font-medium">
-                <p>Subtotal:</p>
+                <p>Tổng cộng:</p>
                 <p>${cart.totalPrice.toFixed(2)}</p>
               </div>
               <div className="flex justify-between text-3xl font-medium mt-[10px]">
-                <p>Shipping:</p>
+                <p>Vận chuyển:</p>
                 <p>Free</p>
               </div>
               <div className="h-[1px] w-full dark:bg-[#B9BABE] bg-top-menu-border my-[30px]"></div>
               <div className="flex justify-between text-4xl font-bold">
-                <p>Total:</p>
+                <p>Tổng:</p>
                 <p>${cart.totalPrice.toFixed(2)}</p>
               </div>
             </div>

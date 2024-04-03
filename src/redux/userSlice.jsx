@@ -9,6 +9,7 @@ export const getUser = createAsyncThunk(
   'user/getUser',
   async (params, thunkAPI) => {
     const userCart = await getUserService();
+
     return userCart.data.user;
   }
 );
@@ -18,6 +19,7 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
+      console.log(action.payload);
     },
   },
   extraReducers: (builder) => {
