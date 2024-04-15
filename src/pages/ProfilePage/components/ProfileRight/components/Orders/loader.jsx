@@ -2,9 +2,10 @@ import getAuthToken from '../../../../../../services/getToken';
 import axios from 'axios';
 export const loader = async ({ request, params }) => {
   const token = getAuthToken();
+
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/orders`,
+      `${import.meta.env.VITE_SERVER_URL}/orders`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -18,7 +19,6 @@ export const loader = async ({ request, params }) => {
       error.info = response.data;
       throw error;
     }
-    console.log(response.data.orders);
 
     return {
       orders: response.data.orders,

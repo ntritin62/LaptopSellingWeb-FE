@@ -7,7 +7,7 @@ export default async function action({ params, request }) {
   const token = getAuthToken();
 
   await axios.post(
-    `${process.env.REACT_APP_SERVER_URL}/user/edit-info/`,
+    `${import.meta.env.VITE_SERVER_URL}/user/edit-info/`,
     {
       userData: data,
     },

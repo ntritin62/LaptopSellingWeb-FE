@@ -14,8 +14,11 @@ const Header = () => {
       <div className="container">
         <div className="grid grid-cols-12 sm:grid-cols-1 items-center py-[10px]">
           <figure className="w-[250px] col-span-4 sm:col-span-1 sm:mx-auto">
-            <img src="/images/logo.svg" alt="" className="w-full" />
+            <Link to={ROUTES.HOME}>
+              <img src="/images/logo.svg" alt="" className="w-full" />
+            </Link>
           </figure>
+
           <div className="col-span-4 sm:col-span-1 flex justify-between items-center rounded-lg overflow-hidden border-primary border-[1px] border-solid">
             <input
               type="text"
@@ -40,15 +43,16 @@ const Header = () => {
                 </span>
               </div>
             </Link>
-
-            <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-primary transition ease-in-out duration-500">
-              <img
-                className="w-[24px] h-[24px] icon"
-                src="/icons/account.svg"
-                alt=""
-              />
-              <p className="text-[13px] text-[#4f4f4f]">Tài khoản</p>
-            </div>
+            <Link to={ROUTES.PROFILE}>
+              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-primary transition ease-in-out duration-500">
+                <img
+                  className="w-[24px] h-[24px] icon"
+                  src="/icons/account.svg"
+                  alt=""
+                />
+                <p className="text-[13px] text-[#4f4f4f]">Tài khoản</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

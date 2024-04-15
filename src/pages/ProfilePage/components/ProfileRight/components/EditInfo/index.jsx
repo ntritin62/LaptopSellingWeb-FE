@@ -32,28 +32,28 @@ const EditInfo = () => {
   const data = useActionData();
   const text =
     navigation.state === 'submitting'
-      ? 'Saving...'
+      ? 'Đang lưu...'
       : navigation.state === 'loading'
-      ? 'Saved!'
-      : 'Save';
+      ? 'Đã lưu!'
+      : 'Lưu';
 
   const submitHandler = async (data) => {
     submit(data, { method: 'post' });
   };
 
   return (
-    <section className="col-span-8 p-[30px] bg-profile-right dark:bg-dark-profile-right rounded-[20px]">
+    <section className="col-span-8 p-[30px] bg-background dark:bg-dark-profile-right rounded-[20px]">
       <div className="flex items-center gap-[10px]">
         <Link to={ROUTES.PROFILE}>
-          <img src="/icon/arrow-left.svg" alt="" className="dark-icon" />
+          <img src="/icons/arrow-left.svg" alt="" className="dark-icon" />
         </Link>
-        <h2 className="text-3xl font-medium">Personal info</h2>
+        <h2 className="text-3xl font-medium">Thông tin cá nhân</h2>
       </div>
       <form onSubmit={handleSubmit(submitHandler)} className="mt-[30px]">
         <div className="grid grid-cols-2 gap-[30px] sm:grid-cols-1">
           <div className="flex flex-col gap-[20px] relative">
             <label htmlFor="name" className="text-3xl font-medium">
-              Full name
+              Họ tên
             </label>
             <input
               type="text"
@@ -65,13 +65,13 @@ const EditInfo = () => {
             />
             {errors.fullName && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                Please enter your full name.
+                Họ và tên không được để trống.
               </p>
             )}
           </div>
           <div className="flex flex-col gap-[20px] relative">
             <label htmlFor="email" className="text-3xl font-medium">
-              Email address
+              Địa chỉ email
             </label>
             <input
               type="text"
@@ -86,13 +86,13 @@ const EditInfo = () => {
             />
             {errors.email && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                Invalid email.
+                Địa chỉ email không hợp lệ.
               </p>
             )}
           </div>
           <div className="flex flex-col gap-[20px] relative">
             <label htmlFor="phone" className="text-3xl font-medium">
-              Phone number
+              Số điện thoại
             </label>
             <input
               type="text"
@@ -107,7 +107,7 @@ const EditInfo = () => {
             />
             {errors.phoneNumber && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                Invalid phone number.
+                Số điện thoại không hợp lệ.
               </p>
             )}
           </div>
@@ -131,11 +131,11 @@ const EditInfo = () => {
         </div>
         <div className="mt-[30px] flex justify-end gap-[30px] items-center">
           <Link to={ROUTES.PROFILE} className="text-2xl font-medium">
-            Cancel
+            Huỷ
           </Link>
           <button
             type="submit"
-            className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-active-sidebar text-[#1A162E]"
+            className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
           >
             {text}
           </button>

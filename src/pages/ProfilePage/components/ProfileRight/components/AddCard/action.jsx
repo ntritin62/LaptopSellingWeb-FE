@@ -6,7 +6,7 @@ export default async function action({ params, request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   await axios.post(
-    `${process.env.REACT_APP_SERVER_URL}/address/`,
+    `${import.meta.env.VITE_SERVER_URL}/address/`,
     {
       address: {
         ...data,

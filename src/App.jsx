@@ -6,6 +6,8 @@ import { Suspense, useEffect } from 'react';
 import * as ROUTES from './constants/routes';
 import { lazy } from 'react';
 import getAuthToken from './services/getToken';
+import { loader as OrdersLoader } from './pages/ProfilePage/components/ProfileRight/components/Orders/loader';
+
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -144,6 +146,7 @@ const router = createBrowserRouter([
                 <OrdersPage />
               </Suspense>
             ),
+            loader: OrdersLoader,
           },
         ],
       },

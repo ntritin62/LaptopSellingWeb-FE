@@ -3,26 +3,27 @@ import { useLoaderData, Link } from 'react-router-dom';
 import * as ROUTES from '../../../../../../constants/routes';
 const OrdersPage = () => {
   const { orders } = useLoaderData();
+  console.log(orders);
 
   return (
-    <section className="col-span-8 p-[30px] bg-profile-right dark:bg-dark-profile-right rounded-[20px]">
+    <section className="col-span-8 p-[30px] bg-background dark:bg-dark-profile-right rounded-[20px]">
       <div className="flex items-center gap-[10px]">
         <Link to={ROUTES.PROFILE}>
-          <img src="/icon/arrow-left.svg" alt="" className="dark-icon" />
+          <img src="/icons/arrow-left.svg" alt="" className="dark-icon" />
         </Link>
-        <h2 className="text-3xl font-medium">My orders</h2>
+        <h2 className="text-3xl font-medium">Đơn hàng của tôi</h2>
       </div>
 
       {orders.length === 0 && (
         <>
           <div className="flex flex-col justify-center items-center h-full">
             <img
-              src="/icon/no-order.png"
+              src="/icons/no-order.png"
               alt=""
               className="w-[200px] h-[200px]"
             />
             <span className="mt-[30px] text-4xl font-medium">
-              You have no orders
+              Bạn không có đơn hàng nào
             </span>
           </div>
         </>
@@ -33,26 +34,24 @@ const OrdersPage = () => {
             {orders.map((order) => (
               <li
                 key={order._id}
-                className="mt-[10px] rounded-[10px] p-[20px] bg-header-bg dark:bg-header-shadow"
+                className="mt-[10px] rounded-[10px] p-[20px] bg-bg-secondary dark:bg-header-shadow"
               >
                 <div className="flex justify-between items-center p-[10px]">
                   <p>
-                    <span className="text-3xl font-medium">
-                      Purchase date:{' '}
-                    </span>
+                    <span className="text-3xl font-medium">Ngày mua: </span>
                     {new Date(order.createdAt).toLocaleDateString('vi-VI')}
                   </p>
                   <div className="flex gap-[10px]">
                     {order.status && (
                       <img
-                        src="/icon/completed.svg"
+                        src="/icons/completed.svg"
                         alt=""
                         className="w-[24px] h-[24px]"
                       />
                     )}
                     {!order.status && (
                       <img
-                        src="/icon/clock.svg"
+                        src="/icons/clock.svg"
                         alt=""
                         className="w-[24px] h-[24px]"
                       />
@@ -64,7 +63,7 @@ const OrdersPage = () => {
                           : 'text-[#5b9bf1] text-3xl'
                       }
                     >
-                      {order.status ? 'Completed' : 'Processing'}
+                      {order.status ? 'Hoàn thành' : 'Đang xử lý'}
                     </p>
                   </div>
                 </div>
@@ -81,7 +80,7 @@ const OrdersPage = () => {
                           <p className="text-2xl font-medium">
                             {productId.name}
                           </p>
-                          <p>Quantity: {quantity}</p>
+                          <p>Số lượng: {quantity}</p>
                         </div>
                         <p className="col-span-2 sm:col-span-3 text-right">
                           $
@@ -91,22 +90,22 @@ const OrdersPage = () => {
                           ).toFixed(2)}
                         </p>
                       </section>
-                      <div className="w-full h-[1px] my-[20px] bg-top-menu-border  dark:bg-dark-top-menu-border"></div>
+                      <div className="w-full h-[1px] my-[20px] bg-border  dark:bg-dark-top-menu-border"></div>
                     </li>
                   ))}
 
                   <div className="sm:text-2xl mt-[20px] flex justify-between">
                     <div className=" sm:pr-[20px]">
                       <p>
-                        <span className="font-medium">Name:</span>{' '}
+                        <span className="font-medium">Tên:</span>{' '}
                         {order.shipping.name}
                       </p>
                       <p>
-                        <span className="font-medium">Address:</span>{' '}
+                        <span className="font-medium">Địa chỉ:</span>{' '}
                         {order.shipping.address}
                       </p>
                       <p>
-                        <span className="font-medium">Phone:</span>{' '}
+                        <span className="font-medium">SĐT:</span>{' '}
                         {order.shipping.phoneNumber}
                       </p>
                     </div>
