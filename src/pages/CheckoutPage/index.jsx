@@ -8,7 +8,6 @@ import { Helmet } from 'react-helmet';
 
 const CheckoutPage = () => {
   const cart = useSelector((state) => state.cart);
-  const user = useSelector((state) => state.user);
 
   return (
     <>

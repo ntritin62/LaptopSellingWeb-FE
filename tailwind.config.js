@@ -15,6 +15,7 @@ export default withMT({
         primary: '#9DC08B',
         secondary: '#54595F',
         background: '#EDF1D6',
+        'bg-secondary': '#9dc08b66',
         text: '#7A7A7A',
         'bold-text': '#609966',
         border: '#40513B',

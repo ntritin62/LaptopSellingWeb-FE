@@ -51,12 +51,12 @@ const ShippingPage = () => {
       )}
       <div className="container pt-[10px]">
         <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[30px] rounded-[10px] bg-background p-[20px] dark:bg-dark-sidebar">
-          <Link to={ROUTES.HOME}>Home</Link>
+          <Link to={ROUTES.HOME}>Trang trủ</Link>
           <img src="/icons/arrow-right.svg" alt="" />
-          <Link to={ROUTES.CART}>checkout</Link>
+          <Link to={ROUTES.CART}>Giỏ hàng</Link>
           <img src="/icons/arrow-right.svg" alt="" />
           <Link to={ROUTES.SHIPPING} className="text-primary">
-            Shipping
+            Vận chuyển
           </Link>
         </div>
       </div>
