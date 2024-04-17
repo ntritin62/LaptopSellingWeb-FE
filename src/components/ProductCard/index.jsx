@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ProductCard = () => {
   return (
     <Link className="col-span-1">
-      <section className="relative rounded-xl hover:scale-102 transition-transform duration-200 ease-out w-full h-full bg-white flex flex-col items-center justify-between">
+      <section className="relative rounded-xl hover:scale-102 transition-transform duration-200 ease-out w-full h-full bg-white flex flex-col items-center justify-between p-[20px] sm:p-[5px]">
         <div className="inline-block absolute top-0 left-[-4px] w-full h-full bg-no-repeat bg-[url('/icons/product-sale.svg')]">
           <p className="text-xl font-medium text-white ml-[10px] mt-[5px]">
             Giảm 13%
@@ -13,7 +13,7 @@ const ProductCard = () => {
         <img
           src="https://laptopvang.com/wp-content/uploads/2023/12/macbook-pro-m3-max-16-inch-black-applecareplus-768x768.jpg"
           alt=""
-          className="w-[200px] p-[20px] sm:h-[150px]"
+          className="w-[200px] p-[20px]  object-contain"
         />
         <h2 className="text-xl line-clamp-3 text-center mt-[20px]">
           MacBook Pro 16 inch 2023 – (M3 Max/48GB/1TB) - New, AppleCare+ 3Yrs

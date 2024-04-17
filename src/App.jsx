@@ -29,6 +29,7 @@ const PaymentSuccess = lazy(() => import('./pages/PaymentSuccess'));
 const OrdersPage = lazy(() =>
   import('./pages/ProfilePage/components/ProfileRight/components/Orders')
 );
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<p>Loading...</p>}>
             <SignUpPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'products',
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ProductsPage />
           </Suspense>
         ),
       },

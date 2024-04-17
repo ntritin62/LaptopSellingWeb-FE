@@ -75,7 +75,7 @@ const Home = () => {
             alt=""
             className="w-[37px] h-[37px]"
           />
-          <h2 className="text-5xlsm:text-4xl text-center text-white font-medium">
+          <h2 className="text-5xl sm:text-4xl text-center text-white font-medium">
             Sản phẩm HOT
           </h2>
         </div>
