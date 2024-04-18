@@ -17,7 +17,7 @@ const Filters = ({ name, options, filteredItems, set }) => {
   return (
     <div className="group relative min-w-[70px] bg-[#f3f4f6] border-solid border-[1px] border-[#e5e7eb] py-[5px] px-[10px] inline-block rounded-[10px] ">
       <div className="flex gap-[15px] items-center">
-        <p className="text-xl">{name}</p>
+        <p className="text-xl text-center">{name}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -31,7 +31,7 @@ const Filters = ({ name, options, filteredItems, set }) => {
           {options.map((option) => (
             <li key={option}>
               <label
-                className={`inline-flex px-[10px] py-[10px] rounded-[10px] border-[1px] border-solid border-primary min-w-[70px] ${
+                className={`inline-flex items-center justify-center px-[10px] py-[10px] rounded-[10px] border-[1px] border-solid border-primary min-w-[70px] ${
                   filteredItems.includes(option)
                     ? 'bg-[#ffc10733]'
                     : 'bg-[#f3f4f6]'

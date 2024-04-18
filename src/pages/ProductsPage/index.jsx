@@ -1,6 +1,7 @@
 import React from 'react';
 import Filters from './components/Filters';
 import { useState } from 'react';
+import FilteredItems from './components/FilteredItems';
 const ProductsPage = () => {
   const [monitor, setMonitor] = useState([]);
   const [cpu, setCPU] = useState([]);
@@ -11,7 +12,7 @@ const ProductsPage = () => {
   return (
     <main className="container">
       <h2 className="text-3xl font-medium">CHỌN TIÊU CHÍ LỌC</h2>
-      <div>
+      <div className="flex gap-[10px]">
         <Filters
           name="Màn hình"
           options={[
@@ -25,38 +26,55 @@ const ProductsPage = () => {
           filteredItems={monitor}
           set={setMonitor}
         />
+        <Filters
+          name="CPU"
+          options={[
+            'Ultra 5',
+            'Ultra 7',
+            'Intel Pentium',
+            'Core M',
+            'Core i3',
+            'Core i5',
+            'Core i7',
+            'Ryzen 5',
+          ]}
+          filteredItems={cpu}
+          set={setCPU}
+        />
+        <Filters
+          name="RAM"
+          options={['4GB', '8GB', '16GB', '32GB', '64GB']}
+          filteredItems={ram}
+          set={setRAM}
+        />
+        <Filters
+          name="Storage"
+          options={['64GB', '128GB', '256GB', '512GB', '1TB', '2TB']}
+          filteredItems={storage}
+          set={setStorage}
+        />
+        <Filters
+          name="Giá"
+          options={[
+            '< 20tr',
+            '20tr - 30tr',
+            '30tr - 40tr',
+            '40tr - 60tr',
+            '> 60',
+          ]}
+          filteredItems={price}
+          set={setPrice}
+        />
       </div>
 
       <p className="text-3xl font-bold">Đang lọc theo:</p>
-      <div>
-        {monitor.length > 0 && (
-          <div
-            className={`inline-flex px-[10px] py-[10px] rounded-[10px] border-[1px] border-solid border-primary min-w-[70px] bg-[#ffc10733] `}
-          >
-            <svg
-              onClick={() => {
-                setMonitor([]);
-              }}
-              style={{ marginRight: '5px', fill: '#d70018' }}
-              width="15"
-              height="15"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <path d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM175 208.1L222.1 255.1L175 303C165.7 312.4 165.7 327.6 175 336.1C184.4 346.3 199.6 346.3 208.1 336.1L255.1 289.9L303 336.1C312.4 346.3 327.6 346.3 336.1 336.1C346.3 327.6 346.3 312.4 336.1 303L289.9 255.1L336.1 208.1C346.3 199.6 346.3 184.4 336.1 175C327.6 165.7 312.4 165.7 303 175L255.1 222.1L208.1 175C199.6 165.7 184.4 165.7 175 175C165.7 184.4 165.7 199.6 175 208.1V208.1z"></path>
-            </svg>
+      <div className="flex gap-[10px] flex-wrap">
+        <FilteredItems name="Màn hình" items={monitor} set={setMonitor} />
 
-            <ul className="text-xl flex">
-              Màn hình:{' '}
-              {monitor.map((item, index) => (
-                <li>
-                  {index !== 0 ? ' | ' : ''}{' '}
-                  <p className="mx-[2px] inline-block underline">{item}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <FilteredItems name="CPU" items={cpu} set={setCPU} />
+        <FilteredItems name="RAM" items={ram} set={setRAM} />
+        <FilteredItems name="Storage" items={storage} set={setStorage} />
+        <FilteredItems name="Giá" items={price} set={setPrice} />
       </div>
     </main>
   );
