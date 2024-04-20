@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PhoneNavbar from './PhoneNavbar';
 import Navbar from './Navbar';
 import * as ROUTES from '../../../constants/routes';
 
-const Header = () => {
+export const Header = () => {
   const [sidebarIsShowed, setSidebarIsShowed] = useState(false);
   const closeSidebar = () => {
     setSidebarIsShowed(false);
@@ -69,95 +69,85 @@ const Header = () => {
           </button>
           <ul className="flex  top-0 gap-x-[5px] w-full lg:hidden">
             <Navbar
-              to="./san-pham/macbook"
               name="MAC"
               src="https://laptopvang.com/wp-content/uploads/2019/09/apple.png"
-              // subMenuArr={[
-              //   {
-              //     name: 'MacBook Pro',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2021/06/macbook_pro_16_light__icon.svg',
-              //   },
-              //   {
-              //     name: 'MacBook Air',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2021/08/MBA-icon.svg',
-              //   },
-              //   {
-              //     name: 'MacBook M Series',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2022/06/apple-m-series.svg',
-              //   },
-              // ]}
+              subMenuArr={[
+                {
+                  name: 'MacBook Pro',
+                  src: 'https://laptopvang.com/wp-content/uploads/2021/06/macbook_pro_16_light__icon.svg',
+                },
+                {
+                  name: 'MacBook Air',
+                  src: 'https://laptopvang.com/wp-content/uploads/2021/08/MBA-icon.svg',
+                },
+                {
+                  name: 'MacBook M Series',
+                  src: 'https://laptopvang.com/wp-content/uploads/2022/06/apple-m-series.svg',
+                },
+              ]}
             />
             <Navbar
-              to="./san-pham/surface"
               name="SURFACE"
               src="https://laptopvang.com/wp-content/uploads/2019/10/Surface.png"
-              // subMenuArr={[
-              //   {
-              //     name: 'Surface Pro',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2021/08/SFP-icon.svg',
-              //   },
-              //   {
-              //     name: 'Surface Laptop',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2021/08/SFL-icon.svg',
-              //   },
-              //   {
-              //     name: 'Surface Laptop Studio',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2021/12/Surface-laptop-studio-icon-01-1.svg',
-              //   },
-              //   {
-              //     name: 'Surface Book',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2021/08/surface-book-icon-1.svg',
-              //   },
-              //   {
-              //     name: 'Surface Go',
-              //     src: 'https://laptopvang.com/wp-content/uploads/2021/08/SFLG-icon.svg',
-              //   },
-              // ]}
+              subMenuArr={[
+                {
+                  name: 'Surface Pro',
+                  src: 'https://laptopvang.com/wp-content/uploads/2021/08/SFP-icon.svg',
+                },
+                {
+                  name: 'Surface Laptop',
+                  src: 'https://laptopvang.com/wp-content/uploads/2021/08/SFL-icon.svg',
+                },
+                {
+                  name: 'Surface Laptop Studio',
+                  src: 'https://laptopvang.com/wp-content/uploads/2021/12/Surface-laptop-studio-icon-01-1.svg',
+                },
+                {
+                  name: 'Surface Book',
+                  src: 'https://laptopvang.com/wp-content/uploads/2021/08/surface-book-icon-1.svg',
+                },
+                {
+                  name: 'Surface Go',
+                  src: 'https://laptopvang.com/wp-content/uploads/2021/08/SFLG-icon.svg',
+                },
+              ]}
             />
             <Navbar
-              to="./san-pham/lenovo"
               name="ThinkPad"
               src="https://laptopvang.com/wp-content/uploads/2021/08/THINKPAD-icon.svg"
-              // subMenuArr={[
-              //   {
-              //     name: 'Thinkpad X1 Series',
-              //     src: '/icons/laptop.svg',
-              //   },
-              //   {
-              //     name: 'Thinkpad P Series',
-              //     src: '/icons/laptop.svg',
-              //   },
-              //   {
-              //     name: 'Thinkpad T Series',
-              //     src: '/icons/laptop.svg',
-              //   },
-              //   {
-              //     name: 'Thinkpad X Series',
-              //     src: '/icons/laptop.svg',
-              //   },
-              // ]}
+              subMenuArr={[
+                {
+                  name: 'Thinkpad X1 Series',
+                  src: '/icons/laptop.svg',
+                },
+                {
+                  name: 'Thinkpad P Series',
+                  src: '/icons/laptop.svg',
+                },
+                {
+                  name: 'Thinkpad T Series',
+                  src: '/icons/laptop.svg',
+                },
+                {
+                  name: 'Thinkpad X Series',
+                  src: '/icons/laptop.svg',
+                },
+              ]}
             />
+            <Navbar src="https://laptopvang.com/wp-content/uploads/2021/08/DELL-icon.svg" />
             <Navbar
-              to="./san-pham/dell"
-              src="https://laptopvang.com/wp-content/uploads/2021/08/DELL-icon.svg"
-            />
-            <Navbar
-              to="./san-pham/hp"
               name="HP"
               src="https://laptopvang.com/wp-content/uploads/2021/08/HP-icon.svg"
             />
             <Navbar
-              to="./san-pham/razer"
               name="Razer"
               src="https://laptopvang.com/wp-content/uploads/2021/08/RAZER-icon.svg"
             />
             <Navbar
-              to="./san-pham/lg"
               name="LG"
               src="https://laptopvang.com/wp-content/uploads/2022/06/lg-1.svg"
             />
             <Navbar
-              to="./san-pham/samsung"
               name="SAMSUNG"
               src="https://laptopvang.com/wp-content/uploads/2022/06/samsung.svg"
             />
@@ -168,5 +158,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

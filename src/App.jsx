@@ -7,6 +7,7 @@ import * as ROUTES from './constants/routes';
 import { lazy } from 'react';
 import getAuthToken from './services/getToken';
 import { loader as OrdersLoader } from './pages/ProfilePage/components/ProfileRight/components/Orders/loader';
+import { loader as ProductsLoader } from './pages/ProductsPage/loader';
 
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
             <Home />
           </Suspense>
         ),
+        loader: ProductsLoader,
       },
       {
         path: `${ROUTES.LOGIN}`,
@@ -65,12 +67,27 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'products',
-        element: (
-          <Suspense fallback={<p>Loading...</p>}>
-            <ProductsPage />
-          </Suspense>
-        ),
+        path: 'san-pham',
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<p>Loading...</p>}>
+                <ProductsPage />
+              </Suspense>
+            ),
+            loader: ProductsLoader,
+          },
+          {
+            path: ':brandName',
+            element: (
+              <Suspense fallback={<p>Loading...</p>}>
+                <ProductsPage />
+              </Suspense>
+            ),
+            loader: ProductsLoader,
+          },
+        ],
       },
       {
         path: `${ROUTES.CART}`,

@@ -4,7 +4,7 @@ import ProductCard from '../../components/ProductCard';
 import 'react-multi-carousel/lib/styles.css';
 import { Carousel as Car } from '@material-tailwind/react';
 import CategoryCard from '../../components/CategoryCard';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -20,6 +20,7 @@ const responsive = {
   },
 };
 const Home = () => {
+  const data = useLoaderData();
   return (
     <main className="container mt-[15px] h-[5000px]">
       <div className="grid grid-cols-12 sm:grid-cols-1 gap-[10px] z-0 relative  mb-[15px]">
@@ -87,24 +88,11 @@ const Home = () => {
             showDots={false}
             infinite={true}
           >
-            <div className="m-[8px]">
-              <ProductCard />
-            </div>
-            <div className="m-[8px]">
-              <ProductCard />
-            </div>
-            <div className="m-[8px]">
-              <ProductCard />
-            </div>
-            <div className="m-[8px]">
-              <ProductCard />
-            </div>
-            <div className="m-[8px]">
-              <ProductCard />
-            </div>
-            <div className="m-[8px]">
-              <ProductCard />
-            </div>
+            {data.map((laptop) => (
+              <div className="m-[8px]">
+                <ProductCard product={laptop} />
+              </div>
+            ))}
           </Carousel>
         </div>
       </div>

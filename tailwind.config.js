@@ -21,11 +21,11 @@ export default withMT({
         border: '#40513B',
       },
       screens: {
+        sm: { max: '576px' },
         xxl: { max: '1400px' },
         xl: { max: '1200px' },
         lg: { max: '992px' },
         md: { max: '768px' },
-        sm: { max: '576px' },
       },
       container: {
         center: true,

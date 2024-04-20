@@ -15,9 +15,9 @@ const Filters = ({ name, options, filteredItems, set }) => {
   };
 
   return (
-    <div className="group relative min-w-[70px] bg-[#f3f4f6] border-solid border-[1px] border-[#e5e7eb] py-[5px] px-[10px] inline-block rounded-[10px] ">
-      <div className="flex gap-[15px] items-center">
-        <p className="text-xl text-center">{name}</p>
+    <div className="group sm:static relative  min-w-[60px] bg-[#f3f4f6] border-solid border-[1px] border-[#e5e7eb] py-[5px] px-[10px] sm:px-[5px] inline-block rounded-[10px] ">
+      <div className="flex gap-[15px] sm:gap-[5px] items-center justify-center">
+        <p className="text-xl sm:text-sm text-center">{name}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"

@@ -1,18 +1,80 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Filters from './components/Filters';
 import { useState } from 'react';
 import FilteredItems from './components/FilteredItems';
+import { useLoaderData } from 'react-router-dom';
+import ProductCard from '../../components/ProductCard';
 const ProductsPage = () => {
+  const data = useLoaderData();
+
+  const [laptops, setLaptops] = useState([]);
+
+  useEffect(() => {
+    setLaptops(data);
+    setCPU([]);
+    setMonitor([]);
+    setStorage([]);
+    setRAM([]);
+    setPrice([]);
+  }, [window.location.pathname]);
+
   const [monitor, setMonitor] = useState([]);
   const [cpu, setCPU] = useState([]);
   const [ram, setRAM] = useState([]);
   const [storage, setStorage] = useState([]);
   const [price, setPrice] = useState([]);
 
+  useEffect(() => {
+    setLaptops((prevLaptops) => {
+      return data.filter((laptop) => {
+        if (
+          monitor.length === 0 &&
+          storage.length === 0 &&
+          ram.length === 0 &&
+          cpu.length === 0
+        ) {
+          return true;
+        }
+
+        for (let i = 0; i < monitor.length; i++) {
+          if (monitor[i].substring(0, 2) === laptop.screen.substring(0, 2)) {
+            return true;
+          }
+        }
+
+        for (let i = 0; i < storage.length; i++) {
+          console.log(storage[i]);
+          console.log(laptop.hardDisk);
+          if (laptop.hardDisk.startsWith(storage[i])) {
+            return true;
+          }
+        }
+
+        for (let i = 0; i < ram.length; i++) {
+          console.log(ram[i]);
+          console.log(laptop.ram);
+          if (laptop.ram.startsWith(ram[i])) {
+            return true;
+          }
+        }
+
+        for (let i = 0; i < cpu.length; i++) {
+          console.log(cpu[i]);
+          console.log(laptop.cpu);
+          if (laptop.cpu.includes(cpu[i])) {
+            return true;
+          }
+        }
+
+        return false;
+      });
+    });
+  }, [monitor, cpu, storage, price, ram]);
+
   return (
-    <main className="container">
-      <h2 className="text-3xl font-medium">CHỌN TIÊU CHÍ LỌC</h2>
-      <div className="flex gap-[10px]">
+    <main className="container mt-[30px]">
+      <h2 className="text-3xl font-medium ">CHỌN TIÊU CHÍ LỌC</h2>
+      <div className="sm:relative flex gap-[10px] mt-[10px] ">
         <Filters
           name="Màn hình"
           options={[
@@ -37,6 +99,11 @@ const ProductsPage = () => {
             'Core i5',
             'Core i7',
             'Ryzen 5',
+            'Ryzen 7',
+            'Ryzen 9',
+            'M1',
+            'M2',
+            'M3',
           ]}
           filteredItems={cpu}
           set={setCPU}
@@ -67,14 +134,20 @@ const ProductsPage = () => {
         />
       </div>
 
-      <p className="text-3xl font-bold">Đang lọc theo:</p>
-      <div className="flex gap-[10px] flex-wrap">
+      <p className="text-3xl font-bold mt-[20px]">Đang lọc theo:</p>
+      <div className="flex gap-[10px] flex-wrap mt-[10px]">
         <FilteredItems name="Màn hình" items={monitor} set={setMonitor} />
 
         <FilteredItems name="CPU" items={cpu} set={setCPU} />
         <FilteredItems name="RAM" items={ram} set={setRAM} />
         <FilteredItems name="Storage" items={storage} set={setStorage} />
         <FilteredItems name="Giá" items={price} set={setPrice} />
+      </div>
+
+      <div className="mt-[20px] grid grid-cols-5 md:grid-cols-2  gap-[10px]">
+        {laptops.map((laptop) => (
+          <ProductCard product={laptop} />
+        ))}
       </div>
     </main>
   );
