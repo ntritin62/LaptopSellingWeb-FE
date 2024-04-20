@@ -1,9 +1,8 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 const ProductDetailsPage = () => {
-  const laptop = useLoaderData();
-  console.log(laptop.price);
-
+  const { laptop, similarItems } = useLoaderData();
+  console.log(similarItems);
   return (
     <main className="container mt-[50px] h-[5000px]">
       <h1 className="text-5xl font-bold">{laptop.name}</h1>
@@ -89,10 +88,9 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[30px] grid grid-cols-12 lg:grid-cols-1">
-        <div className="col-span-7 lg:grid-cols-1 ">
+      <div className="mt-[30px] grid grid-cols-12 lg:grid-cols-1 gap-[20px]">
+        <div className="col-span-7 lg:col-span-1 ">
           <h2 className="text-4xl font-bold">Thông số kỹ thuật</h2>
-
           <table className="border-solid border-[#eee] mt-[20px]">
             <tr className="grid grid-cols-12 border-[1px] border-solid border-[#eee]">
               <td className="col-span-3  bg-[#f7f7f7] p-[10px] font-bold">
@@ -200,6 +198,50 @@ const ProductDetailsPage = () => {
               </td>
             </tr>
           </table>
+        </div>
+        <div className="col-span-5 lg:col-span-1 p-[20px]">
+          <h2 className="text-4xl font-bold ">Sản phẩm tương tự</h2>
+          <div className="mt-[20px]">
+            <ul className="flex flex-col gap-[8px]">
+              {similarItems.map((item) => (
+                <div className="flex gap-[32px]">
+                  <img
+                    src={item.imageUrl}
+                    alt=""
+                    className="w-[110px] h-[110px]"
+                  />
+                  <div>
+                    <p className="text-2xl font-medium">{item.name}</p>
+                    <div className="mt-[20px]">
+                      {item.sale > 0 ? (
+                        <>
+                          <p className="text-[#919aae] line-through font-medium text-xl">
+                            {item.price
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                          </p>
+                          <p className="font-medium text-2xl text-[#ea1918]">
+                            {(item.price - item.price * (item.sale / 100))
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                            <span className="ml-[10px] bg-[#FFEDED] px-[4px] rounded-md border-[1px] border-solid border-[#E30019]">
+                              -{item.sale}%
+                            </span>
+                          </p>
+                        </>
+                      ) : (
+                        <p className="font-medium text-2xl text-[#ea1918]">
+                          {item.price
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </main>
