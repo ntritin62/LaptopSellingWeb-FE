@@ -8,6 +8,7 @@ import { lazy } from 'react';
 import getAuthToken from './services/getToken';
 import { loader as OrdersLoader } from './pages/ProfilePage/components/ProfileRight/components/Orders/loader';
 import { loader as ProductsLoader } from './pages/ProductsPage/loader';
+import { loader as ProductDetailsLoader } from './pages/ProductDetailsPage/loader';
 
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
@@ -31,6 +32,7 @@ const OrdersPage = lazy(() =>
   import('./pages/ProfilePage/components/ProfileRight/components/Orders')
 );
 const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage'));
 
 const router = createBrowserRouter([
   {
@@ -88,6 +90,15 @@ const router = createBrowserRouter([
             loader: ProductsLoader,
           },
         ],
+      },
+      {
+        path: '/laptop/:productId',
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ProductDetailsPage />
+          </Suspense>
+        ),
+        loader: ProductDetailsLoader,
       },
       {
         path: `${ROUTES.CART}`,

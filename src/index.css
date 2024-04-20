@@ -76,6 +76,10 @@ select {
   -webkit-tap-highlight-color: transparent;
 }
 
+.list-disc {
+  list-style-type: disc; /* Explicitly set disc style */
+}
+
 .hot-sales {
   background: linear-gradient(
     180deg,
