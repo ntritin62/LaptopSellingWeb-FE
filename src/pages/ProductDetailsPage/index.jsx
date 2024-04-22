@@ -4,7 +4,7 @@ const ProductDetailsPage = () => {
   const { laptop, similarItems } = useLoaderData();
   console.log(similarItems);
   return (
-    <main className="container mt-[50px] h-[5000px]">
+    <main className="container mt-[50px] ">
       <h1 className="text-5xl font-bold">{laptop.name}</h1>
       <div className="mt-[20px] grid grid-cols-12 lg:grid-cols-1 gap-[30px]">
         <img
@@ -88,8 +88,8 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[30px] grid grid-cols-12 lg:grid-cols-1 gap-[20px]">
-        <div className="col-span-7 lg:col-span-1 ">
+      <div className="mt-[30px] grid grid-cols-12 lg:grid-cols-1 gap-[20px] ">
+        <div className="col-span-7 lg:col-span-1 rounded-xl p-[20px] shadow-[0_1px_2px_0_rgba(60,64,67,10%),0_2px_6px_2px_rgba(60,64,67,15%)]">
           <h2 className="text-4xl font-bold">Thông số kỹ thuật</h2>
           <table className="border-solid border-[#eee] mt-[20px]">
             <tr className="grid grid-cols-12 border-[1px] border-solid border-[#eee]">
@@ -199,7 +199,7 @@ const ProductDetailsPage = () => {
             </tr>
           </table>
         </div>
-        <div className="col-span-5 lg:col-span-1 p-[20px]">
+        <div className="col-span-5 lg:col-span-1 p-[20px] rounded-xl shadow-[0_1px_2px_0_rgba(60,64,67,10%),0_2px_6px_2px_rgba(60,64,67,15%)]">
           <h2 className="text-4xl font-bold ">Sản phẩm tương tự</h2>
           <div className="mt-[20px]">
             <ul className="flex flex-col gap-[8px]">
@@ -208,7 +208,7 @@ const ProductDetailsPage = () => {
                   <img
                     src={item.imageUrl}
                     alt=""
-                    className="w-[110px] h-[110px]"
+                    className="w-[110px] h-[110px] object-contain"
                   />
                   <div>
                     <p className="text-2xl font-medium">{item.name}</p>

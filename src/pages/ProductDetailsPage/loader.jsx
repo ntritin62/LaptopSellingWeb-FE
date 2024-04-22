@@ -23,7 +23,8 @@ export async function loader({ request, params }) {
       laptop: response.data.laptop,
       similarItems: response_2.data.laptops
         .filter((product) => product.name.startsWith(brand))
-        .slice(0, 3),
+        .filter((product) => product.name !== response.data.laptop.name)
+        .slice(0, 5),
     };
   } catch (err) {
     console.log(err);

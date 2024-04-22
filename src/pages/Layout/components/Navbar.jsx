@@ -1,13 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 const Navbar = ({ name, src, subMenuArr = [], to }) => {
   return (
     <li className="group">
-      <Link to={to}>
-        <div className="flex items-center justify-center p-[10px] min-w-[100px]  gap-[10px] hover:bg-white hover:text-primary transition-colors ease-in-out duration-500">
-          <img src={src} alt="" className="max-w-[45px] w-auto h-[35px]" />
-        </div>
-      </Link>
+      <NavLink to={to}>
+        {({ isActive, isPending, isTransitioning }) => (
+          <div
+            className={`${
+              isActive && 'bg-white'
+            } flex items-center justify-center p-[10px] min-w-[100px]  gap-[10px] hover:bg-white hover:text-primary transition-colors ease-in-out duration-500`}
+          >
+            <img src={src} alt="" className="max-w-[45px] w-auto h-[35px]" />
+          </div>
+        )}
+      </NavLink>
       <ul className="invisible group-hover:visible transition duration-150 flex absolute top-[100%] left-0 right-0 z-30 bg-white mx-[1.5rem] shadow-lg rounded-xl">
         {subMenuArr.map((submenu) => (
           <Link key={submenu.name}>
