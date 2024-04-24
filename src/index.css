@@ -34,6 +34,11 @@
     hue-rotate(330deg) brightness(87%) contrast(82%);
 }
 
+.red-icon {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(29%) saturate(4502%)
+    hue-rotate(340deg) brightness(109%) contrast(94%);
+}
+
 *,
 ::before,
 ::after {

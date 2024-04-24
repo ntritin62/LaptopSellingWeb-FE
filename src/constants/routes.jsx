@@ -8,3 +8,5 @@ export const CART = '/checkout';
 export const PAYMENTMETHOD = '/checkout/payment-method';
 export const PAYMENTSUCCESS = '/checkout/complete';
 export const ADMIN = '/admin';
+export const ADMIN_PRODUCTS = '/admin/products';
+export const ADMIN_ORDERS = '/admin/orders';
