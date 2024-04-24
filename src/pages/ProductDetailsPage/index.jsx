@@ -55,7 +55,11 @@ const ProductDetailsPage = () => {
           <p className="mt-[30px] text-center text-3xl font-medium">
             Giá:
             <span className="ml-[15px] text-[#E30019] text-5xl font-bold ">
-              {laptop.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+              {laptop.saleOff > 0
+                ? (laptop.price - laptop.price * (laptop.saleOff / 100))
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+                : laptop.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
             </span>
           </p>
         </div>

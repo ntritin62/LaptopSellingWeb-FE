@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
+import { ADD_PRODUCT } from '../../../constants/routes';
 const AdminProducts = () => {
   const data = useLoaderData();
   const [laptops, setLaptops] = useState(data);
@@ -21,7 +22,7 @@ const AdminProducts = () => {
     <div className="container">
       <div className="flex justify-between items-center mt-[70px]">
         <h1 className="text-4xl font-bold ">Sản phẩm</h1>
-        <Link>
+        <Link to={ADD_PRODUCT}>
           <button className="bg-primary text-white shadow-lg px-[10px] py-[10px] flex font-medium gap-5 rounded-[10px]">
             <img
               src="/icons/plus.svg"
