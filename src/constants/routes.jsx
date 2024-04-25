@@ -10,4 +10,5 @@ export const PAYMENTSUCCESS = '/checkout/complete';
 export const ADMIN = '/admin';
 export const ADMIN_PRODUCTS = '/admin/products';
 export const ADMIN_ORDERS = '/admin/orders';
-export const ADD_PRODUCT = '/admin/add-product';
+export const ADD_PRODUCT = '/admin/products/add-product';
+export const EDIT_PRODUCT = '/admin/products/edit-product/:productId';

@@ -39,6 +39,9 @@ const AdminProducts = lazy(() => import('./pages/Admin/AdminProducts'));
 const ProductAdd = lazy(() =>
   import('./pages/Admin/AdminProducts/pages/ProductAdd')
 );
+const ProductEdit = lazy(() =>
+  import('./pages/Admin/AdminProducts/pages/ProductEdit')
+);
 // const AdminOrders = lazy(() => import('./pages/Admin'));
 
 const router = createBrowserRouter([
@@ -228,6 +231,15 @@ const router = createBrowserRouter([
             <ProductAdd />
           </Suspense>
         ),
+      },
+      {
+        path: ROUTES.EDIT_PRODUCT,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ProductEdit />
+          </Suspense>
+        ),
+        loader: ProductDetailsLoader,
       },
       {
         path: ROUTES.ADMIN_ORDERS,

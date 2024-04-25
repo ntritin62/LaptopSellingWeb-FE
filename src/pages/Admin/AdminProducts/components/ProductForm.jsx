@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-const ProductForm = () => {
+const ProductForm = ({ laptop }) => {
   const {
     register,
     handleSubmit,
@@ -21,6 +21,7 @@ const ProductForm = () => {
           name="name"
           id="name"
           {...register('name', { required: true })}
+          defaultValue={laptop && laptop.name ? laptop.name : ''}
           placeholder="Nhập tên sản phẩm"
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
         />
@@ -39,6 +40,7 @@ const ProductForm = () => {
           name="price"
           id="price"
           {...register('price', { required: true })}
+          defaultValue={laptop && laptop.price ? laptop.price : ''}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập giá sản phẩm"
         />
@@ -56,6 +58,7 @@ const ProductForm = () => {
           type="text"
           name="status"
           id="status"
+          defaultValue={laptop && laptop.status ? laptop.status : ''}
           {...register('status', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập tình trạng sản phẩm"
@@ -74,6 +77,7 @@ const ProductForm = () => {
           type="text"
           name="cpu"
           id="cpu"
+          defaultValue={laptop && laptop.cpu ? laptop.cpu : ''}
           {...register('cpu', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập CPU"
@@ -92,6 +96,7 @@ const ProductForm = () => {
           type="text"
           name="ram"
           id="ram"
+          defaultValue={laptop && laptop.ram ? laptop.ram : ''}
           {...register('ram', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập ram"
@@ -111,6 +116,7 @@ const ProductForm = () => {
           type="text"
           name="hardDisk"
           id="hardDisk"
+          defaultValue={laptop && laptop.hardDisk ? laptop.cpu : ''}
           {...register('hardDisk', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập ổ cứng"
@@ -129,6 +135,7 @@ const ProductForm = () => {
           type="text"
           name="graphicCard"
           id="graphicCard"
+          defaultValue={laptop && laptop.graphicCard ? laptop.graphicCard : ''}
           {...register('graphicCard', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập VGA"
@@ -147,6 +154,7 @@ const ProductForm = () => {
           type="text"
           name="screen"
           id="screen"
+          defaultValue={laptop && laptop.screen ? laptop.screen : ''}
           {...register('screen', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Màn hình"
@@ -165,6 +173,9 @@ const ProductForm = () => {
           type="text"
           name="connectionPort"
           id="connectionPort"
+          defaultValue={
+            laptop && laptop.connectionPort ? laptop.connectionPort : ''
+          }
           {...register('connectionPort', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Cổng giao tiếp"
@@ -183,6 +194,7 @@ const ProductForm = () => {
           type="text"
           name="keyboard"
           id="keyboard"
+          defaultValue={laptop && laptop.keyboard ? laptop.keyboard : ''}
           {...register('keyboard', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Bàn phím"
@@ -202,6 +214,7 @@ const ProductForm = () => {
           type="text"
           name="audio"
           id="audio"
+          defaultValue={laptop && laptop.audio ? laptop.audio : ''}
           {...register('audio', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Audio"
@@ -221,6 +234,7 @@ const ProductForm = () => {
           type="text"
           name="lan"
           id="lan"
+          defaultValue={laptop && laptop.lan ? laptop.lan : ''}
           {...register('lan', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Chuẩn LAN"
@@ -240,6 +254,7 @@ const ProductForm = () => {
           type="text"
           name="wirelessLan"
           id="wirelessLan"
+          defaultValue={laptop && laptop.wirelessLan ? laptop.wirelessLan : ''}
           {...register('wirelessLan', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Chuẩn WIFI"
@@ -258,6 +273,7 @@ const ProductForm = () => {
           type="text"
           name="webcam"
           id="webcam"
+          defaultValue={laptop && laptop.webcam ? laptop.webcam : ''}
           {...register('webcam', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Webcam"
@@ -276,6 +292,7 @@ const ProductForm = () => {
           type="text"
           name="os"
           id="os"
+          defaultValue={laptop && laptop.os ? laptop.os : ''}
           {...register('os', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Hệ điều hành"
@@ -294,6 +311,7 @@ const ProductForm = () => {
           type="text"
           name="battery"
           id="battery"
+          defaultValue={laptop && laptop.battery ? laptop.battery : ''}
           {...register('battery', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Pin"
@@ -312,6 +330,7 @@ const ProductForm = () => {
           type="text"
           name="weight"
           id="weight"
+          defaultValue={laptop && laptop.weight ? laptop.weight : ''}
           {...register('weight', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập Trọng lượng"
@@ -330,6 +349,7 @@ const ProductForm = () => {
           type="text"
           name="imageUrl"
           id="imageUrl"
+          defaultValue={laptop && laptop.imageUrl ? laptop.imageUrl : ''}
           {...register('imageUrl', { required: true })}
           className="border-[1px] border-solid border-[#ccc] p-[5px] mt-[5px] rounded-lg"
           placeholder="Nhập URL hình ảnh"
