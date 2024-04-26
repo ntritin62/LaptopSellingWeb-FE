@@ -9,6 +9,8 @@ import getAuthToken from './services/getToken';
 import { loader as OrdersLoader } from './pages/ProfilePage/components/ProfileRight/components/Orders/loader';
 import { loader as ProductsLoader } from './pages/ProductsPage/loader';
 import { loader as ProductDetailsLoader } from './pages/ProductDetailsPage/loader';
+import { action as LoginAction } from './pages/LoginPage/action';
+import { action as SignUpAction } from './pages/SignUpPage/action';
 
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
@@ -69,6 +71,7 @@ const router = createBrowserRouter([
             <LoginPage />
           </Suspense>
         ),
+        action: LoginAction,
       },
       {
         path: `${ROUTES.SIGNUP}`,
@@ -77,6 +80,7 @@ const router = createBrowserRouter([
             <SignUpPage />
           </Suspense>
         ),
+        action: SignUpAction,
       },
       {
         path: 'san-pham',

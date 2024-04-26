@@ -1,13 +1,67 @@
 import React from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-const ProductForm = ({ laptop }) => {
+import { useSubmit } from 'react-router-dom';
+import axios from 'axios';
+import getAuthToken from '../../../../services/getToken';
+import { useNavigate } from 'react-router-dom';
+import * as ROUTES from '../../../../constants/routes';
+
+const ProductForm = ({ laptop, setShow }) => {
+  const [text, setText] = useState('Lưu sản phẩm');
+  const token = getAuthToken();
+  const submit = useSubmit();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    setText('Đang lưu');
+
+    if (laptop) {
+      try {
+        const response = await axios.patch(
+          `http://localhost:3000/api/v1/laptops/${laptop._id}`,
+          data,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setShow(true);
+        setTimeout(() => {
+          navigate(ROUTES.ADMIN_PRODUCTS);
+        }, 1000);
+      } catch (error) {
+        console.log(error);
+        // return error.response.data.msg;
+      }
+    } else {
+      try {
+        const response = await axios.post(
+          'http://localhost:3000/api/v1/laptops',
+          data,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setText('Lưu thành công');
+        return navigate(ROUTES.ADMIN_PRODUCTS);
+        // return redirect(ROUTES.ADMIN_PRODUCTS);
+      } catch (error) {
+        // return error.response.data.msg;
+      }
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
