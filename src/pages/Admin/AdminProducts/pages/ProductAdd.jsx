@@ -40,7 +40,7 @@ const ProductAdd = () => {
         Thêm sản phẩm
       </h1>
       <div className="w-[50%] bg-white p-[30px] mx-auto mt-[20px] mb-[50px] rounded-lg shadow-lg">
-        <ProductForm />
+        <ProductForm setShow={setMessageIsShowed} />
       </div>
     </>
   );

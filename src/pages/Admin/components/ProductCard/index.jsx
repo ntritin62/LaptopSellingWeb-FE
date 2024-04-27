@@ -1,6 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const ProductCard = ({ product }) => {
+import axios from 'axios';
+import getAuthToken from '../../../../services/getToken';
+const ProductCard = ({ product, setShow, laptops, setLaptops }) => {
+  const token = getAuthToken();
+
+  const deleteHandler = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/v1/laptops/${product._id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setShow(true);
+
+      setTimeout(() => {
+        setLaptops((prev) =>
+          laptops.filter((laptop) => laptop._id !== product._id)
+        );
+        setShow(false);
+      }, 500);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div className="p-[10px] col-span-1 border-[1px] border-solid border-[#ccc] rounded-lg h-[260px]">
       <img
@@ -16,7 +43,10 @@ const ProductCard = ({ product }) => {
             Sửa
           </button>
         </Link>
-        <button className="flex border-[1px] border-solid border-[#ccc] py-[5px] px-[10px] rounded-lg text-2xl text-red-600 font-medium gap-[10px]">
+        <button
+          onClick={deleteHandler}
+          className="flex border-[1px] border-solid border-[#ccc] py-[5px] px-[10px] rounded-lg text-2xl text-red-600 font-medium gap-[10px]"
+        >
           <img src="/icons/delete.svg" alt="" className="red-icon w-[15px]" />
           Xoá
         </button>

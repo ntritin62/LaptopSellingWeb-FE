@@ -54,8 +54,11 @@ const ProductForm = ({ laptop, setShow }) => {
             },
           }
         );
-        setText('Lưu thành công');
-        return navigate(ROUTES.ADMIN_PRODUCTS);
+
+        setShow(true);
+        setTimeout(() => {
+          navigate(ROUTES.ADMIN_PRODUCTS);
+        }, 1000);
         // return redirect(ROUTES.ADMIN_PRODUCTS);
       } catch (error) {
         // return error.response.data.msg;
