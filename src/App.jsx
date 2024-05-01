@@ -11,7 +11,7 @@ import { loader as ProductsLoader } from './pages/ProductsPage/loader';
 import { loader as ProductDetailsLoader } from './pages/ProductDetailsPage/loader';
 import { action as LoginAction } from './pages/LoginPage/action';
 import { action as SignUpAction } from './pages/SignUpPage/action';
-
+import EditInfoAction from './pages/ProfilePage/components/ProfileRight/components/EditInfo/action';
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -181,6 +181,7 @@ const router = createBrowserRouter([
                 <EditInfo />
               </Suspense>
             ),
+            action: EditInfoAction,
           },
           {
             path: 'add-address',

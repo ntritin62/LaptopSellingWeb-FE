@@ -22,7 +22,7 @@ const EditInfo = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: user.fullName,
+      fullName: user.fullName,
       email: user.email,
       phoneNumber: user.phoneNumber,
     },
@@ -61,7 +61,7 @@ const EditInfo = () => {
               name="name"
               className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-[#D2D1D6]"
               placeholder="Full name"
-              {...register('name', { required: true })}
+              {...register('fullName', { required: true })}
             />
             {errors.fullName && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">

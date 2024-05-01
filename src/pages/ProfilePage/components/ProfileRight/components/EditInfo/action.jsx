@@ -6,18 +6,21 @@ export default async function action({ params, request }) {
   const data = Object.fromEntries(formData);
   const token = getAuthToken();
 
-  await axios.post(
-    `${import.meta.env.VITE_SERVER_URL}/user/edit-info/`,
-    {
-      userData: data,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+  try {
+    await axios.patch(
+      'http://localhost:3000/api/v1/users/updateUser',
+      {
+        ...data,
       },
-    }
-  );
-
-  return redirect('/profile');
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return redirect('/profile');
+  } catch (e) {
+    console.log(e);
+  }
 }
