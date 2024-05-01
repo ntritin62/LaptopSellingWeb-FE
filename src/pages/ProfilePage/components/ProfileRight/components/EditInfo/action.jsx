@@ -7,7 +7,7 @@ export default async function action({ params, request }) {
   const token = getAuthToken();
 
   try {
-    await axios.patch(
+    return await axios.patch(
       'http://localhost:3000/api/v1/users/updateUser',
       {
         ...data,
@@ -19,7 +19,6 @@ export default async function action({ params, request }) {
         },
       }
     );
-    return redirect('/profile');
   } catch (e) {
     console.log(e);
   }
