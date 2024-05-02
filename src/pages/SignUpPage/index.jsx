@@ -46,9 +46,9 @@ const SignUpPage = () => {
           >
             <div className="flex items-center justify-center gap-[14px]">
               <img
-                src="/images/logo.svg"
+                src="/images/logo.png"
                 alt=""
-                className="w-[200px] h-[50px]"
+                className="w-[200px] h-[50px] object-contain"
               />
             </div>
             <div className="flex flex-col gap-[10px]">
@@ -78,7 +78,7 @@ const SignUpPage = () => {
                 />
                 {errors.email && (
                   <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                    Invalid email
+                    Email không hợp lệ
                   </p>
                 )}
               </div>
@@ -110,7 +110,7 @@ const SignUpPage = () => {
                 />
                 {errors.password && (
                   <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                    Password needs to be 6 characters
+                    Mật khẩu cần phải có 6 ký tự
                   </p>
                 )}
               </div>
@@ -146,7 +146,7 @@ const SignUpPage = () => {
                 />
                 {errors.confirmPassword && (
                   <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                    Confirm password doesn't match
+                    Xác nhận mật khẩu không khớp
                   </p>
                 )}
               </div>

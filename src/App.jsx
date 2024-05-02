@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect,
+} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUserCart } from './redux/cartSlice';
 import { getUser } from './redux/userSlice';
@@ -71,6 +75,13 @@ const router = createBrowserRouter([
             <LoginPage />
           </Suspense>
         ),
+        loader: () => {
+          const token = getAuthToken();
+          if (token) {
+            return redirect(ROUTES.HOME);
+          }
+          return null;
+        },
         action: LoginAction,
       },
       {
@@ -80,6 +91,13 @@ const router = createBrowserRouter([
             <SignUpPage />
           </Suspense>
         ),
+        loader: () => {
+          const token = getAuthToken();
+          if (token) {
+            return redirect(ROUTES.HOME);
+          }
+          return null;
+        },
         action: SignUpAction,
       },
       {
@@ -165,6 +183,13 @@ const router = createBrowserRouter([
             <ProfilePage />
           </Suspense>
         ),
+        loader: () => {
+          const token = getAuthToken();
+          if (!token) {
+            return redirect(ROUTES.LOGIN);
+          }
+          return null;
+        },
         children: [
           {
             index: true,

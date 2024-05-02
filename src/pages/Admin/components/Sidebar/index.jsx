@@ -11,7 +11,7 @@ const Sidebar = () => {
     <>
       <div className="bg-white mx-auto fixed top-0 left-0 bottom-0 w-[230px] shadow">
         <figure className="w-[124px] pt-[16px] mx-auto">
-          <img src="/images/logo.svg" alt="" className="w-full " />
+          <img src="/images/logo.png" alt="" className="w-full " />
         </figure>
         <ul className="mt-[30px] flex flex-col gap-[15px]">
           <li className=" p-[20px]">

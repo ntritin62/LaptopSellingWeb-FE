@@ -49,9 +49,9 @@ const LoginPage = () => {
           >
             <div className="flex items-center mx-auto justify-center gap-[14px] w-[200px] h-[50px]">
               <img
-                src="/images/logo.svg"
+                src="/images/logo.png"
                 alt=""
-                className="w-full h-full text-center"
+                className="w-full h-full text-center object-contain"
               />
             </div>
             <div className="flex flex-col gap-[10px]">
@@ -81,7 +81,7 @@ const LoginPage = () => {
                 />
                 {errors.email && (
                   <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                    Invalid email
+                    Email không hợp lệ
                   </p>
                 )}
               </div>
@@ -106,7 +106,7 @@ const LoginPage = () => {
                 />
                 {errors.password && (
                   <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                    Invalid password
+                    Mật khẩu cần phải có 6 ký tự
                   </p>
                 )}
               </div>

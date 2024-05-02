@@ -19,6 +19,7 @@ export default withMT({
         text: '#7A7A7A',
         'bold-text': '#609966',
         border: '#40513B',
+        'rose-900': 'rgb(225 29 72)',
       },
       screens: {
         sm: { max: '576px' },

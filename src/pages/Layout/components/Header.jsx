@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import PhoneNavbar from './PhoneNavbar';
 import Navbar from './Navbar';
 import * as ROUTES from '../../../constants/routes';
+import getAuthToken from '../../../services/getToken';
 
 const Header = () => {
+  const [token, setToken] = useState(getAuthToken());
+  const location = useLocation();
+  useEffect(() => {
+    setToken(getAuthToken());
+  }, [location]);
   const [sidebarIsShowed, setSidebarIsShowed] = useState(false);
   const closeSidebar = () => {
     setSidebarIsShowed(false);
   };
+
+  const logoutHandler = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  };
   return (
     <header>
-      <div className="container">
+      <div className="container ">
         <div className="grid grid-cols-12 sm:grid-cols-1 items-center py-[10px]">
           <figure className="w-[250px] col-span-4 sm:col-span-1 sm:mx-auto">
             <Link to={ROUTES.HOME}>
-              <img src="/images/logo.svg" alt="" className="w-full" />
+              <img src="/images/logo.png" alt="" className="w-full" />
             </Link>
           </figure>
 
@@ -43,16 +54,69 @@ const Header = () => {
                 </span>
               </div>
             </Link>
-            <Link to={ROUTES.PROFILE}>
-              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-primary transition ease-in-out duration-500">
-                <img
-                  className="w-[24px] h-[24px] icon"
-                  src="/icons/account.svg"
-                  alt=""
-                />
-                <p className="text-[13px] text-[#4f4f4f]">Tài khoản</p>
+            {!token && (
+              <div className="flex items-center gap-[5px] ">
+                <Link to={ROUTES.LOGIN}>
+                  <p className="text-2xl text-[#4f4f4f] hover:text-primary transition ease-in-out duration-500">
+                    Đăng nhập
+                  </p>
+                </Link>
+                <div className="w-[1px]  bg-text h-[30px]"></div>
+                <Link to={ROUTES.SIGNUP}>
+                  <p className="text-2xl text-[#4f4f4f] hover:text-primary transition ease-in-out duration-500">
+                    Đăng ký
+                  </p>
+                </Link>
               </div>
-            </Link>
+            )}
+            {token && (
+              <div className="relative group">
+                <Link to={ROUTES.PROFILE}>
+                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-primary transition ease-in-out duration-500">
+                    <img
+                      className="w-[24px] h-[24px] icon"
+                      src="/icons/account.svg"
+                      alt=""
+                    />
+                    <p className="text-[13px] text-[#4f4f4f]">Tài khoản</p>
+                  </div>
+
+                  <div className="hidden  absolute w-[200px] top-[100%]  group-hover:block dark:text-[#B9BABE] right-0 z-30 bg-white dark:bg-dark-dropdown-bg p-[30px] shadow-[0px_40px_90px_20px_rgba(200,200,200,0.40)] dark:shadow-[0px_40px_90px_20px_rgba(23,28,40,0.40)] rounded-3xl md:hidden shadow-xl ">
+                    <div className="relative ">
+                      <ul className="text-center">
+                        {/* {user.user.role === 'admin' && (
+                          <>
+                            <Link
+                              to="./admin"
+                              className="hover:text-active-sidebar"
+                            >
+                              <li>Admin Panel</li>
+                            </Link>
+                            <div className="w-full h-[1px] bg-login-text my-[10px]"></div>
+                          </>
+                        )} */}
+
+                        <Link
+                          to={ROUTES.PROFILE}
+                          className="hover:text-active-sidebar"
+                        >
+                          <li>Tài khoản</li>
+                        </Link>
+                        <div className="w-full h-[1px] bg-text my-[10px]"></div>
+                        <li>
+                          <button
+                            className="text-[#de1f27] font-medium"
+                            onClick={logoutHandler}
+                          >
+                            Đăng xuất
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
