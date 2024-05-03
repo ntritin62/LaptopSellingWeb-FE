@@ -50,7 +50,7 @@ const responsive = {
 const Home = () => {
   const data = useLoaderData();
   return (
-    <main className="container mt-[15px] h-[5000px]">
+    <main className="container mt-[15px] mb-[50px]">
       <div className="grid grid-cols-12 sm:grid-cols-1 gap-[10px] z-0 relative  mb-[15px]">
         <div className="col-span-8 sm:col-span-1 sm:h-[200px]">
           <Car
