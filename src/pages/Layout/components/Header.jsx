@@ -179,7 +179,7 @@ const Header = () => {
               // ]}
             />
             <Navbar
-              to="./san-pham/lenovo"
+              to="./san-pham/thinkpad"
               name="ThinkPad"
               src="https://laptopvang.com/wp-content/uploads/2021/08/THINKPAD-icon.svg"
               // subMenuArr={[
@@ -224,6 +224,21 @@ const Header = () => {
               to="./san-pham/samsung"
               name="SAMSUNG"
               src="https://laptopvang.com/wp-content/uploads/2022/06/samsung.svg"
+            />
+            <Navbar
+              to="./san-pham/asus"
+              name="ASUS"
+              src="https://www.vectorlogo.zone/logos/asus/asus-ar21.svg"
+            />
+            <Navbar
+              to="./san-pham/lenovo"
+              name="Lenovo"
+              src="https://cdn.worldvectorlogo.com/logos/lenovo-2.svg"
+            />
+            <Navbar
+              to="./san-pham/msi"
+              name="MSI"
+              src="https://cdn.worldvectorlogo.com/logos/micro-star-international-logo.svg"
             />
           </ul>
           {sidebarIsShowed && <PhoneNavbar closeSidebar={closeSidebar} />}
