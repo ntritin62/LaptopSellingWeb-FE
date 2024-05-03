@@ -33,7 +33,7 @@ const Filters = ({ name, options, filteredItems, set }) => {
               <label
                 className={`inline-flex items-center justify-center px-[10px] py-[10px] rounded-[10px] border-[1px] border-solid border-primary min-w-[70px] ${
                   filteredItems.includes(option)
-                    ? 'bg-[#ffc10733]'
+                    ? 'bg-[#e8fee0]'
                     : 'bg-[#f3f4f6]'
                 } `}
               >

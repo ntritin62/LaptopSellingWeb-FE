@@ -4,7 +4,7 @@ const FilteredItems = ({ name, items, set }) => {
   return (
     items.length > 0 && (
       <div
-        className={`inline-flex px-[10px] py-[10px] rounded-[10px] border-[1px] border-solid border-primary min-w-[70px] bg-[#ffc10733] `}
+        className={`inline-flex px-[10px] py-[10px] rounded-[10px] border-[1px] border-solid border-primary min-w-[70px] bg-[#e8fee0] `}
       >
         <svg
           onClick={() => {
