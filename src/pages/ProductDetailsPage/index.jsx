@@ -64,7 +64,7 @@ const ProductDetailsPage = () => {
           </p>
         </div>
         <div className="col-span-3 lg:col-span-1 border-[1px] border-solid border-[#ddd] rounded-[10px] overflow-hidden">
-          <p className="bg-[#fef3e0] font-bold border-b-[#bcbcbc] border-solid border-[1px] p-[10px] text-center">
+          <p className="bg-[#e8fee0] font-bold border-b-[#bcbcbc] border-solid border-[1px] p-[10px] text-center">
             Bảo Hành & Khuyến Mãi
           </p>
           <ul className="text-2xl list-disc  px-[30px] py-[20px]">
