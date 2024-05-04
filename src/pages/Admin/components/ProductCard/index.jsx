@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import getAuthToken from '../../../../services/getToken';
-const ProductCard = ({ product, setShow, laptops, setLaptops }) => {
+const ProductCard = ({ product, setShow, laptops, setLaptops, setData }) => {
   const token = getAuthToken();
 
   const deleteHandler = async () => {
@@ -20,6 +20,9 @@ const ProductCard = ({ product, setShow, laptops, setLaptops }) => {
 
       setTimeout(() => {
         setLaptops((prev) =>
+          laptops.filter((laptop) => laptop._id !== product._id)
+        );
+        setData((prev) =>
           laptops.filter((laptop) => laptop._id !== product._id)
         );
         setShow(false);

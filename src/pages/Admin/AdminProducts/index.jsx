@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { useLoaderData } from 'react-router-dom';
@@ -35,7 +35,8 @@ function AlertCustomStyles() {
 }
 const AdminProducts = () => {
   const [messageIsShowed, setMessageIsShowed] = useState(false);
-  const data = useLoaderData();
+  const [data, setData] = useState(useLoaderData());
+
   const [laptops, setLaptops] = useState(data);
 
   const inputHandler = (e) => {
@@ -76,6 +77,7 @@ const AdminProducts = () => {
               product={laptop}
               setShow={setMessageIsShowed}
               laptops={laptops}
+              setData={setData}
               setLaptops={setLaptops}
             />
           ))}
