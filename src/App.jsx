@@ -66,6 +66,7 @@ const router = createBrowserRouter([
             <Home />
           </Suspense>
         ),
+        id: 'root',
         loader: ProductsLoader,
       },
       {

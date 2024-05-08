@@ -2,7 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 const ProductDetailsPage = () => {
   const { laptop, similarItems } = useLoaderData();
-  console.log(similarItems);
+
   return (
     <main className="container mt-[50px] ">
       <h1 className="text-5xl font-bold">{laptop.name}</h1>
