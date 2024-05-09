@@ -115,6 +115,7 @@ const Home = () => {
             autoPlay={true}
             showDots={false}
             infinite={true}
+            arrows={false}
           >
             {data.map((laptop) => (
               <div className="m-[8px]">

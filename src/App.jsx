@@ -48,7 +48,10 @@ const ProductAdd = lazy(() =>
 const ProductEdit = lazy(() =>
   import('./pages/Admin/AdminProducts/pages/ProductEdit')
 );
-// const AdminOrders = lazy(() => import('./pages/Admin'));
+const AdminOrders = lazy(() => import('./pages/Admin/AdminOrders/index'));
+const AdminOrderDetail = lazy(() =>
+  import('./pages/Admin/AdminOrders/pages/OrderDetails')
+);
 
 const router = createBrowserRouter([
   {
@@ -276,7 +279,15 @@ const router = createBrowserRouter([
         path: ROUTES.ADMIN_ORDERS,
         element: (
           <Suspense fallback={<p>Loading...</p>}>
-            <AdminProducts />
+            <AdminOrders />
+          </Suspense>
+        ),
+      },
+      {
+        path: ROUTES.ADMIN_ORDERS_DETAILS,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <AdminOrderDetail />
           </Suspense>
         ),
       },

@@ -11,7 +11,7 @@ const Layout = () => {
   };
   return (
     <div>
-      <div className="z-80">
+      <div className="z-80 sm:hidden">
         {laptopCompareIsShowed && (
           <LaptopCompare close={setLaptopCompareIsShowed} />
         )}
@@ -20,7 +20,7 @@ const Layout = () => {
       <div className="min-h-[500px]">
         <Outlet />
       </div>
-      <div className="fixed bottom-[30px] right-[30px]">
+      <div className="fixed bottom-[30px] right-[30px] sm:hidden">
         <button
           onClick={showCompare}
           className="w-[70px] h-[70px] bg-white shadow-2xl  rounded-full"

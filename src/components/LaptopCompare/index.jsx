@@ -8,7 +8,7 @@ const LaptopCompare = ({ close }) => {
   return (
     <>
       <div className="fixed inset-0 bg-[#000]/30 w-full h-screen z-30 transition-opacity duration-500"></div>
-      <div className="container fixed inset-20 z-50 bg-white rounded-3xl p-[30px] overflow-auto">
+      <div className=" fixed inset-10 z-50 bg-white rounded-3xl p-[20px] overflow-auto">
         <div className="flex justify-end">
           <button>
             <img
@@ -22,13 +22,13 @@ const LaptopCompare = ({ close }) => {
           </button>
         </div>
         <h1 className="text-5xl font-bold text-center">So sánh laptop</h1>
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-[30px]">
           <Input setLaptop={setLaptop1} index={true} />
           <Input setLaptop={setLaptop2} index={false} />
         </div>
         <div className="flex justify-between items-center mt-[10px]">
           {laptop1 && (
-            <div className="px-[10px] w-[450px] rounded-xl  border-solid border-[1px] border-[#ccc] py-[5px] flex items-center gap-[20px] cursor-pointer ">
+            <div className="px-[10px] w-[500px] xl:w-[250px] rounded-xl  border-solid border-[1px] border-[#ccc] py-[5px] flex items-center gap-[20px] cursor-pointer ">
               <img
                 src={laptop1.imageUrl}
                 alt=""
@@ -56,7 +56,7 @@ const LaptopCompare = ({ close }) => {
             <div
               className={`${
                 !laptop1 && 'ml-auto '
-              }px-[10px] w-[450px] rounded-xl  border-solid border-[1px] border-[#ccc] py-[5px] flex items-center gap-[20px] cursor-pointer `}
+              }px-[10px] rounded-xl  w-[500px] xl:w-[250px] border-solid border-[1px] border-[#ccc] py-[5px] flex items-center gap-[20px] cursor-pointer `}
             >
               <img
                 src={laptop2.imageUrl}
@@ -68,7 +68,7 @@ const LaptopCompare = ({ close }) => {
           )}
         </div>
         {showTable && (
-          <table className="border-solid border-[#eee] mt-[50px]">
+          <table className="w-full border-solid border-[#eee] mt-[50px]">
             <tr className="grid grid-cols-12 border-[1px] border-solid border-[#eee]">
               <td className="col-span-3  bg-[#f7f7f7] p-[10px] font-bold">
                 CPU

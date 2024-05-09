@@ -124,14 +124,14 @@ const Header = () => {
       <nav className="bg-primary">
         <div className="container relative">
           <button
-            className="white-icon hidden py-[10px] lg:block"
+            className="white-icon hidden py-[10px] xl:block"
             onClick={() => {
               setSidebarIsShowed(true);
             }}
           >
             <img src="/icons/more.svg" alt="" className="w-[27px] h-27px" />
           </button>
-          <ul className="flex  top-0 gap-x-[5px] w-full lg:hidden">
+          <ul className="flex  top-0 gap-x-[5px] w-full xl:hidden">
             <Navbar
               to="./san-pham/macbook"
               name="MAC"
