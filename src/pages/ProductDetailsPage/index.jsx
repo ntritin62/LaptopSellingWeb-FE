@@ -1,8 +1,13 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/cartSlice';
 const ProductDetailsPage = () => {
+  const dispatch = useDispatch();
   const { laptop, similarItems } = useLoaderData();
-
+  const addCart = () => {
+    dispatch(addToCart(laptop));
+  };
   return (
     <main className="container mt-[50px] ">
       <h1 className="text-5xl font-bold">{laptop.name}</h1>
@@ -85,7 +90,10 @@ const ProductDetailsPage = () => {
               <p className="font-bold">MUA NGAY</p>
               <p className="text-xl">Giao tận nơi hoặc nhận tại cửa hàng</p>
             </button>
-            <button className="w-full py-[10px] rounded-lg text-white bg-[#298ad6]">
+            <button
+              className="w-full py-[10px] rounded-lg text-white bg-[#298ad6]"
+              onClick={addCart}
+            >
               <p className="font-bold">THÊM VÀO GIỎ HÀNG</p>
               <p className="text-xl">Thêm vào giỏ hàng và mua sắm tiếp</p>
             </button>

@@ -56,6 +56,23 @@ const ProfileLeft = () => {
             <p>Địa chỉ</p>
           </NavLink>
         </li>
+        <li className="mt-[10px]">
+          <NavLink
+            to="/profile/change-password"
+            className={({ isActive }) =>
+              isActive
+                ? 'flex gap-[10px] items-center text-active-sidebar'
+                : 'flex gap-[10px] items-center'
+            }
+          >
+            <img
+              src="/icons/password.svg"
+              alt=""
+              className="dark-icon w-[24px] h-[24px]"
+            />
+            <p>Mật khẩu</p>
+          </NavLink>
+        </li>
         <h2 className="mt-[20px] text-3xl font-medium">Sản phẩm</h2>
         <li className="mt-[10px]">
           <NavLink

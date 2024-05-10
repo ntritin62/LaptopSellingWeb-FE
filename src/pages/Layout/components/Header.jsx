@@ -4,9 +4,11 @@ import PhoneNavbar from './PhoneNavbar';
 import Navbar from './Navbar';
 import * as ROUTES from '../../../constants/routes';
 import getAuthToken from '../../../services/getToken';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [token, setToken] = useState(getAuthToken());
+  const cart = useSelector((state) => state.cart);
   const location = useLocation();
   useEffect(() => {
     setToken(getAuthToken());
@@ -50,7 +52,7 @@ const Header = () => {
                 />
                 <p className="text-[13px] text-[#4f4f4f]">Giỏ hàng</p>
                 <span className="absolute bg-primary text-xl text-white py-[4px] px-[7px] rounded-full top-[-8px] right-[-3px] ">
-                  0
+                  {cart.products.length}
                 </span>
               </div>
             </Link>

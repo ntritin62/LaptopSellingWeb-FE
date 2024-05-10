@@ -14,7 +14,6 @@ export async function action({ request }) {
 
     return redirect(ROUTES.LOGIN);
   } catch (error) {
-    console.log(error);
     return error.message;
   }
 }

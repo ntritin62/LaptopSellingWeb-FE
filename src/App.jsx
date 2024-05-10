@@ -16,6 +16,7 @@ import { loader as ProductDetailsLoader } from './pages/ProductDetailsPage/loade
 import { action as LoginAction } from './pages/LoginPage/action';
 import { action as SignUpAction } from './pages/SignUpPage/action';
 import EditInfoAction from './pages/ProfilePage/components/ProfileRight/components/EditInfo/action';
+import changePasswordAction from './pages/ProfilePage/components/ProfileRight/components/ChangePassword/action';
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -29,6 +30,11 @@ const AddCard = lazy(() =>
 );
 const EditInfo = lazy(() =>
   import('./pages/ProfilePage/components/ProfileRight/components/EditInfo')
+);
+const ChangePassword = lazy(() =>
+  import(
+    './pages/ProfilePage/components/ProfileRight/components/ChangePassword'
+  )
 );
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
 const ShippingPage = lazy(() => import('./pages/ShippingPage'));
@@ -219,6 +225,15 @@ const router = createBrowserRouter([
                 <AddCard />
               </Suspense>
             ),
+          },
+          {
+            path: 'change-password',
+            element: (
+              <Suspense fallback={<p>Loading...</p>}>
+                <ChangePassword />
+              </Suspense>
+            ),
+            action: changePasswordAction,
           },
           {
             path: 'orders',

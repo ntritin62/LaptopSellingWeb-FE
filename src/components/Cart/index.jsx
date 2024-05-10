@@ -18,7 +18,9 @@ const CartBox = ({ path }) => {
         <p>
           Giá <span className="font-normal">(Total)</span>
         </p>
-        <p>${cart.totalPrice.toFixed(2)}</p>
+        <p>
+          {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+        </p>
       </div>
       <div className="flex justify-between text-3xl font-medium mt-[10px] lg:text-3xl  ">
         <p>Vận chuyển</p>
@@ -27,7 +29,9 @@ const CartBox = ({ path }) => {
       <div className="h-[1px] w-full bg-border bg-top-menu-border my-[30px]"></div>
       <div className="flex justify-between text-4xl font-bold  ">
         <p>Tổng cộng</p>
-        <p>${cart.totalPrice.toFixed(2)}</p>
+        <p>
+          {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+        </p>
       </div>
 
       <Link

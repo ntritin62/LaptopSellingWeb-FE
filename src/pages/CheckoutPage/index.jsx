@@ -64,7 +64,11 @@ const CheckoutPage = () => {
               <div className="w-[283px]">
                 <div className="flex justify-between text-3xl font-medium">
                   <p>Tổng:</p>
-                  <p>${cart.totalPrice.toFixed(2)}</p>
+                  <p>
+                    {cart.totalPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                  </p>
                 </div>
                 <div className="flex justify-between text-3xl font-medium mt-[10px]">
                   <p>Vận chuyển:</p>
@@ -73,7 +77,11 @@ const CheckoutPage = () => {
                 <div className="h-[1px] w-full bg-border  my-[30px]"></div>
                 <div className="flex justify-between text-4xl font-bold">
                   <p>Tổng cộng:</p>
-                  <p>${cart.totalPrice.toFixed(2)}</p>
+                  <p>
+                    {cart.totalPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                  </p>
                 </div>
               </div>
             </div>
