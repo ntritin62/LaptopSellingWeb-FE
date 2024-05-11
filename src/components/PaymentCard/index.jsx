@@ -5,16 +5,21 @@ import CheckoutForm from './components/CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
 import getAuthToken from '../../services/getToken';
 
-function Payment() {
+function Payment({ addressId }) {
   const token = getAuthToken();
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
-
+  const [order, setOrder] = useState();
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_SERVER_URL}/checkout/config`)
+    fetch(`${import.meta.env.VITE_SERVER_URL}/api/v1/stripe`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then(async (r) => {
         const { publishableKey } = await r.json();
-
+        console.log(publishableKey);
         setStripePromise(loadStripe(publishableKey));
       })
       .catch((error) => {
@@ -23,18 +28,19 @@ function Payment() {
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_SERVER_URL}/checkout/create-payment-intent`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/api/v1/orders`, {
       method: 'POST',
-      body: JSON.stringify({}),
+      body: JSON.stringify({ addressId: addressId }),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     })
       .then(async (result) => {
-        var { clientSecret } = await result.json();
+        var { clientSecret, order } = await result.json();
 
         setClientSecret(clientSecret);
+        setOrder(order);
       })
       .catch((error) => {
         console.log(error);
@@ -45,7 +51,7 @@ function Payment() {
     <>
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <CheckoutForm />
+          <CheckoutForm order={order._id} />
         </Elements>
       )}
     </>

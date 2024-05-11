@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import getAuthToken from '../../../services/getToken';
 import { resetCart } from '../../../redux/cartSlice';
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ order }) {
   const dispatch = useDispatch();
   const token = getAuthToken();
   const navigate = useNavigate();
@@ -31,32 +31,34 @@ export default function CheckoutForm() {
 
     const { error } = await stripe.confirmPayment({
       elements,
-      redirect: 'if_required',
+      confirmParams: {
+        return_url: `http://localhost:5173/checkout/complete/${order}`,
+      },
     });
 
-    const products = cart.products.map((product) => {
-      return { productId: product._id, quantity: product.quantity };
-    });
-    const cartData = {
-      address: cart.address,
-      totalPrice: cart.totalPrice,
-      products,
-    };
+    // const products = cart.products.map((product) => {
+    //   return { productId: product._id, quantity: product.quantity };
+    // });
+    // const cartData = {
+    //   address: cart.address,
+    //   totalPrice: cart.totalPrice,
+    //   products,
+    // };
 
-    if (!error) {
-      await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/checkout/confirm-payment`,
-        { cart: cartData },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      dispatch(resetCart());
-      return navigate('/checkout/complete');
-    }
+    // if (!error) {
+    //   await axios.post(
+    //     `${process.env.REACT_APP_SERVER_URL}/checkout/confirm-payment`,
+    //     { cart: cartData },
+    //     {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
+    //   dispatch(resetCart());
+    //   return navigate('/checkout/complete');
+    // }
 
     if (error.type === 'card_error' || error.type === 'validation_error') {
       setMessage(error.message);

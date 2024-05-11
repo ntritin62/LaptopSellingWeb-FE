@@ -5,7 +5,7 @@ export const loader = async ({ request, params }) => {
 
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_SERVER_URL}/orders`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/showAllMyOrders`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -13,15 +13,11 @@ export const loader = async ({ request, params }) => {
         },
       }
     );
-    if (!response.status === 200) {
-      const error = new Error('Invalid URL');
-      error.code = response.status;
-      error.info = response.data;
-      throw error;
-    }
 
     return {
-      orders: response.data.orders,
+      orders: response.data.orders.filter(
+        (order) => order.status !== 'pending'
+      ),
     };
   } catch (e) {
     console.log(e);

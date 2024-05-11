@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
 const PaymentPage = () => {
-  console.log(123);
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const [address, setAddress] = useState();
@@ -48,15 +47,17 @@ const PaymentPage = () => {
               {address && (
                 <div>
                   <p className="text-2xl font-medium mb-[4px]">
-                    {address.name}
+                    {address.recipientName}
                   </p>
                   <p className="text-2xl font-medium">
                     Địa chỉ:{' '}
-                    <span className="font-normal">{address.address}</span>
+                    <span className="font-normal">
+                      {address.deliveryAddress}
+                    </span>
                   </p>
                   <p className="text-2xl font-medium">
                     Số điện thoại:{' '}
-                    <span className="font-normal">{address.phoneNumber}</span>
+                    <span className="font-normal">{address.contactNumber}</span>
                   </p>
                 </div>
               )}
@@ -127,7 +128,9 @@ const PaymentPage = () => {
             <p>
               Giá <span className="font-normal">(Total)</span>
             </p>
-            <p>${cart.totalPrice.toFixed(2)}</p>
+            <p>
+              {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+            </p>
           </div>
           <div className="flex justify-between text-2xl font-medium mt-[10px] lg:text-3xl  ">
             <p>Vận chuyển</p>
@@ -136,10 +139,12 @@ const PaymentPage = () => {
           <div className="h-[1px] w-full dark:bg-[#B9BABE] bg-border my-[20px]"></div>
           <div className="flex justify-between text-2xl font-medium lg:text-3xl ">
             <p>Tổng cộng</p>
-            <p>${cart.totalPrice.toFixed(2)}</p>
+            <p>
+              {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+            </p>
           </div>
           <div className="mt-[30px]">
-            <PaymentCard />
+            {address && <PaymentCard addressId={address._id} />}
           </div>
         </div>
       </div>

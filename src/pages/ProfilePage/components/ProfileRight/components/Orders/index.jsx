@@ -3,7 +3,7 @@ import { useLoaderData, Link } from 'react-router-dom';
 import * as ROUTES from '../../../../../../constants/routes';
 const OrdersPage = () => {
   const { orders } = useLoaderData();
-
+  console.log(orders);
   return (
     <section className="col-span-8 p-[30px] bg-background dark:bg-dark-profile-right rounded-[20px]">
       <div className="flex items-center gap-[10px]">
@@ -41,75 +41,77 @@ const OrdersPage = () => {
                     {new Date(order.createdAt).toLocaleDateString('vi-VI')}
                   </p>
                   <div className="flex gap-[10px]">
-                    {order.status && (
-                      <img
-                        src="/icons/completed.svg"
-                        alt=""
-                        className="w-[24px] h-[24px]"
-                      />
+                    {order.status === 'pending' && (
+                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
+                        Pending
+                      </p>
                     )}
-                    {!order.status && (
-                      <img
-                        src="/icons/clock.svg"
-                        alt=""
-                        className="w-[24px] h-[24px]"
-                      />
+                    {order.status === 'delivered' && (
+                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[200px] text-center rounded-lg">
+                        Delivered
+                      </p>
                     )}
-                    <p
-                      className={
-                        order.status
-                          ? 'text-[#11bc5d] text-3xl'
-                          : 'text-[#5b9bf1] text-3xl'
-                      }
-                    >
-                      {order.status ? 'Hoàn thành' : 'Đang xử lý'}
-                    </p>
+
+                    {order.status === 'paid' && (
+                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[200px] text-center rounded-lg">
+                        Đã thanh toán
+                      </p>
+                    )}
+                    {order.status === 'canceled' && (
+                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[200px] text-center rounded-lg">
+                        Canceled
+                      </p>
+                    )}
+                    {order.status === 'failed' && (
+                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[200px] text-center rounded-lg">
+                        Failed
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="mt-[10px]">
-                  {order.products.map(({ productId, quantity, _id }) => (
-                    <li key={productId._id}>
-                      <section className="grid grid-cols-12">
-                        <img
-                          src={productId.images[0]}
-                          alt=""
-                          className="col-span-2 sm:col-span-4 w-[100px] h-[100px] object-contain rounded-[10px] overflow-hidden"
-                        />
-                        <div className="col-span-8 sm:col-span-5 flex flex-col justify-between px-[10px]">
-                          <p className="text-2xl font-medium">
-                            {productId.name}
+                  {order.orderItems.map(
+                    ({ product, name, imageUrl, price }) => (
+                      <section key={product._id} className="">
+                        <section className="grid grid-cols-12">
+                          <img
+                            src={imageUrl}
+                            alt=""
+                            className="col-span-2 sm:col-span-4 w-[100px] h-[100px] object-contain rounded-[10px] overflow-hidden"
+                          />
+                          <div className="col-span-8 sm:col-span-5 flex flex-col justify-between px-[10px]">
+                            <p className="text-2xl font-medium">{name}</p>
+                          </div>
+                          <p className="col-span-2 sm:col-span-3 text-right">
+                            {price
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                           </p>
-                          <p>Số lượng: {quantity}</p>
-                        </div>
-                        <p className="col-span-2 sm:col-span-3 text-right">
-                          $
-                          {(
-                            productId.price -
-                            (productId.sale / 100) * productId.price
-                          ).toFixed(2)}
-                        </p>
+                        </section>
+                        <div className="w-full h-[1px] my-[20px] bg-border"></div>
                       </section>
-                      <div className="w-full h-[1px] my-[20px] bg-border  dark:bg-dark-top-menu-border"></div>
-                    </li>
-                  ))}
-
+                    )
+                  )}
                   <div className="sm:text-2xl mt-[20px] flex justify-between">
                     <div className=" sm:pr-[20px]">
                       <p>
                         <span className="font-medium">Tên:</span>{' '}
-                        {order.shipping.name}
+                        {order.address.recipientName}
                       </p>
                       <p>
                         <span className="font-medium">Địa chỉ:</span>{' '}
-                        {order.shipping.address}
+                        {order.address.deliveryAddress}
                       </p>
                       <p>
                         <span className="font-medium">SĐT:</span>{' '}
-                        {order.shipping.phoneNumber}
+                        {order.address.contactNumber}
                       </p>
                     </div>
                     <p className="text-right text-3xl font-bold">
-                      Amount: ${order.amount.toFixed(2)}
+                      Tổng cộng:{' '}
+                      {order.total
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                     </p>
                   </div>
                 </div>
