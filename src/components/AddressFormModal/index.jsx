@@ -21,9 +21,9 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: data.name,
-      phoneNumber: data.phoneNumber,
-      address: data.address,
+      recipientName: data.recipientName,
+      contactNumber: data.contactNumber,
+      deliveryAddress: data.deliveryAddress,
     },
   });
 
@@ -35,21 +35,33 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
       : 'Save Address';
 
   const submitHandler = async (data) => {
-    await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/address/`,
-      {
-        address: {
+    if (!data) {
+      await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/`,
+        {
           ...data,
-          _id: addressId,
         },
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } else {
+      await axios.patch(
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${addressId}`,
+        {
+          ...data,
         },
-      }
-    );
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    }
     dispatch(getUser());
     setSelectedOption(addressId);
     closeForm();
@@ -80,11 +92,11 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
                 name="name"
                 className="p-[12px] border-[1px] border-solid border-border rounded-[10px] placeholder:text-[rgba(0,0,0,0.3)]"
                 placeholder="Họ tên"
-                {...register('name', { required: true })}
+                {...register('recipientName', { required: true })}
               />
-              {errors.name && (
+              {errors.recipientName && (
                 <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                  Please enter your full name.
+                  Họ tên không được để trống.
                 </p>
               )}
             </div>
@@ -98,15 +110,15 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
                 name="phoneNumber"
                 className="p-[12px] border-[1px] border-solid border-border rounded-[10px] placeholder:text-[rgba(0,0,0,0.3)]"
                 placeholder="Số điện thoại"
-                {...register('phoneNumber', {
+                {...register('contactNumber', {
                   required: true,
                   pattern:
                     /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gm,
                 })}
               />
-              {errors.phoneNumber && (
+              {errors.contactNumber && (
                 <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                  Please enter your phone number.
+                  Số điện thoại không được để trống.
                 </p>
               )}
             </div>
@@ -121,13 +133,13 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
                 name="address"
                 className="p-[12px] border-[1px] border-solid border-border rounded-[10px] placeholder:text-[rgba(0,0,0,0.3)]"
                 placeholder="Địa chỉ"
-                {...register('address', {
+                {...register('deliveryAddress', {
                   required: true,
                 })}
               />
-              {errors.address && (
+              {errors.deliveryAddress && (
                 <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                  Please enter your address.
+                  Địa chỉ không được để trống.
                 </p>
               )}
             </div>

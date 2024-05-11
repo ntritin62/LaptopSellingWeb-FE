@@ -112,9 +112,11 @@ const ShippingPage = () => {
                       </label>
                       <div>
                         <p className="text-3xl font-medium sm:text-2xl">
-                          {address.name}
+                          {address.recipientName}
                         </p>
-                        <p className="text-2xl sm:text-xl">{address.address}</p>
+                        <p className="text-2xl sm:text-xl">
+                          {address.deliveryAddress}
+                        </p>
                         <ul className="list-disc flex gap-[30px] mt-[20px] sm:text-xl ml-[15px]">
                           <li>Shipping</li>
                           <li>Delivery from store</li>

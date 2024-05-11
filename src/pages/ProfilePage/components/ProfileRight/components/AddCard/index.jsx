@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../../../../../constants/routes';
 import { useForm } from 'react-hook-form';
 import { Form, useNavigation } from 'react-router-dom';
 import { useSubmit } from 'react-router-dom';
+import { useFetcher } from 'react-router-dom';
+import AlertCustomStyles from '../../../../../../components/Alert';
+import { useNavigate } from 'react-router-dom';
 
 const AddCard = () => {
+  const [messageIsShowed, setMessageIsShowed] = useState(false);
   const submit = useSubmit();
   const navigation = useNavigation();
+  const navigate = useNavigate();
+  const fetcher = useFetcher();
   const {
     register,
     handleSubmit,
@@ -22,11 +28,25 @@ const AddCard = () => {
       ? 'Đã lưu!'
       : 'Lưu địa chỉ';
 
+  useEffect(() => {
+    if (
+      fetcher.state === 'idle' &&
+      fetcher.data &&
+      fetcher.data.status === 200
+    ) {
+      setMessageIsShowed(true);
+      setTimeout(() => {
+        navigate('..');
+      }, 1000);
+    }
+  }, [fetcher.data, fetcher.state]);
+
   const submitHandler = (data) => {
-    submit(data, { method: 'post' });
+    fetcher.submit(data, { method: 'post' });
   };
   return (
     <section className="col-span-8 p-[30px] bg-background dark:bg-dark-profile-right rounded-[20px]">
+      {messageIsShowed && <AlertCustomStyles msg="Lưu thông tin thành công" />}
       <div className="flex items-center gap-[10px]">
         <Link to={ROUTES.PROFILE}>
           <img src="/icons/arrow-left.svg" alt="" className="dark-icon" />
@@ -45,9 +65,9 @@ const AddCard = () => {
               name="name"
               className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
               placeholder="Full Name"
-              {...register('name', { required: true })}
+              {...register('recipientName', { required: true })}
             />
-            {errors.name && (
+            {errors.recipientName && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
                 Họ và tên không được để trống.
               </p>
@@ -63,13 +83,13 @@ const AddCard = () => {
               name="phoneNumber"
               className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
               placeholder="Phone number"
-              {...register('phoneNumber', {
+              {...register('contactNumber', {
                 required: true,
                 pattern:
                   /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gm,
               })}
             />
-            {errors.phoneNumber && (
+            {errors.contactNumber && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
                 Số điện thoại không được để trống.
               </p>
@@ -86,11 +106,11 @@ const AddCard = () => {
               name="address"
               className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
               placeholder="Address"
-              {...register('address', {
+              {...register('deliveryAddress', {
                 required: true,
               })}
             />
-            {errors.address && (
+            {errors.deliveryAddress && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
                 Địa chỉ không được để trống..
               </p>

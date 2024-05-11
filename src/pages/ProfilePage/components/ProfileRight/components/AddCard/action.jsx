@@ -5,12 +5,11 @@ export default async function action({ params, request }) {
   const token = getAuthToken();
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  await axios.post(
-    `${import.meta.env.VITE_SERVER_URL}/address/`,
+
+  const response = await axios.post(
+    `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/`,
     {
-      address: {
-        ...data,
-      },
+      ...data,
     },
     {
       headers: {
@@ -19,6 +18,6 @@ export default async function action({ params, request }) {
       },
     }
   );
-
-  return redirect('/profile');
+  return response;
+  // return redirect('/profile');
 }

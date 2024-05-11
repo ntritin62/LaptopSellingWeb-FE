@@ -17,6 +17,7 @@ import { action as LoginAction } from './pages/LoginPage/action';
 import { action as SignUpAction } from './pages/SignUpPage/action';
 import EditInfoAction from './pages/ProfilePage/components/ProfileRight/components/EditInfo/action';
 import changePasswordAction from './pages/ProfilePage/components/ProfileRight/components/ChangePassword/action';
+import addAddressAction from './pages/ProfilePage/components/ProfileRight/components/AddCard/action';
 const Layout = lazy(() => import('./pages/Layout'));
 const Home = lazy(() => import('./pages/Home'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -225,6 +226,7 @@ const router = createBrowserRouter([
                 <AddCard />
               </Suspense>
             ),
+            action: addAddressAction,
           },
           {
             path: 'change-password',
