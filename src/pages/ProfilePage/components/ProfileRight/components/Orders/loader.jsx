@@ -13,7 +13,7 @@ export const loader = async ({ request, params }) => {
         },
       }
     );
-
+    console.log(response);
     return {
       orders: response.data.orders.filter(
         (order) => order.status !== 'pending'

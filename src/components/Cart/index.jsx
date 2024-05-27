@@ -1,10 +1,44 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import { useSelector } from 'react-redux';
-
-const CartBox = ({ path }) => {
+import getAuthToken from '../../services/getToken';
+import axios from 'axios';
+import { data } from 'autoprefixer';
+import { useDispatch } from 'react-redux';
+import { getUserCart } from '../../redux/cartSlice';
+const CartBox = ({ path, setShow }) => {
+  const [error, setError] = useState('');
+  const token = getAuthToken();
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const code = e.target.elements.couponCode.value;
+    const data = { code };
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/api/v1/coupons/addCouponToCart',
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(getUserCart());
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 1000);
+    } catch (e) {
+      setError(e.response.data.msg);
+    }
+  };
 
   return (
     <div className="col-span-3 bg-background rounded-[20px] p-[30px] h-fit">
@@ -33,6 +67,25 @@ const CartBox = ({ path }) => {
           {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
         </p>
       </div>
+      {path === 'shipping' && (
+        <form
+          onSubmit={submitHandler}
+          className="relative my-[30px] rounded-lg w-full h-[50px] flex items-center justify-between p-[10px] border-solid border-[1px] border-[#ccc]"
+        >
+          <input
+            type="text"
+            name="couponCode"
+            placeholder="Nhập mã giảm giá"
+            className="placeholder:text-[#aaa]"
+          />
+          <button className="text-primary font-bold" type="submit">
+            Check
+          </button>
+          <span className="absolute bottom-[-20px] right-0 text-xl font-medium text-red-500 ">
+            {error}
+          </span>
+        </form>
+      )}
 
       <Link
         to={path === 'shipping' ? ROUTES.PAYMENTMETHOD : ROUTES.SHIPPING}

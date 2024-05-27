@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   ADMIN,
+  ADMIN_COUPON,
   ADMIN_ORDERS,
   ADMIN_PRODUCTS,
 } from '../../../../constants/routes';
@@ -58,10 +59,30 @@ const Sidebar = () => {
                   <img
                     src="/icons/orders.svg"
                     alt=""
-                    className={`${isActive ? 'action-icon' : ''} w-[24px]`}
+                    className={`${
+                      isActive ? 'action-icon' : 'sidebar-icon'
+                    } w-[24px]`}
                   />
                   <p className={isActive ? 'text-primary' : 'text-text'}>
                     Orders
+                  </p>
+                </>
+              )}
+            </NavLink>
+          </li>
+          <li className=" p-[20px]">
+            <NavLink to={ADMIN_COUPON} className="flex items-center gap-[20px]">
+              {({ isActive }) => (
+                <>
+                  <img
+                    src="/icons/coupon.svg"
+                    alt=""
+                    className={`${
+                      isActive ? 'action-icon' : 'sidebar-icon'
+                    } w-[24px]`}
+                  />
+                  <p className={isActive ? 'text-primary' : 'text-text'}>
+                    Coupon
                   </p>
                 </>
               )}

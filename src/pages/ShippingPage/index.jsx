@@ -8,6 +8,8 @@ import { setAddress } from '../../redux/cartSlice';
 import AddressFormModal from '../../components/AddressFormModal';
 import * as ROUTES from '../../constants/routes';
 import { Helmet } from 'react-helmet';
+import { Alert } from '@material-tailwind/react';
+import AlertCustomStyles from '../../components/Alert';
 
 const ShippingPage = () => {
   const [addressModelIsShowed, setAddressModelIsShowed] = useState({
@@ -15,6 +17,7 @@ const ShippingPage = () => {
     data: null,
   });
   const cart = useSelector((state) => state.cart);
+  const [messageIsShowed, setMessageIsShowed] = useState(false);
 
   const { user } = useSelector((state) => state.user);
 
@@ -42,6 +45,7 @@ const ShippingPage = () => {
       <Helmet>
         <title>Thanh toán | Giao hàng</title>
       </Helmet>
+      {messageIsShowed && <AlertCustomStyles msg="Áp mã giảm giá thành công" />}
       {addressModelIsShowed.status && (
         <AddressFormModal
           closeForm={closeAddressModal}
@@ -184,7 +188,7 @@ const ShippingPage = () => {
             </div>
           </div>
         </div>
-        <CartBox path="shipping" />
+        <CartBox path="shipping" setShow={setMessageIsShowed} />
       </div>
     </>
   );

@@ -34,9 +34,12 @@ const DUMMY_ORDER = {
   ],
 };
 import AlertCustomStyles from '../../../../components/Alert';
+import { useLoaderData } from 'react-router-dom';
 const OrderDetails = () => {
+  const data = useLoaderData();
+  console.log(data);
   const [messageIsShowed, setMessageIsShowed] = useState(false);
-  const [order, setOrder] = useState(DUMMY_ORDER);
+  const [order, setOrder] = useState(data);
   const changeStatus = (e) => {
     setOrder((prev) => {
       return { ...prev, status: e.target.value };
@@ -132,15 +135,16 @@ const OrderDetails = () => {
           <div className="sm:text-2xl mt-[20px] flex justify-between">
             <div className=" sm:pr-[20px]">
               <p>
-                <span className="font-medium">Tên:</span> {order.user.name}
+                <span className="font-medium">Tên:</span>{' '}
+                {order.address.recipientName}
               </p>
               <p>
                 <span className="font-medium">Địa chỉ:</span>{' '}
-                {order.user.address}
+                {order.address.deliveryAddress}
               </p>
               <p>
                 <span className="font-medium">SĐT:</span>{' '}
-                {order.user.phoneNumber}
+                {order.address.contactNumber}
               </p>
             </div>
             <p className="text-right text-3xl font-bold">

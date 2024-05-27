@@ -15,6 +15,10 @@ import { loader as ProductsLoader } from './pages/ProductsPage/loader';
 import { loader as ProductDetailsLoader } from './pages/ProductDetailsPage/loader';
 import { action as LoginAction } from './pages/LoginPage/action';
 import { action as SignUpAction } from './pages/SignUpPage/action';
+import { loader as EditCouponLoader } from './pages/Admin/AdminCoupon/pages/loader';
+import { loader as CouponLoader } from './pages/Admin/AdminCoupon/loader';
+import { loader as OrderLoader } from './pages/Admin/AdminOrders/loader';
+import { loader as OrderDetailsLoader } from './pages/Admin/AdminOrders/pages/loader';
 import EditInfoAction from './pages/ProfilePage/components/ProfileRight/components/EditInfo/action';
 import changePasswordAction from './pages/ProfilePage/components/ProfileRight/components/ChangePassword/action';
 import addAddressAction from './pages/ProfilePage/components/ProfileRight/components/AddCard/action';
@@ -59,7 +63,13 @@ const AdminOrders = lazy(() => import('./pages/Admin/AdminOrders/index'));
 const AdminOrderDetail = lazy(() =>
   import('./pages/Admin/AdminOrders/pages/OrderDetails')
 );
-
+const AdminCoupon = lazy(() => import('./pages/Admin/AdminCoupon/index'));
+const AddCoupon = lazy(() =>
+  import('./pages/Admin/AdminCoupon/pages/AddCoupon')
+);
+const EditCoupon = lazy(() =>
+  import('./pages/Admin/AdminCoupon/pages/EditCoupon')
+);
 const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
@@ -299,6 +309,7 @@ const router = createBrowserRouter([
             <AdminOrders />
           </Suspense>
         ),
+        loader: OrderLoader,
       },
       {
         path: ROUTES.ADMIN_ORDERS_DETAILS,
@@ -307,6 +318,33 @@ const router = createBrowserRouter([
             <AdminOrderDetail />
           </Suspense>
         ),
+        loader: OrderDetailsLoader,
+      },
+      {
+        path: ROUTES.ADMIN_COUPON,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <AdminCoupon />
+          </Suspense>
+        ),
+        loader: CouponLoader,
+      },
+      {
+        path: ROUTES.ADD_COUPON,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <AddCoupon />
+          </Suspense>
+        ),
+      },
+      {
+        path: ROUTES.EDIT_COUPON,
+        element: (
+          <Suspense fallback={<p>Loading...</p>}>
+            <EditCoupon />
+          </Suspense>
+        ),
+        loader: EditCouponLoader,
       },
     ],
   },

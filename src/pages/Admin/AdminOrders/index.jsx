@@ -1,53 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-const DUMMY_ORDERS = [
-  {
-    id: 'I293DSA39',
-    items: '2',
-    date: 'January 20, 2022',
-    amount: 'Nguyễn Trí Tín',
-    status: 'delivered',
-  },
-  {
-    id: 'I293DSA39',
-    items: '2',
-    date: 'January 20, 2022',
-    amount: 'Nguyễn Trí Tín',
-    status: 'pending',
-  },
-  {
-    id: 'I293DSA39',
-    items: '2',
-    date: 'January 20, 2022',
-    amount: 'Nguyễn Trí Tín',
-    status: 'pending',
-  },
-  {
-    id: 'I293DSA39',
-    items: '2',
-    date: 'January 20, 2022',
-    amount: 'Nguyễn Trí Tín',
-    status: 'paid',
-  },
-  {
-    id: 'I293DSA39',
-    items: '2',
-    date: 'January 20, 2022',
-    amount: 'Nguyễn Trí Tín',
-    status: 'canceled',
-  },
-  {
-    id: 'I293DSA39',
-    items: '2',
-    date: 'January 20, 2022',
-    amount: 'Nguyễn Trí Tín',
-    status: 'failed',
-  },
-];
+import { Link, useLoaderData } from 'react-router-dom';
+const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+
 const AdminOrders = () => {
-  const [orders, setOrders] = useState(DUMMY_ORDERS);
+  const data = useLoaderData();
+
+  const [orders, setOrders] = useState(data);
   const filterStatus = (e) => {
-    setOrders(DUMMY_ORDERS.filter((order) => order.status === e.target.value));
+    setOrders(data.filter((order) => order.status === e.target.value));
   };
   return (
     <div className="container">
@@ -74,20 +34,22 @@ const AdminOrders = () => {
         </select>
         <table className="w-full mt-[20px] h-[500px] overflow-scroll">
           <tr className="grid grid-cols-12 text-[#595959] text-xl">
-            <thead className="col-span-2">ID</thead>
+            <thead className="col-span-3">ID</thead>
             <thead className="col-span-2">Sản phẩm</thead>
             <thead className="col-span-2">Ngày mua</thead>
             <thead className="col-span-2">Khách hàng</thead>
             <thead className="col-span-2">Trạng thái</thead>
-            <thead className="col-span-2"></thead>
+            <thead className="col-span-1"></thead>
           </tr>
           <div className="bg-[#bfbfbf] h-[2px] w-full mt-[5px]"></div>
           {orders.map((order) => (
             <tr className="grid grid-cols-12 mt-[20px] text-[#303030]">
-              <td className="col-span-2">{order.id}</td>
-              <td className="col-span-2">{order.items}</td>
-              <td className="col-span-2">{order.date}</td>
-              <td className="col-span-2">{order.amount}</td>
+              <td className="col-span-3">{order._id}</td>
+              <td className="col-span-2">{order.orderItems.length}</td>
+              <td className="col-span-2">
+                {new Date(order.createdAt).toLocaleDateString('en-GB', options)}
+              </td>
+              <td className="col-span-2">{order.user.fullName}</td>
               <td className="col-span-2">
                 {order.status === 'pending' && (
                   <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[100px] text-center rounded-lg">
@@ -116,8 +78,8 @@ const AdminOrders = () => {
                   </p>
                 )}
               </td>
-              <td className="col-span-2 ">
-                <Link to={order.id} className="flex gap-[5px]">
+              <td className="col-span-1 ">
+                <Link to={order._id} className="flex gap-[5px]">
                   <img
                     src="/icons/view.svg"
                     alt=""
