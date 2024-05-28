@@ -5,8 +5,37 @@ import Navbar from './Navbar';
 import * as ROUTES from '../../../constants/routes';
 import getAuthToken from '../../../services/getToken';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 const Header = () => {
+  const [data, setData] = useState();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          'http://localhost:3000/api/v1/laptops'
+        );
+        setData(response.data.laptops);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  const [laptops, setLaptops] = useState([]);
+  const inputHandler = (e) => {
+    setLaptops(
+      data.filter((laptop) =>
+        laptop.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
+  };
+
+  const clickHandler = (laptop) => {
+    setLaptops([]);
+  };
   const [token, setToken] = useState(getAuthToken());
   const cart = useSelector((state) => state.cart);
   const location = useLocation();
@@ -32,15 +61,38 @@ const Header = () => {
             </Link>
           </figure>
 
-          <div className="col-span-4 sm:col-span-1 flex justify-between items-center rounded-lg overflow-hidden border-primary border-[1px] border-solid">
-            <input
-              type="text"
-              className=" text-[#5f5f5f] px-[10px] py-[7px] text-xl w-full"
-              placeholder="Nhập sản phẩm cần tìm"
-            />
-            <button className="w-41px h-[41px] flex items-center justify-center p-[10px] bg-primary text-white">
-              <img src="/icons/search.svg" alt="" className="w-[18px]" />
-            </button>
+          <div className="relative col-span-4 sm:col-span-1 ">
+            <div className=" flex justify-between items-center rounded-lg overflow-hidden border-primary border-[1px] border-solid">
+              <input
+                type="text"
+                className=" text-[#5f5f5f] px-[10px] py-[7px] text-xl w-full"
+                placeholder="Nhập sản phẩm cần tìm"
+                onChange={inputHandler}
+              />
+              <button className="w-41px h-[41px] flex items-center justify-center p-[10px] bg-primary text-white">
+                <img src="/icons/search.svg" alt="" className="w-[18px]" />
+              </button>
+            </div>
+            {laptops.length > 0 && (
+              <div className="absolute z-50 top-[50px] left-0 right-0  bg-white shadow-xl border-solid border-[1px] border-[#ccc] rounded-sm  h-[300px] overflow-y-scroll">
+                {laptops.map((laptop) => (
+                  <Link
+                    to={`./laptop/${laptop._id}`}
+                    className="px-[20px] py-[10px] flex items-center gap-[20px] cursor-pointer "
+                    onClick={() => {
+                      clickHandler(laptop);
+                    }}
+                  >
+                    <img
+                      src={laptop.imageUrl}
+                      alt=""
+                      className="w-[50px] h-[50px] object-contain"
+                    />
+                    <p className="text-xl">{laptop.name}</p>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
           <div className="col-span-4 sm:hidden ml-auto flex items-center gap-[20px]">
             <Link to={ROUTES.CART}>

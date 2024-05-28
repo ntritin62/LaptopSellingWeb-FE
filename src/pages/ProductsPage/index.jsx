@@ -120,7 +120,7 @@ const ProductsPage = () => {
           filteredItems={storage}
           set={setStorage}
         />
-        <Filters
+        {/* <Filters
           name="Giá"
           options={[
             '< 20tr',
@@ -131,7 +131,7 @@ const ProductsPage = () => {
           ]}
           filteredItems={price}
           set={setPrice}
-        />
+        /> */}
       </div>
 
       <p className="text-3xl font-bold mt-[20px]">Đang lọc theo:</p>

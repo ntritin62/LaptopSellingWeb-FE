@@ -1,15 +1,33 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
+import { useNavigate } from 'react-router-dom';
+import { Alert } from '@material-tailwind/react';
+import AlertCustomStyles from '../../components/Alert';
+import { CART } from '../../constants/routes';
 const ProductDetailsPage = () => {
+  const [messageIsShowed, setMessageIsShowed] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { laptop, similarItems } = useLoaderData();
+
   const addCart = () => {
+    setMessageIsShowed(true);
+    setTimeout(() => {
+      setMessageIsShowed(false);
+    }, 1000);
     dispatch(addToCart(laptop));
+  };
+  const buyNow = () => {
+    dispatch(addToCart(laptop));
+    navigate(CART);
   };
   return (
     <main className="container mt-[50px] ">
+      {messageIsShowed && (
+        <AlertCustomStyles msg="Thêm vào giỏ hàng thành công" />
+      )}
       <h1 className="text-5xl font-bold">{laptop.name}</h1>
       <div className="mt-[20px] grid grid-cols-12 lg:grid-cols-1 gap-[30px]">
         <img
@@ -86,7 +104,10 @@ const ProductDetailsPage = () => {
           </ul>
           <div className="bg-[#eee] w-full h-[2px] my-[10px]"></div>
           <div className="p-[10px] flex flex-col items-center justify-center gap-[10px]">
-            <button className="w-full py-[10px] rounded-lg text-white bg-gradient-to-b from-[#f59000] to-[#fd6e1d]">
+            <button
+              onClick={buyNow}
+              className="w-full py-[10px] rounded-lg text-white bg-gradient-to-b from-[#f59000] to-[#fd6e1d]"
+            >
               <p className="font-bold">MUA NGAY</p>
               <p className="text-xl">Giao tận nơi hoặc nhận tại cửa hàng</p>
             </button>
@@ -216,7 +237,7 @@ const ProductDetailsPage = () => {
           <div className="mt-[20px]">
             <ul className="flex flex-col gap-[8px]">
               {similarItems.map((item) => (
-                <div className="flex gap-[32px]">
+                <Link to={`/laptop/${item._id}`} className="flex gap-[32px]">
                   <img
                     src={item.imageUrl}
                     alt=""
@@ -250,7 +271,7 @@ const ProductDetailsPage = () => {
                       )}
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </ul>
           </div>
