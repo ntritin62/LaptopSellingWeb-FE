@@ -19,6 +19,7 @@ import { loader as EditCouponLoader } from './pages/Admin/AdminCoupon/pages/load
 import { loader as CouponLoader } from './pages/Admin/AdminCoupon/loader';
 import { loader as OrderLoader } from './pages/Admin/AdminOrders/loader';
 import { loader as OrderDetailsLoader } from './pages/Admin/AdminOrders/pages/loader';
+import { loader as AdminLoader } from './pages/Admin/AdminDashboard/loader';
 import EditInfoAction from './pages/ProfilePage/components/ProfileRight/components/EditInfo/action';
 import changePasswordAction from './pages/ProfilePage/components/ProfileRight/components/ChangePassword/action';
 import addAddressAction from './pages/ProfilePage/components/ProfileRight/components/AddCard/action';
@@ -275,6 +276,7 @@ const router = createBrowserRouter([
             <AdminDashboard />
           </Suspense>
         ),
+        loader: AdminLoader,
       },
       {
         path: ROUTES.ADMIN_PRODUCTS,

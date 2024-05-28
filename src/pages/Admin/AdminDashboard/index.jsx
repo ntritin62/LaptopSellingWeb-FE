@@ -1,29 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-const DUMMY_ORDERS = [
-  {
-    id: 'I293DSA39',
-    items: 'Iphone 13',
-    date: 'January 20, 2022',
-    amount: '$799.00',
-    status: 'approved',
-  },
-  {
-    id: 'I293DSA39',
-    items: 'Iphone 13',
-    date: 'January 20, 2022',
-    amount: '$799.00',
-    status: 'pending',
-  },
-  {
-    id: 'I293DSA39',
-    items: 'Iphone 13',
-    date: 'January 20, 2022',
-    amount: '$799.00',
-    status: 'pending',
-  },
-];
+import { Link, useLoaderData } from 'react-router-dom';
+import { ADMIN_ORDERS } from '../../../constants/routes';
+const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
 const AdminDashboard = () => {
+  const { ordersInfo, usersInfo } = useLoaderData();
+
   return (
     <div className=" mt-[70px] container">
       <ul className="flex gap-[20px] ">
@@ -38,7 +19,11 @@ const AdminDashboard = () => {
           <div className="">
             <p className="text-xl text-[#a0a0a0]">Thu nhập</p>
             <p className="text-3xl font-medium">
-              $45800 <span className="text-xl">tháng này</span>{' '}
+              {ordersInfo.totalInMonth
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}{' '}
+              VNĐ
+              <span className="text-xl"> tháng này</span>{' '}
             </p>
           </div>
         </li>
@@ -53,7 +38,8 @@ const AdminDashboard = () => {
           <div className="">
             <p className="text-xl text-[#a0a0a0]">Đơn hàng</p>
             <p className="text-3xl font-medium">
-              245 <span className="text-xl">tháng này</span>{' '}
+              {ordersInfo.orders.length}{' '}
+              <span className="text-xl">tháng này</span>{' '}
             </p>
           </div>
         </li>
@@ -68,7 +54,8 @@ const AdminDashboard = () => {
           <div className="">
             <p className="text-xl text-[#a0a0a0]">Đăng ký</p>
             <p className="text-3xl font-medium">
-              25 <span className="text-xl">tháng này</span>{' '}
+              {usersInfo.users.length}{' '}
+              <span className="text-xl">tháng này</span>{' '}
             </p>
           </div>
         </li>
@@ -79,7 +66,9 @@ const AdminDashboard = () => {
             Đơn hàng gần đây
           </h2>
           <Link className="flex items-center gap-[10px]">
-            <p className="text-text">Tới trang đơn hàng</p>
+            <Link to={ADMIN_ORDERS} className="text-text">
+              Tới trang đơn hàng
+            </Link>
             <img
               src="/icons/arrow-r.svg"
               alt=""
@@ -88,29 +77,50 @@ const AdminDashboard = () => {
           </Link>
         </div>
         <table className="w-full mt-[20px]">
-          <tr className="grid grid-cols-10 text-[#595959] text-xl">
+          <tr className="grid grid-cols-9 text-[#595959] text-xl">
             <thead className="col-span-2">ID</thead>
-            <thead className="col-span-2">Sản phẩm</thead>
+            <thead className="col-span-1">Sản phẩm</thead>
             <thead className="col-span-2">Ngày mua</thead>
             <thead className="col-span-2">Giá</thead>
             <thead className="col-span-2">Trạng thái</thead>
           </tr>
           <div className="bg-[#bfbfbf] h-[2px] w-full mt-[5px]"></div>
-          {DUMMY_ORDERS.map((order) => (
-            <tr className="grid grid-cols-10 mt-[20px] text-[#303030]">
-              <td className="col-span-2">{order.id}</td>
-              <td className="col-span-2">{order.items}</td>
-              <td className="col-span-2">{order.date}</td>
-              <td className="col-span-2">{order.amount}</td>
+          {ordersInfo.orders.map((order) => (
+            <tr className="grid grid-cols-9 mt-[20px] text-[#303030]">
+              <td className="col-span-2">{order._id}</td>
+              <td className="col-span-1">{order.orderItems.length}</td>
+              <td className="col-span-2">
+                {' '}
+                {new Date(order.createdAt).toLocaleDateString('en-GB', options)}
+              </td>
+              <td className="col-span-2">
+                {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+              </td>
               <td className="col-span-2">
                 {order.status === 'pending' && (
-                  <p className="bg-[#E8F0FF] text-[#6C97DE] w-[100px] text-center rounded-lg">
+                  <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[100px] text-center rounded-lg">
                     Pending
                   </p>
                 )}
-                {order.status === 'approved' && (
-                  <p className="bg-[#DBF4DC] text-[#6FB75D] w-[100px] text-center rounded-lg">
-                    Approved
+                {order.status === 'delivered' && (
+                  <p className="bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[100px] text-center rounded-lg">
+                    Delivered
+                  </p>
+                )}
+
+                {order.status === 'paid' && (
+                  <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[100px] text-center rounded-lg">
+                    Paid
+                  </p>
+                )}
+                {order.status === 'canceled' && (
+                  <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[100px] text-center rounded-lg">
+                    Canceled
+                  </p>
+                )}
+                {order.status === 'failed' && (
+                  <p className="bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[100px] text-center rounded-lg">
+                    Failed
                   </p>
                 )}
               </td>
