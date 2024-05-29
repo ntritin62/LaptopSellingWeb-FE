@@ -1,12 +1,19 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import * as ROUTES from '../../constants/routes';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PaymentCard from '../../components/PaymentCard';
 import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from '@material-tailwind/react';
+
 const PaymentPage = () => {
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const [address, setAddress] = useState();
@@ -15,6 +22,12 @@ const PaymentPage = () => {
     setAddress(user.address.find((address) => address._id === cart.address));
   }, [cart, user]);
 
+  const [open, setOpen] = React.useState(1);
+
+  const handleOpen = (value) => setOpen(open === value ? 0 : value);
+  const onClickHandler = () => {
+    navigate(ROUTES.PAYMENTSUCCESS_COD);
+  };
   return (
     <>
       <Helmet>
@@ -65,7 +78,7 @@ const PaymentPage = () => {
                 <img src="/icons/check.svg" alt="" className="w-full h-full" />
               </div>
             </div>
-            <div className="my-[30px] bg-bg-secondary dark:bg-dark-body-bg p-[20px] rounded-[20px] flex justify-between items-center">
+            {/* <div className="my-[30px] bg-bg-secondary dark:bg-dark-body-bg p-[20px] rounded-[20px] flex justify-between items-center">
               <div>
                 <p className="text-2xl font-medium mb-[4px]">Chi tiết</p>
                 <p>{cart.products.length} sản phẩm</p>
@@ -76,7 +89,7 @@ const PaymentPage = () => {
               >
                 Xem chi tiết
               </Link>
-            </div>
+            </div> */}
           </div>
           <div className="p-[30px] rounded-[20px] bg-background dark:bg-dark-sidebar mt-[30px]">
             <div className="flex items-center justify-between">
@@ -143,8 +156,32 @@ const PaymentPage = () => {
               {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
             </p>
           </div>
-          <div className="mt-[30px]">
-            {address && <PaymentCard addressId={address._id} />}
+          <div className="border-b-solid border-b-[1px] border-b-[#cfd8db]">
+            <Accordion open={open === 1} className="mt-[20px]">
+              <AccordionHeader onClick={() => handleOpen(1)}>
+                <p className="text-3xl">Thanh toán COD</p>
+              </AccordionHeader>
+              <AccordionBody>
+                <button
+                  onClick={onClickHandler}
+                  className="bg-primary w-full hover:shadow-lg hover:shadow-gray-900/20 py-[20px] rounded-lg font-bold text-3xl text-white"
+                >
+                  Thanh toán COD
+                </button>
+              </AccordionBody>
+            </Accordion>
+          </div>
+          <div className="border-b-solid border-b-[1px] border-b-[#cfd8db]">
+            <Accordion open={open === 2} className="mt-[20px]">
+              <AccordionHeader onClick={() => handleOpen(2)}>
+                <p className="text-3xl">Thanh toán online</p>
+              </AccordionHeader>
+              <AccordionBody>
+                <div className="mt-[30px]">
+                  {address && <PaymentCard addressId={address._id} />}
+                </div>
+              </AccordionBody>
+            </Accordion>
           </div>
         </div>
       </div>

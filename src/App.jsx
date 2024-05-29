@@ -71,6 +71,9 @@ const AddCoupon = lazy(() =>
 const EditCoupon = lazy(() =>
   import('./pages/Admin/AdminCoupon/pages/EditCoupon')
 );
+const PaymentSuccessCod = lazy(() =>
+  import('./pages/PaymentSuccess/PaymentCOD')
+);
 const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
@@ -193,6 +196,14 @@ const router = createBrowserRouter([
             element: (
               <Suspense fallback={<p>Loading...</p>}>
                 <PaymentSuccess />
+              </Suspense>
+            ),
+          },
+          {
+            path: `${ROUTES.PAYMENTSUCCESS_COD}`,
+            element: (
+              <Suspense fallback={<p>Loading...</p>}>
+                <PaymentSuccessCod />
               </Suspense>
             ),
           },

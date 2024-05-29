@@ -3,7 +3,7 @@ import { useLoaderData, Link } from 'react-router-dom';
 import * as ROUTES from '../../../../../../constants/routes';
 const OrdersPage = () => {
   const { orders } = useLoaderData();
-  console.log(orders);
+
   return (
     <section className="col-span-8 p-[30px] bg-background dark:bg-dark-profile-right rounded-[20px]">
       <div className="flex items-center gap-[10px]">

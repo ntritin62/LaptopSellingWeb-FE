@@ -7,6 +7,7 @@ export const SHIPPING = '/checkout/shipping';
 export const CART = '/checkout';
 export const PAYMENTMETHOD = '/checkout/payment-method';
 export const PAYMENTSUCCESS = '/checkout/complete/:id';
+export const PAYMENTSUCCESS_COD = '/checkout/complete-cod';
 export const ADMIN = '/admin';
 export const ADMIN_PRODUCTS = '/admin/products';
 export const ADMIN_ORDERS = '/admin/orders';
