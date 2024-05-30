@@ -43,7 +43,7 @@ const Input = ({ setLaptop, index }) => {
         <div
           className={`absolute top-[30px] index ${
             index ? 'left-0' : 'right-0'
-          }   mt-[20px] bg-white shadow-xl border-solid border-[1px] border-[#ccc] rounded-sm w-[500px] lg:w-[300px] h-[300px] overflow-y-scroll`}
+          }   mt-[20px] bg-white shadow-xl border-solid border-[1px] border-[#ccc] rounded-xl w-[500px] lg:w-[300px] h-[300px] overflow-y-scroll`}
         >
           {laptops.map((laptop) => (
             <div

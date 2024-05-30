@@ -21,7 +21,7 @@ const LaptopCompare = ({ close }) => {
             />
           </button>
         </div>
-        <h1 className="text-5xl font-bold text-center">So sánh laptop</h1>
+        <h1 className="text-5xl font-bold text-center">SO SÁNH LAPTOP</h1>
         <div className="flex justify-between mt-[30px]">
           <Input setLaptop={setLaptop1} index={true} />
           <Input setLaptop={setLaptop2} index={false} />
@@ -69,6 +69,31 @@ const LaptopCompare = ({ close }) => {
         </div>
         {showTable && (
           <table className="w-full border-solid border-[#eee] mt-[50px]">
+            <tr className="grid grid-cols-12 border-[1px] border-solid border-[#eee]">
+              <td className="col-span-3  bg-[#f7f7f7] p-[10px] font-bold"></td>
+              <div className="col-span-9 grid grid-cols-10">
+                <td className="col-span-5 border-l-[1px] border-solid border-[#eee] p-[10px]">
+                  <div className="flex flex-col items-center gap-[20px]">
+                    <img
+                      src={laptop1.imageUrl}
+                      alt=""
+                      className="w-[200px] h-[200px]"
+                    />
+                    <p className="text-3xl font-medium">{laptop1.name}</p>
+                  </div>
+                </td>
+                <td className="col-span-5 border-l-[1px] border-solid border-[#eee] p-[10px]">
+                  <div className="flex flex-col items-center gap-[20px]">
+                    <img
+                      src={laptop2.imageUrl}
+                      alt=""
+                      className="w-[200px] h-[200px]"
+                    />
+                    <p className="text-3xl font-medium">{laptop2.name}</p>
+                  </div>
+                </td>
+              </div>
+            </tr>
             <tr className="grid grid-cols-12 border-[1px] border-solid border-[#eee]">
               <td className="col-span-3  bg-[#f7f7f7] p-[10px] font-bold">
                 CPU
