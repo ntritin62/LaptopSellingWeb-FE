@@ -24,8 +24,10 @@ const ShippingPage = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
-    setSelectedOption(user.address[0]._id);
-    dispatch(setAddress(user.address[0]._id));
+    if (user.address.length > 0) {
+      setSelectedOption(user.address[0]._id);
+      dispatch(setAddress(user.address[0]._id));
+    }
   }, [user]);
   const handleInputChange = (event) => {
     setSelectedOption(event.target.value);
@@ -37,6 +39,7 @@ const ShippingPage = () => {
   };
 
   const showAddressModal = (data) => {
+    console.log(data);
     setAddressModelIsShowed({ status: true, data: data });
   };
 
@@ -49,7 +52,7 @@ const ShippingPage = () => {
       {addressModelIsShowed.status && (
         <AddressFormModal
           closeForm={closeAddressModal}
-          data={addressModelIsShowed.data}
+          info={addressModelIsShowed.data}
           setSelectedOption={setSelectedOption}
         />
       )}
@@ -74,14 +77,14 @@ const ShippingPage = () => {
               </div>
               <button
                 onClick={() => {
-                  showAddressModal({});
+                  showAddressModal(null);
                 }}
-                className="flex gap-[10px] py-[10px] px-[20px] bg-primary text-3xl font-medium rounded-full sm:mx-auto "
+                className="flex  gap-[10px] py-[10px] px-[20px] bg-gradient-to-r from-green-400 to-blue-500 text-white hover:opacity-80 text-3xl font-medium rounded-full sm:mx-auto "
               >
                 <img
                   src="/icons/cong.svg"
                   alt=""
-                  className=" w-[20px] h-[20px] "
+                  className=" w-[20px] h-[20px] white-icon"
                 />
                 Thêm địa chỉ mới
               </button>
@@ -188,7 +191,11 @@ const ShippingPage = () => {
             </div>
           </div>
         </div>
-        <CartBox path="shipping" setShow={setMessageIsShowed} />
+        <CartBox
+          path="shipping"
+          setShow={setMessageIsShowed}
+          address={selectedOption}
+        />
       </div>
     </>
   );

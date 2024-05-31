@@ -74,7 +74,7 @@ const Header = () => {
               </button>
             </div>
             {laptops.length > 0 && (
-              <div className="absolute z-50 top-[50px] left-0 right-0  bg-white shadow-xl border-solid border-[1px] border-[#ccc] rounded-sm  h-[300px] overflow-y-scroll">
+              <div className="absolute z-50 rounded-xl top-[50px] left-0 right-0  bg-white shadow-xl border-solid border-[1px] border-[#ccc] rounded-sm  h-[300px] overflow-y-scroll">
                 {laptops.map((laptop) => (
                   <Link
                     to={`./laptop/${laptop._id}`}

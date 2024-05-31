@@ -7,12 +7,11 @@ import getAuthToken from '../../services/getToken';
 import { useDispatch } from 'react-redux';
 import { getUser } from '../../redux/userSlice';
 
-const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
+const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
   const dispatch = useDispatch();
   const token = getAuthToken();
   const submit = useSubmit();
   const navigation = useNavigation();
-  const addressId = data._id;
 
   const {
     register,
@@ -21,9 +20,9 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      recipientName: data.recipientName,
-      contactNumber: data.contactNumber,
-      deliveryAddress: data.deliveryAddress,
+      recipientName: info ? info.recipientName : '',
+      contactNumber: info ? info.contactNumber : '',
+      deliveryAddress: info ? info.deliveryAddress : '',
     },
   });
 
@@ -35,7 +34,7 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
       : 'Save Address';
 
   const submitHandler = async (data) => {
-    if (!data) {
+    if (!info) {
       await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/`,
         {
@@ -50,7 +49,7 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
       );
     } else {
       await axios.patch(
-        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${addressId}`,
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${info._id}`,
         {
           ...data,
         },
@@ -63,7 +62,6 @@ const AddressFormModal = ({ closeForm, data, setSelectedOption }) => {
       );
     }
     dispatch(getUser());
-    setSelectedOption(addressId);
     closeForm();
   };
   return (

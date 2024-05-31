@@ -12,7 +12,9 @@ const PhoneNavbar = ({ closeSidebar }) => {
         <nav>
           <ul className="flex flex-col">
             <SubMenu
-              name="Mac"
+              name="Macbook"
+              close={closeSidebar}
+              to="./san-pham/macbook"
               // subMenuArr={[
               //   {
               //     name: 'MacBook Pro',
@@ -62,6 +64,8 @@ const PhoneNavbar = ({ closeSidebar }) => {
             />
             <SubMenu
               name="Surface"
+              close={closeSidebar}
+              to="./san-pham/surface"
               // subMenuArr={[
               //   {
               //     name: 'Surface Pro',
@@ -82,6 +86,8 @@ const PhoneNavbar = ({ closeSidebar }) => {
             />
             <SubMenu
               name="ThinkPad"
+              close={closeSidebar}
+              to="./san-pham/thinkpad"
               // subMenuArr={[
               //   {
               //     name: 'Thinkpad X1 Series',
@@ -97,14 +103,22 @@ const PhoneNavbar = ({ closeSidebar }) => {
               //   },
               // ]}
             />
-            <SubMenu name="DELL" />
-            <SubMenu name="HP" />
-            <SubMenu name="Razer" />
-            <SubMenu name="LG" />
-            <SubMenu name="SAMSUNG" />
-            <SubMenu name="ASUS" />
-            <SubMenu name="Lenovo" />
-            <SubMenu name="MSI" />
+            <SubMenu name="DELL" to="./san-pham/dell" close={closeSidebar} />
+            <SubMenu name="HP" to="./san-pham/hp" close={closeSidebar} />
+            <SubMenu name="Razer" to="./san-pham/razer" close={closeSidebar} />
+            <SubMenu name="LG" to="./san-pham/lg" close={closeSidebar} />
+            <SubMenu
+              name="SAMSUNG"
+              to="./san-pham/samsung"
+              close={closeSidebar}
+            />
+            <SubMenu name="ASUS" to="./san-pham/asus" close={closeSidebar} />
+            <SubMenu
+              name="Lenovo"
+              to="./san-pham/lenovo"
+              close={closeSidebar}
+            />
+            <SubMenu name="MSI" to="./san-pham/msi" close={closeSidebar} />
           </ul>
         </nav>
       </div>

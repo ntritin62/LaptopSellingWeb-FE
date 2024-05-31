@@ -78,8 +78,8 @@ const EditInfo = () => {
               type="text"
               id="name"
               name="name"
-              className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-[#D2D1D6]"
-              placeholder="Full name"
+              className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
+              placeholder="Họ và tên"
               {...register('fullName', { required: true })}
             />
             {errors.fullName && (
@@ -95,8 +95,8 @@ const EditInfo = () => {
             <input
               type="text"
               id="email"
-              className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-[#D2D1D6]"
-              placeholder="Email"
+              className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
+              placeholder="Địa chỉ mail"
               {...register('email', {
                 required: true,
                 pattern:
@@ -116,8 +116,8 @@ const EditInfo = () => {
             <input
               type="text"
               id="phone"
-              className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-[#D2D1D6]"
-              placeholder="Phone number"
+              className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
+              placeholder="Số điện thoại"
               {...register('phoneNumber', {
                 required: true,
                 pattern:
@@ -130,23 +130,6 @@ const EditInfo = () => {
               </p>
             )}
           </div>
-          {/* <div className="flex flex-col gap-[20px] relative">
-            <label htmlFor="password" className="text-3xl font-medium">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-[#D2D1D6]"
-              placeholder="Password"
-              {...register('password', { required: true, minLength: 6 })}
-            />
-            {errors.password && (
-              <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                Invalid password.
-              </p>
-            )}
-          </div> */}
         </div>
         <div className="mt-[30px] flex justify-end gap-[30px] items-center">
           <Link to={ROUTES.PROFILE} className="text-2xl font-medium">
@@ -154,7 +137,7 @@ const EditInfo = () => {
           </Link>
           <button
             type="submit"
-            className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
+            className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80  text-white  text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
           >
             {text}
           </button>

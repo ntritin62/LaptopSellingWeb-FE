@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const SubMenu = ({ name, subMenuArr = [] }) => {
+const SubMenu = ({ name, subMenuArr = [], to, close }) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
 
   const toggleSubMenu = () => {
@@ -8,9 +8,9 @@ const SubMenu = ({ name, subMenuArr = [] }) => {
   };
 
   return (
-    <li>
+    <li onClick={close}>
       <div className="flex justify-between items-center py-[15px]  border-b-[1px] border-solid border-[#393939]">
-        <Link>{name}</Link>
+        <Link to={to}>{name}</Link>
 
         {subMenuArr.length > 0 && !showSubMenu && (
           <img

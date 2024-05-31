@@ -43,7 +43,7 @@ const PaymentSuccess = () => {
         <div className="flex gap-[20px]">
           <Link
             to={ROUTES.HOME}
-            className="inline-block mt-[30px] p-[20px] rounded-[10px] text-2xl font-medium bg-[#2dc9af40] "
+            className="inline-block mt-[30px] p-[20px] rounded-[10px] text-2xl font-medium bg-gradient-to-r from-green-400 to-blue-500 text-white hover:opacity-80 "
           >
             Tiếp tục mua sắm
           </Link>

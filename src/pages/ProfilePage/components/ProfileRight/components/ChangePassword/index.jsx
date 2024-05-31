@@ -33,7 +33,7 @@ const ChangePassword = () => {
       ? 'Đang lưu...'
       : navigation.state === 'loading'
       ? 'Đã lưu!'
-      : 'Lưu địa chỉ';
+      : 'Lưu';
 
   useEffect(() => {
     if (
@@ -75,7 +75,7 @@ const ChangePassword = () => {
             <input
               {...register('oldPassword', { required: true, minLength: 6 })}
               type={!passwordIsShowed.oldPassword ? 'password' : 'text'}
-              className="mt-[20px] p-[12px] rounded-3xl text-2xl font-medium w-full border-[1px] border-solid border-text"
+              className="mt-[20px] w-full p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
               placeholder="Mật khẩu cũ"
               autoComplete="off"
               id="oldPassword"
@@ -111,7 +111,7 @@ const ChangePassword = () => {
             <input
               {...register('newPassword', { required: true, minLength: 6 })}
               type={!passwordIsShowed.password ? 'password' : 'text'}
-              className="mt-[20px] p-[12px] rounded-3xl text-2xl font-medium w-full border-[1px] border-solid border-text"
+              className="mt-[20px]   w-full p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
               placeholder="Mật khẩu mới"
               autoComplete="off"
               id="password"
@@ -152,7 +152,7 @@ const ChangePassword = () => {
                   value === formValues.newPassword,
               })}
               type={!passwordIsShowed.confirmPassword ? 'password' : 'text'}
-              className="mt-[20px] p-[12px] rounded-3xl text-2xl font-medium w-full border-[1px] border-solid border-text"
+              className="mt-[20px]   w-full p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
               placeholder="Xác nhận mật khẩu mới"
               autoComplete="off"
               id="confirmPassword"
@@ -188,7 +188,7 @@ const ChangePassword = () => {
           </Link>
           <button
             type="submit"
-            className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
+            className=" bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80  text-white  text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
           >
             {text}
           </button>

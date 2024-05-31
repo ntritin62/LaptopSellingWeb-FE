@@ -21,7 +21,9 @@ const LaptopCompare = ({ close }) => {
             />
           </button>
         </div>
-        <h1 className="text-5xl font-bold text-center">SO SÁNH LAPTOP</h1>
+        <h1 className="text-5xl font-bold text-center text-primary">
+          SO SÁNH LAPTOP
+        </h1>
         <div className="flex justify-between mt-[30px]">
           <Input setLaptop={setLaptop1} index={true} />
           <Input setLaptop={setLaptop2} index={false} />
@@ -42,7 +44,7 @@ const LaptopCompare = ({ close }) => {
               onClick={() => {
                 setShowTable(true);
               }}
-              className="bg-primary px-[20px] h-[50px] py-[5px] text-white font-medium rounded-xl flex items-center gap-[10px]"
+              className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 px-[20px] h-[50px] py-[5px] text-white font-medium rounded-xl flex items-center gap-[10px]"
             >
               <img
                 src="/icons/compare.svg"

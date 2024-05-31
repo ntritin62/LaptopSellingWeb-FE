@@ -3,9 +3,9 @@ import { Typography } from '@material-tailwind/react';
 export function Footer() {
   return (
     <footer className=" mt-[150px] w-full bg-white p-[30px]">
-      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
+      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center ">
         <img src="/images/logo.png" alt="logo-ct" className="w-[150px]" />
-        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+        <ul className="flex flex-wrap jus items-center gap-y-2 gap-x-8">
           <li>
             <Typography
               as="a"

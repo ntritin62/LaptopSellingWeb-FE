@@ -26,7 +26,7 @@ const AddCard = () => {
       ? 'Đang lưu...'
       : navigation.state === 'loading'
       ? 'Đã lưu!'
-      : 'Lưu địa chỉ';
+      : 'Lưu';
 
   useEffect(() => {
     if (
@@ -64,7 +64,7 @@ const AddCard = () => {
               id="name"
               name="name"
               className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
-              placeholder="Full Name"
+              placeholder="Họ và tên"
               {...register('recipientName', { required: true })}
             />
             {errors.recipientName && (
@@ -82,7 +82,7 @@ const AddCard = () => {
               id="phoneNumber"
               name="phoneNumber"
               className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
-              placeholder="Phone number"
+              placeholder="Số điện thoại"
               {...register('contactNumber', {
                 required: true,
                 pattern:
@@ -105,7 +105,7 @@ const AddCard = () => {
               id="address"
               name="address"
               className="p-[12px] border-[1px] border-solid border-[#D2D1D6] rounded-[10px] placeholder:text-text"
-              placeholder="Address"
+              placeholder="Địa chỉ"
               {...register('deliveryAddress', {
                 required: true,
               })}
@@ -123,7 +123,7 @@ const AddCard = () => {
           </Link>
           <button
             type="submit"
-            className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
+            className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80  text-white text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
           >
             {text}
           </button>

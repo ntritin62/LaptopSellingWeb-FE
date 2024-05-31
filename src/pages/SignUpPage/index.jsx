@@ -31,13 +31,15 @@ const SignUpPage = () => {
         <title>Đăng ký</title>
       </Helmet>
       <main className="grid grid-cols-2 md:grid-cols-1 ">
-        <div className="bg-left-login dark:bg-dark-left-login md:hidden">
-          <div className="bg-left-login dark:bg-dark-left-login md:hidden flex flex-col items-center  gap-[20px]">
-            <div className="dark:bg-white rounded-full w-[300px] h-[300px] flex items-center justify-center mt-[50px]">
-              <img src="/image/signup-left.svg" alt="" className="" />
-            </div>
-            <h2 className="text-5xl font-bold">Đăng ký</h2>
+        <div className="  md:hidden flex flex-col items-center  gap-[20px]">
+          <div className="dark:bg-white rounded-full w-[250px] h-[250px] flex mt-[70px] items-center justify-center">
+            <img src="/images/logo.png" alt="" className="" />
           </div>
+          <img
+            src="/images/banner-ls.png"
+            alt=""
+            className="w-[250px] h-[250px] object-contain"
+          />
         </div>
         <div className="bg-right-login dark:bg-dark-right-login w-full">
           <form
@@ -154,7 +156,7 @@ const SignUpPage = () => {
 
             <button
               type="submit"
-              className="rounded-[10px] bg-primary hover:shadow-2xl  py-[12px] text-3xl font-medium"
+              className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80  text-white rounded-[10px] bg-primary hover:shadow-2xl  py-[12px] text-3xl font-medium"
             >
               Đăng ký
             </button>

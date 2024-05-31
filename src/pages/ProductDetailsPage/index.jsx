@@ -106,13 +106,13 @@ const ProductDetailsPage = () => {
           <div className="p-[10px] flex flex-col items-center justify-center gap-[10px]">
             <button
               onClick={buyNow}
-              className="w-full py-[10px] rounded-lg text-white bg-gradient-to-b from-[#f59000] to-[#fd6e1d]"
+              className="w-full py-[10px] rounded-lg text-white bg-gradient-to-r from-red-800 to-orange-500 hover:opacity-80"
             >
-              <p className="font-bold">MUA NGAY</p>
+              <p className="font-bold ">MUA NGAY</p>
               <p className="text-xl">Giao tận nơi hoặc nhận tại cửa hàng</p>
             </button>
             <button
-              className="w-full py-[10px] rounded-lg text-white bg-[#298ad6]"
+              className="w-full py-[10px] rounded-lg text-white bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80"
               onClick={addCart}
             >
               <p className="font-bold">THÊM VÀO GIỎ HÀNG</p>

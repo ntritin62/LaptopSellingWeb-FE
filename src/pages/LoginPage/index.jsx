@@ -33,14 +33,15 @@ const LoginPage = () => {
         <title>Đăng nhập</title>
       </Helmet>
       <main className="grid grid-cols-2 md:grid-cols-1 ">
-        <div className="bg-left-login dark:bg-dark-left-login md:hidden flex flex-col items-center  gap-[20px]">
-          <div className="dark:bg-white rounded-full w-[300px] h-[300px] flex items-center justify-center">
-            <img src="/images/login-left.png" alt="" className="" />
+        <div className="  md:hidden flex flex-col items-center  gap-[20px]">
+          <div className="dark:bg-white rounded-full w-[250px] h-[250px] flex mt-[70px] items-center justify-center">
+            <img src="/images/logo.png" alt="" className="" />
           </div>
-          <h2 className="text-5xl font-bold">Bạn muốn mua laptop?</h2>
-          <p className="text-login-text  text-2xl w-[300px] text-center mt-[20px]">
-            Hãy đến với chúng tôi
-          </p>
+          <img
+            src="/images/banner-ls.png"
+            alt=""
+            className="w-[250px] h-[250px] object-contain"
+          />
         </div>
         <div className="bg-right-login dark:bg-dark-right-login w-full">
           <Form
@@ -55,7 +56,7 @@ const LoginPage = () => {
               />
             </div>
             <div className="flex flex-col gap-[10px]">
-              <h1 className="text-5xl font-medium text-center">Đăng nhập</h1>
+              <h1 className="text-5xl font-medium text-center ">Đăng nhập</h1>
             </div>
             {err && (
               <p className="text-2xl font-medium text-rose-900 mx-auto rounded-lg bg-[#ffdce0] border-solid border-[2px] border-[#e8cacf] w-full h-[50px] flex items-center justify-center">
@@ -114,7 +115,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              className="rounded-[10px] bg-primary text-white py-[12px] text-3xl font-medium hover:shadow-xl"
+              className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 rounded-[10px] bg-primary text-white py-[12px] text-3xl font-medium hover:shadow-xl"
             >
               Đăng nhập
             </button>

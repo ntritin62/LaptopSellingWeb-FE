@@ -47,7 +47,7 @@ const Layout = () => {
         <div className="relative h-80 w-full">
           <div className="absolute bottom-0 right-0 ">
             <SpeedDial className="shadow-lg">
-              <SpeedDialHandler className="w-[150px] h-[150px] shadow-2xl  bg-primary">
+              <SpeedDialHandler className="w-[150px] h-[150px] shadow-2xl  bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 ">
                 <IconButton size="lg" className="rounded-full">
                   <PlusIcon className="h-5 w-5 transition-transform group-hover:rotate-45" />
                 </IconButton>

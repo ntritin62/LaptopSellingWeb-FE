@@ -84,7 +84,7 @@ export default function CheckoutForm({ order }) {
       <button
         disabled={isProcessing || !stripe || !elements}
         id="submit"
-        className="w-full mt-[20px] bg-primary p-[18px] rounded-[10px] text-3xl font-medium"
+        className="w-full mt-[20px] bg-gradient-to-r from-green-400 to-blue-500 text-white hover:opacity-80 p-[18px] rounded-[10px] text-3xl font-medium"
       >
         <span id="button-text">
           {isProcessing ? 'Đang xử lý... ' : 'Thanh toán'}

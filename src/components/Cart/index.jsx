@@ -8,7 +8,7 @@ import axios from 'axios';
 import { data } from 'autoprefixer';
 import { useDispatch } from 'react-redux';
 import { getUserCart } from '../../redux/cartSlice';
-const CartBox = ({ path, setShow }) => {
+const CartBox = ({ path, setShow, address }) => {
   const [error, setError] = useState('');
   const token = getAuthToken();
   const cart = useSelector((state) => state.cart);
@@ -78,7 +78,7 @@ const CartBox = ({ path, setShow }) => {
             placeholder="Nhập mã giảm giá"
             className="placeholder:text-[#aaa]"
           />
-          <button className="text-primary font-bold" type="submit">
+          <button className="text-primary font-bold " type="submit">
             Check
           </button>
           <span className="absolute bottom-[-20px] right-0 text-xl font-medium text-red-500 ">
@@ -86,13 +86,18 @@ const CartBox = ({ path, setShow }) => {
           </span>
         </form>
       )}
-
-      <Link
-        to={path === 'shipping' ? ROUTES.PAYMENTMETHOD : ROUTES.SHIPPING}
-        className="mt-[30px] bg-primary py-[18px] block rounded-full text-3xl font-medium w-full  text-center "
+      <button
+        className={`w-full ${
+          address === '' ? 'pointer-events-none cursor-not-allowed' : ''
+        }`}
       >
-        Tiếp tục thanh toán
-      </Link>
+        <Link
+          to={path === 'shipping' ? ROUTES.PAYMENTMETHOD : ROUTES.SHIPPING}
+          className="mt-[30px] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 text-white py-[18px] block rounded-full text-3xl font-medium w-full  text-center "
+        >
+          Tiếp tục thanh toán
+        </Link>
+      </button>
     </div>
   );
 };
