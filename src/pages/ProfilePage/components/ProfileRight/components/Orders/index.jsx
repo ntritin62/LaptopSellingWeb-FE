@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 import * as ROUTES from '../../../../../../constants/routes';
+import { CustomStepper } from '../../../../../../components/Stepper';
 const OrdersPage = () => {
   const { orders } = useLoaderData();
 
@@ -35,12 +36,14 @@ const OrdersPage = () => {
                 key={order._id}
                 className="mt-[10px] rounded-[10px] p-[20px] bg-bg-secondary dark:bg-header-shadow"
               >
-                <div className="flex justify-between items-center p-[10px]">
-                  <p>
-                    <span className="text-3xl font-medium">Ngày mua: </span>
+                <div className=" justify-between items-center p-[10px] ">
+                  <CustomStepper activeStep={0} />
+                  <p className="text-3xl font-medium mt-[20px]">
+                    <span>Ngày mua: </span>
                     {new Date(order.createdAt).toLocaleDateString('vi-VI')}
                   </p>
-                  <div className="flex gap-[10px]">
+
+                  {/* <div className="flex gap-[10px]">
                     {order.status === 'pending' && (
                       <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
                         Pending
@@ -67,7 +70,7 @@ const OrdersPage = () => {
                         Failed
                       </p>
                     )}
-                  </div>
+                  </div> */}
                 </div>
                 <div className="mt-[10px]">
                   {order.orderItems.map(

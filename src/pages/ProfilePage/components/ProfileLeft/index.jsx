@@ -31,12 +31,16 @@ const ProfileLeft = () => {
                 : 'flex gap-[10px] items-center'
             }
           >
-            <img
-              src="/icons/profile.svg"
-              alt=""
-              className="dark-icon w-[24px] h-[24px]"
-            />
-            <p>Thông tin</p>
+            {({ isActive }) => (
+              <>
+                <img
+                  src="/icons/profile.svg"
+                  alt=""
+                  className={isActive ? 'action-icon' : ''}
+                />
+                <p className={isActive ? 'text-primary' : ''}>Thông tin</p>
+              </>
+            )}
           </NavLink>
         </li>
         <li className="mt-[10px]">
@@ -48,12 +52,16 @@ const ProfileLeft = () => {
                 : 'flex gap-[10px] items-center'
             }
           >
-            <img
-              src="/icons/address.svg"
-              alt=""
-              className="dark-icon w-[24px] h-[24px]"
-            />
-            <p>Địa chỉ</p>
+            {({ isActive }) => (
+              <>
+                <img
+                  src="/icons/profile.svg"
+                  alt=""
+                  className={isActive ? 'action-icon' : ''}
+                />
+                <p className={isActive ? 'text-primary' : ''}>Địa chỉ</p>
+              </>
+            )}
           </NavLink>
         </li>
         <li className="mt-[10px]">
@@ -65,12 +73,16 @@ const ProfileLeft = () => {
                 : 'flex gap-[10px] items-center'
             }
           >
-            <img
-              src="/icons/password.svg"
-              alt=""
-              className="dark-icon w-[24px] h-[24px]"
-            />
-            <p>Mật khẩu</p>
+            {({ isActive }) => (
+              <>
+                <img
+                  src="/icons/profile.svg"
+                  alt=""
+                  className={isActive ? 'action-icon' : ''}
+                />
+                <p className={isActive ? 'text-primary' : ''}>Mật khẩu</p>
+              </>
+            )}
           </NavLink>
         </li>
         <h2 className="mt-[20px] text-3xl font-medium">Sản phẩm</h2>
@@ -83,12 +95,16 @@ const ProfileLeft = () => {
                 : 'flex gap-[10px] items-center'
             }
           >
-            <img
-              src="/icons/order.svg"
-              alt=""
-              className="dark-icon w-[24px] h-[24px]"
-            />
-            <p>Đơn hàng</p>
+            {({ isActive }) => (
+              <>
+                <img
+                  src="/icons/profile.svg"
+                  alt=""
+                  className={isActive ? 'action-icon' : ''}
+                />
+                <p className={isActive ? 'text-primary' : ''}>Đơn hàng</p>
+              </>
+            )}
           </NavLink>
         </li>
       </ul>
