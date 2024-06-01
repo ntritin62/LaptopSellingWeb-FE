@@ -16,7 +16,7 @@ const PaymentCOD = () => {
         <div className="flex gap-[20px] justify-center">
           <Link
             to={ROUTES.HOME}
-            className="inline-block bg-gradient-to-r from-green-400 to-blue-500 text-white hover:opacity-80 mt-[30px] p-[20px] rounded-[10px] text-2xl font-medium"
+            className="inline-block bg-primary text-white hover:opacity-80 mt-[30px] p-[20px] rounded-[10px] text-2xl font-medium"
           >
             Tiếp tục mua sắm
           </Link>

@@ -137,7 +137,7 @@ const EditInfo = () => {
           </Link>
           <button
             type="submit"
-            className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80  text-white  text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
+            className="bg-primary hover:opacity-80  text-white  text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
           >
             {text}
           </button>

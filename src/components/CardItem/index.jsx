@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../../redux/cartSlice';
+import { getUserCart, removeFromCart } from '../../redux/cartSlice';
 const CardItem = ({ product }) => {
   const dispatch = useDispatch();
+  console.log(product);
   return (
     <div>
       <li className="flex gap-[30px] items-center mb-[10px]">
@@ -59,7 +60,8 @@ const CardItem = ({ product }) => {
             <button
               className="flex gap-[10px] text-rose-900"
               onClick={() => {
-                dispatch(removeFromCart(product._id));
+                dispatch(removeFromCart(product.product));
+                dispatch(getUserCart);
               }}
             >
               <img

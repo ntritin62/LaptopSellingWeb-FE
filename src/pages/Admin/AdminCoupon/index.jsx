@@ -32,7 +32,7 @@ const AdminCoupon = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold">Mã giảm giá</h1>
         <Link to={ADD_COUPON}>
-          <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-8 text-white shadow-lg px-[10px] py-[10px] flex font-medium gap-5 rounded-[10px]">
+          <button className="bg-primary hover:opacity-8 text-white shadow-lg px-[10px] py-[10px] flex font-medium gap-5 rounded-[10px]">
             <img
               src="/icons/plus.svg"
               alt=""

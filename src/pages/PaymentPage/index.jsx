@@ -164,7 +164,7 @@ const PaymentPage = () => {
               <AccordionBody>
                 <button
                   onClick={onClickHandler}
-                  className="bg-gradient-to-r from-green-400 to-blue-500 text-white hover:opacity-80 w-full hover:shadow-lg  py-[20px] rounded-lg font-bold text-3xl "
+                  className="bg-primary text-white hover:opacity-80 w-full hover:shadow-lg  py-[20px] rounded-lg font-bold text-3xl "
                 >
                   Thanh toán COD
                 </button>

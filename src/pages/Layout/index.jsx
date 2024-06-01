@@ -19,6 +19,7 @@ import { Outlet } from 'react-router-dom';
 import { ScrollRestoration } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import LaptopCompare from '../../components/LaptopCompare';
+import BottomNavbar from '../../components/BottomNavBar';
 
 const Layout = () => {
   const labelProps = {
@@ -31,6 +32,10 @@ const Layout = () => {
   const showCompare = () => {
     setLaptopCompareIsShowed(true);
   };
+  const [sidebarIsShowed, setSidebarIsShowed] = useState(false);
+  const closeSidebar = () => {
+    setSidebarIsShowed(false);
+  };
 
   return (
     <div>
@@ -39,7 +44,11 @@ const Layout = () => {
           <LaptopCompare close={setLaptopCompareIsShowed} />
         )}
       </div>
-      <Header />
+      <Header
+        closeSidebar={closeSidebar}
+        sidebarIsShowed={sidebarIsShowed}
+        setSidebarIsShowed={setSidebarIsShowed}
+      />
       <div className="min-h-[500px]">
         <Outlet />
       </div>
@@ -60,6 +69,9 @@ const Layout = () => {
             </SpeedDial>
           </div>
         </div>
+      </div>
+      <div className="fixed bottom-0 left-0 right-0 hidden sm:block">
+        <BottomNavbar setSidebarIsShowed={setSidebarIsShowed} />
       </div>
       <Footer />
       <ScrollRestoration />

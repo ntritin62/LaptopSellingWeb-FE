@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { getUser } from '../../../redux/userSlice';
 
-const Header = () => {
+const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
   const [data, setData] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -46,10 +46,6 @@ const Header = () => {
   useEffect(() => {
     setToken(getAuthToken());
   }, [location]);
-  const [sidebarIsShowed, setSidebarIsShowed] = useState(false);
-  const closeSidebar = () => {
-    setSidebarIsShowed(false);
-  };
 
   const logoutHandler = () => {
     localStorage.removeItem('token');
@@ -59,9 +55,9 @@ const Header = () => {
     <header>
       <div className="container ">
         <div className="grid grid-cols-12 sm:grid-cols-1 items-center py-[10px]">
-          <figure className="w-[250px] col-span-4 sm:col-span-1 sm:mx-auto">
+          <figure className="w-[250px] lg:w-[200px] col-span-4 sm:col-span-1 sm:mx-auto">
             <Link to={ROUTES.HOME}>
-              <img src="/images/logo.png" alt="" className="w-full" />
+              <img src="/images/logo.png" alt="" className="w-full " />
             </Link>
           </figure>
 
@@ -73,7 +69,7 @@ const Header = () => {
                 placeholder="Nhập sản phẩm cần tìm"
                 onChange={inputHandler}
               />
-              <button className="w-41px h-[41px] flex items-center justify-center p-[10px] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 ">
+              <button className="w-41px h-[41px] flex items-center justify-center p-[10px] bg-primary hover:opacity-80 ">
                 <img
                   src="/icons/search.svg"
                   alt=""
@@ -104,14 +100,14 @@ const Header = () => {
           </div>
           <div className="col-span-4 sm:hidden ml-auto flex items-center gap-[20px]">
             <Link to={ROUTES.CART}>
-              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-gradient-to-r from-green-400 to-blue-500 transition ease-in-out duration-500">
+              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:hover:bg-primary transition ease-in-out duration-500">
                 <img
                   className="w-[24px] h-[24px] "
                   src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjY1MzcgNi42ODk5NUw1Ljk2Njg0IDUuMDg5NjNDNS44NzUzIDUuMDc4NTUgNS43ODkxNSA1LjA3ODU1IDUuNzAyOTkgNS4wODQwOUw1LjAzNTMgMS43NjE2MkM1LjAxOTE1IDEuNjk1MTcgNS4wMDMgMS42Mjg3MiA0Ljk3NjA3IDEuNTczMzVDNC44NzM3NiAxLjMwNzU1IDQuNjU4MzggMS4wOTE1OSA0LjM3MyAxLjAwMjk5TDEuMTkwNjkgMC4wMzk0NzYzQzAuNzAwNjkzIC0wLjExMDAzNSAwLjE4Mzc3MSAwLjE3NzkxMyAwLjAzODM4NjcgMC42ODczNThDLTAuMTA2OTk4IDEuMTkxMjcgMC4xNzMwMDIgMS43MjI4NiAwLjY2ODM4NiAxLjg3MjM3TDMuMzIzIDIuNjc1M0w2LjUxNjA3IDE4LjUwMTNDNi41NzUzIDE4Ljk2NjUgNi45NjI5OSAxOS4zMjY0IDcuNDM2ODQgMTkuMzI2NEwyMS4xNjc2IDE5LjMyMDlDMjEuNjc5MSAxOS4zMjA5IDIyLjA5MzcgMTguODk0NSAyMi4wOTM3IDE4LjM2ODRDMjIuMDkzNyAxNy44NDI0IDIxLjY3OTEgMTcuNDE2IDIxLjE2NzYgMTcuNDE2TDguMTk2MDcgMTcuNDIxNUw3Ljc1NDUzIDE1LjIzNDJIMjEuNDA5OUMyMi4xMjYgMTUuMjM0MiAyMi43NDUzIDE0Ljc0NjkgMjIuODc0NSAxNC4wNzY5TDIzLjk3ODQgOC4zNTY3MkMyNC4xMjM3IDcuNTM3MTggMjMuNTIwNyA2Ljc3MzAxIDIyLjY1MzcgNi42ODk5NVoiIGZpbGw9IiM0RjRGNEYiLz4KPHBhdGggZD0iTTEwLjA3NTIgMjRDMTEuMDk4MiAyNCAxMS45Mjc1IDIzLjE0NzIgMTEuOTI3NSAyMi4wOTUxQzExLjkyNzUgMjEuMDQzMSAxMS4wOTgyIDIwLjE5MDIgMTAuMDc1MiAyMC4xOTAyQzkuMDUyMjEgMjAuMTkwMiA4LjIyMjkgMjEuMDQzMSA4LjIyMjkgMjIuMDk1MUM4LjIyMjkgMjMuMTQ3MiA5LjA1MjIxIDI0IDEwLjA3NTIgMjRaIiBmaWxsPSIjNEY0RjRGIi8+CjxwYXRoIGQ9Ik0xOC45Mjc2IDI0QzE5Ljk1MDYgMjQgMjAuNzc5OSAyMy4xNDcyIDIwLjc3OTkgMjIuMDk1MUMyMC43Nzk5IDIxLjA0MzEgMTkuOTUwNiAyMC4xOTAyIDE4LjkyNzYgMjAuMTkwMkMxNy45MDQ2IDIwLjE5MDIgMTcuMDc1MyAyMS4wNDMxIDE3LjA3NTMgMjIuMDk1MUMxNy4wNzUzIDIzLjE0NzIgMTcuOTA0NiAyNCAxOC45Mjc2IDI0WiIgZmlsbD0iIzRGNEY0RiIvPgo8L3N2Zz4K"
                   alt=""
                 />
                 <p className="text-[13px] text-[#4f4f4f] ">Giỏ hàng</p>
-                <span className="absolute bg-gradient-to-r from-green-400 to-blue-500 text-xl text-white py-[4px] px-[7px] rounded-full top-[-8px] right-[-3px] ">
+                <span className="absolute  bg-primary text-xl text-white py-[4px] px-[7px] rounded-full top-[-8px] right-[-3px] ">
                   {cart.products.length}
                 </span>
               </div>
@@ -134,7 +130,7 @@ const Header = () => {
             {token && (
               <div className="relative group">
                 <Link to={ROUTES.PROFILE}>
-                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-gradient-to-r from-green-400 to-blue-500 transition ease-in-out duration-500">
+                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg  hover:bg-primary transition ease-in-out duration-500">
                     <img
                       className="w-[24px] h-[24px] icon"
                       src="/icons/account.svg"
@@ -202,7 +198,7 @@ const Header = () => {
         </div>
       </div>
       {/* Navbar */}
-      <nav className="bg-gradient-to-r from-green-400 to-blue-500 ">
+      <nav className="bg-gradient-to-r from-[#1D976C] to-[#93F9B9] ">
         <div className="container relative">
           <button
             className="white-icon hidden py-[10px] xl:block"

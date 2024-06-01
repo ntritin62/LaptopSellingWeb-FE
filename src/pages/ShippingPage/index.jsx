@@ -78,7 +78,7 @@ const ShippingPage = () => {
                 onClick={() => {
                   showAddressModal(null);
                 }}
-                className="flex  gap-[10px] py-[10px] px-[20px] bg-gradient-to-r from-green-400 to-blue-500 text-white hover:opacity-80 text-3xl font-medium rounded-full sm:mx-auto "
+                className="flex  gap-[10px] py-[10px] px-[20px] bg-primary text-white hover:opacity-80 text-3xl font-medium rounded-full sm:mx-auto "
               >
                 <img
                   src="/icons/cong.svg"
@@ -133,7 +133,7 @@ const ShippingPage = () => {
                       onClick={() => {
                         showAddressModal(address);
                       }}
-                      className="flex gap-[10px] mt-auto mr-[15px] text-bold-text"
+                      className="flex gap-[10px] mt-auto mr-[15px] text-primary"
                     >
                       <img
                         src="/icons/edit.svg"

@@ -93,7 +93,7 @@ const CartBox = ({ path, setShow, address }) => {
       >
         <Link
           to={path === 'shipping' ? ROUTES.PAYMENTMETHOD : ROUTES.SHIPPING}
-          className="mt-[30px] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 text-white py-[18px] block rounded-full text-3xl font-medium w-full  text-center "
+          className="mt-[30px]  bg-primary hover:opacity-80 text-white py-[18px] block rounded-full text-3xl font-medium w-full  text-center "
         >
           Tiếp tục thanh toán
         </Link>

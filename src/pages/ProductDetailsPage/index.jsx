@@ -118,7 +118,7 @@ const ProductDetailsPage = () => {
               <p className="text-xl">Giao tận nơi hoặc nhận tại cửa hàng</p>
             </button>
             <button
-              className="w-full py-[10px] rounded-lg text-white bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80"
+              className="w-full py-[10px] rounded-lg text-white bg-primary hover:opacity-80"
               onClick={addCart}
             >
               <p className="font-bold">THÊM VÀO GIỎ HÀNG</p>

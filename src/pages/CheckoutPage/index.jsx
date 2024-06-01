@@ -24,16 +24,16 @@ const CheckoutPage = () => {
       {cart.products.length === 0 && (
         <div className="container items-center flex flex-col my-[30px] gap-[30px] dark:text-checkout-text">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png"
+            src="/icons/no-cart.png"
             alt=""
-            className="w-[300px] h-[300px]"
+            className="w-[300px] h-[300px] sm:w-[200px] sm:h-[200px]"
           />
-          <p className="text-5xl font-medium text-center">
+          <p className="text-5xl font-medium sm:text-3xl text-center">
             Bạn không có sản phẩm nào trong giỏ hàng.
           </p>
           <Link
             to={ROUTES.HOME}
-            className="text-3xl min-w-[150px] hover:opacity-80 text-center block  bg-gradient-to-r from-green-400 to-blue-500 text-white p-[20px] rounded-lg font-medium"
+            className="text-3xl min-w-[150px] hover:opacity-80 text-center block  bg-primary text-white p-[20px] rounded-lg font-medium"
           >
             Trở về
           </Link>

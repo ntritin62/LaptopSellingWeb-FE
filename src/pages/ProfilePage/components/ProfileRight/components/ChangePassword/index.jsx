@@ -28,13 +28,6 @@ const ChangePassword = () => {
     formState: { errors },
   } = useForm();
 
-  const text =
-    navigation.state === 'submitting'
-      ? 'Đang lưu...'
-      : navigation.state === 'loading'
-      ? 'Đã lưu!'
-      : 'Lưu';
-
   useEffect(() => {
     if (
       fetcher.state === 'idle' &&
@@ -188,16 +181,14 @@ const ChangePassword = () => {
           </Link>
           <button
             type="submit"
-            className=" bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80  text-white  text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
+            className=" bg-primary hover:opacity-80  text-white  text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
           >
-            {text}
+            Lưu
           </button>
         </div>
       </Form>
       {error && (
-        <p className="text-right mt-[20px] text-rose-900 font-medium">
-          {error}
-        </p>
+        <p className="text-right mt-[20px] text-rose-900 font-medium">Lưu</p>
       )}
     </section>
   );

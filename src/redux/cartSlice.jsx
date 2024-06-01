@@ -99,9 +99,9 @@ export const cartSlice = createSlice({
       const productToRemove = state.products.find(
         (product) => product.product === action.payload
       );
-
+      console.log(action);
       const index = state.products.findIndex(
-        (product) => product._id === action.payload
+        (product) => product.product === action.payload
       );
       state.totalPrice -= state.products[index].price;
 
