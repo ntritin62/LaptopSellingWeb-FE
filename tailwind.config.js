@@ -12,10 +12,10 @@ export default withMT({
         102: '1.02',
       },
       colors: {
-        primary: '#9DC08B',
+        primary: 'rgb(13 148 136)',
         secondary: '#54595F',
-        background: '#EDF1D6',
-        'bg-secondary': '#9dc08b66',
+        background: 'rgb(250 250 250)',
+        'bg-secondary': 'rgb(243 244 246)',
         text: '#7A7A7A',
         'bold-text': '#609966',
         border: '#40513B',

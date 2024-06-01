@@ -57,7 +57,7 @@ const CardItem = ({ product }) => {
               </button>
             </div> */}
             <button
-              className="flex gap-[10px] text-bold-text"
+              className="flex gap-[10px] text-rose-900"
               onClick={() => {
                 dispatch(removeFromCart(product._id));
               }}
@@ -65,9 +65,9 @@ const CardItem = ({ product }) => {
               <img
                 src="/icons/trash-can.svg"
                 alt=""
-                className="action-icon w-[20px] h-[20px]"
+                className="red-icon w-[20px] h-[20px]"
               />
-              <p>Delete</p>
+              <p className="font-medium">Xoá</p>
             </button>
           </div>
         </section>

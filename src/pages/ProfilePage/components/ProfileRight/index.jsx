@@ -12,7 +12,7 @@ const ProfileRight = () => {
     dispatch(getUser());
   }, []);
   return (
-    <section className="col-span-8  rounded-[20px] p-[30px] bg-background">
+    <section className="col-span-8  rounded-[20px] p-[30px] bg-background shadow-xl">
       <h2 className="text-4xl font-bold mt-[30px]">Thông tin tài khoản</h2>
       <p className="text-2xl mt-[4px] ">Địa chỉ, thông tin liên hệ</p>
       <Link

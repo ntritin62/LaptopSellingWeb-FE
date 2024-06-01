@@ -33,8 +33,8 @@ const PaymentPage = () => {
       <Helmet>
         <title>Checkout | Payment</title>
       </Helmet>
-      <div className="container pt-[10px]">
-        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[30px] rounded-[10px] bg-background p-[20px] dark:bg-dark-sidebar">
+      <div className="container pt-[10px] ">
+        <div className="flex text-checkout-text text-2xl lg:text-base font-medium gap-[20px] mt-[30px] rounded-[10px] bg-background shadow-md p-[20px] dark:bg-dark-sidebar">
           <Link to={ROUTES.HOME}>Trang trủ</Link>
           <img src="/icons/arrow-right.svg" alt="" />
           <Link to={ROUTES.CART}>Giỏ hàng</Link>
@@ -46,15 +46,15 @@ const PaymentPage = () => {
       </div>
       <div className="container grid grid-cols-11 xl:flex xl:flex-col my-[30px] gap-[30px] dark:text-checkout-text">
         <div className="col-span-8">
-          <div className="p-[30px] rounded-[20px] bg-background dark:bg-dark-sidebar">
+          <div className="p-[30px] rounded-[20px] bg-background shadow-xl dark:bg-dark-sidebar">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-medium">1. Địa chỉ giao hàng</h2>
-              <Link to={ROUTES.SHIPPING}>
+              {/* <Link to={ROUTES.SHIPPING}>
                 <button className="flex gap-[10px] mt-auto mr-[15px]">
                   <img src="/icons/edit.svg" alt="" className="dark-icon" />
                   <span>Sửa</span>
                 </button>
-              </Link>
+              </Link> */}
             </div>
             <div className="my-[30px] bg-bg-secondary dark:bg-dark-body-bg p-[20px] rounded-[20px] flex justify-between items-center">
               {address && (
@@ -91,7 +91,7 @@ const PaymentPage = () => {
               </Link>
             </div> */}
           </div>
-          <div className="p-[30px] rounded-[20px] bg-background dark:bg-dark-sidebar mt-[30px]">
+          <div className="p-[30px] rounded-[20px] bg-background shadow-xl dark:bg-dark-sidebar mt-[30px]">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-medium">
                 2. Phương thức vận chuyển
@@ -130,7 +130,7 @@ const PaymentPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-3 p-[30px] rounded-[20px] bg-background dark:bg-dark-sidebar">
+        <div className="col-span-3 p-[30px] rounded-[20px] bg-background shadow-xl dark:bg-dark-sidebar">
           <div className="flex justify-between text-2xl font-medium lg:text-3xl  ">
             <p>
               Tổng <span className="font-normal">(sản phẩm)</span>

@@ -41,7 +41,7 @@ const CartBox = ({ path, setShow, address }) => {
   };
 
   return (
-    <div className="col-span-3 bg-background rounded-[20px] p-[30px] h-fit">
+    <div className="col-span-3 shadow-xl bg-background rounded-[20px] p-[30px] h-fit">
       <div className="flex justify-between text-3xl font-medium lg:text-3xl  ">
         <p>
           Tổng <span className="font-normal">(items)</span>
@@ -58,7 +58,7 @@ const CartBox = ({ path, setShow, address }) => {
       </div>
       <div className="flex justify-between text-3xl font-medium mt-[10px] lg:text-3xl  ">
         <p>Vận chuyển</p>
-        <p>Free</p>
+        <p>Miễn phí</p>
       </div>
       <div className="h-[1px] w-full bg-border bg-top-menu-border my-[30px]"></div>
       <div className="flex justify-between text-4xl font-bold  ">

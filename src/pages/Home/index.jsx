@@ -126,7 +126,7 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-[15px] rounded-xl overflow-hidden">
-        <img src="/images/banner-9.jpeg" alt="" />
+        <img src="/images/macbook-banner.png" alt="" />
       </div>
       <div className="relative rounded-3xl mt-[40px] p-[20px] border-[1.5px]  border-solid border-primary ">
         <div className="absolute top-[-32px] left-0 right-0 text-center px-[20px]">
@@ -146,10 +146,7 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-[15px] rounded-xl overflow-hidden">
-        <img
-          src="https://laptopvang.com/wp-content/uploads/2023/03/banner-dai-trang-chu-surface.jpg"
-          alt=""
-        />
+        <img src="/images/surface-banner.jpg" alt="" />
       </div>
       <div className="relative rounded-3xl mt-[40px] p-[20px] border-[1.5px]  border-solid border-primary ">
         <div className="absolute top-[-32px] left-0 right-0 text-center px-[20px]">

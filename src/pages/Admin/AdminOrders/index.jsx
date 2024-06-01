@@ -30,7 +30,7 @@ const AdminOrders = () => {
           <option value="paid">Đã thanh toán</option>
           <option value="delivering">Đang giao</option>
           <option value="delivered">Đã giao</option>
-          <option value="canceled">Canceled</option>
+          <option value="canceled">Đã huỷ</option>
         </select>
         <table className="w-full mt-[20px] h-[500px] overflow-scroll">
           <tr className="grid grid-cols-12 text-[#595959] text-xl">

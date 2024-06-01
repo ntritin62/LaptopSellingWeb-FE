@@ -39,7 +39,6 @@ const ShippingPage = () => {
   };
 
   const showAddressModal = (data) => {
-    console.log(data);
     setAddressModelIsShowed({ status: true, data: data });
   };
 
@@ -57,7 +56,7 @@ const ShippingPage = () => {
         />
       )}
       <div className="container pt-[10px]">
-        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[30px] rounded-[10px] bg-background p-[20px] dark:bg-dark-sidebar">
+        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[30px] rounded-[10px] shadow-md bg-background p-[20px] dark:bg-dark-sidebar">
           <Link to={ROUTES.HOME}>Trang trủ</Link>
           <img src="/icons/arrow-right.svg" alt="" />
           <Link to={ROUTES.CART}>Giỏ hàng</Link>
@@ -67,8 +66,8 @@ const ShippingPage = () => {
           </Link>
         </div>
       </div>
-      <div className="container grid grid-cols-11 xl:flex xl:flex-col my-[30px] gap-[30px] dark:text-checkout-text">
-        <div className="col-span-8 p-[30px] rounded-[20px] bg-background dark:bg-dark-sidebar">
+      <div className="container grid grid-cols-11 xl:flex xl:flex-col my-[30px]  gap-[30px] dark:text-checkout-text">
+        <div className="col-span-8 p-[30px] rounded-[20px] bg-background shadow-xl dark:bg-dark-sidebar">
           <div className="flex flex-col gap-[30px]">
             <div className="flex items-center justify-between sm:flex-col sm:gap-[16px] sm:items-start">
               <div>

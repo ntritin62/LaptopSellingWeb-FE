@@ -20,8 +20,8 @@
 }
 
 .action-icon {
-  filter: brightness(0) saturate(100%) invert(54%) sepia(16%) saturate(925%)
-    hue-rotate(75deg) brightness(98%) contrast(85%);
+  filter: brightness(0) saturate(100%) invert(56%) sepia(71%) saturate(6436%)
+    hue-rotate(152deg) brightness(92%) contrast(90%);
 }
 
 .white-icon {
@@ -43,6 +43,20 @@
 ::before,
 ::after {
   box-sizing: border-box;
+}
+
+.bg {
+  background: #4ca1af; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 html {

@@ -45,7 +45,7 @@ const AddCard = () => {
     fetcher.submit(data, { method: 'post' });
   };
   return (
-    <section className="col-span-8 p-[30px] bg-background dark:bg-dark-profile-right rounded-[20px]">
+    <section className="col-span-8 p-[30px] bg-background shadow-xl dark:bg-dark-profile-right rounded-[20px]">
       {messageIsShowed && <AlertCustomStyles msg="Lưu thông tin thành công" />}
       <div className="flex items-center gap-[10px]">
         <Link to={ROUTES.PROFILE}>

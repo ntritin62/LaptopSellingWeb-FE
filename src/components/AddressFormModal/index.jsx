@@ -26,13 +26,6 @@ const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
     },
   });
 
-  const text =
-    navigation.state === 'submitting'
-      ? 'Saving...'
-      : navigation.state === 'loading'
-      ? 'Saved!'
-      : 'Save Address';
-
   const submitHandler = async (data) => {
     if (!info) {
       await axios.post(
@@ -70,7 +63,7 @@ const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
         className="bg-[#000] opacity-70 fixed inset-0 z-10"
         onClick={closeForm}
       ></div>
-      <section className="p-[50px] sm:p-[20px] fixed top-[50%] left-[50%] w-[50%] sm:w-[90%] lg:w-[70%] translate-y-[-50%] translate-x-[-50%] z-20 col-span-8 bg-background dark:bg-dark-profile-right rounded-[20px]">
+      <section className="p-[50px] sm:p-[20px] fixed top-[50%] left-[50%] w-[50%]  lg:w-[90%] translate-y-[-50%] translate-x-[-50%] z-20 col-span-8 bg-background dark:bg-dark-profile-right rounded-[20px]">
         <button className="block ml-auto select-none" onClick={closeForm}>
           <img
             src="/icons/close.svg"
@@ -144,13 +137,13 @@ const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
           </div>
           <div className="mt-[30px] flex justify-end gap-[30px] items-center">
             <button className="text-2xl font-medium" onClick={closeForm}>
-              Cancel
+              Huỷ
             </button>
             <button
               type="submit"
-              className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-[#1A162E]"
+              className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 text-[#1A162E]"
             >
-              {text}
+              Lưu
             </button>
           </div>
         </Form>

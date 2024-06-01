@@ -8,7 +8,7 @@ const ProfileLeft = () => {
   const { user } = useSelector((state) => state.user);
 
   return (
-    <aside className="col-span-3 rounded-3xl bg-background overflow-hidden">
+    <aside className="col-span-3 rounded-3xl h-[500px] bg-background shadow-xl overflow-hidden">
       <section className="relative flex flex-col items-center z-0 overflow-hidden bg-[url('../public/images/profile-bg-avatar.png')]   bg-cover pt-[40px] px-[40px] pb-[20px]  after:content-[''] after:bg-gradient-to-b after:from-[rgba(26,22,46,0)] to-[#1A162E] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:z-100 ">
         <img
           src="/images/avatar.jpg"

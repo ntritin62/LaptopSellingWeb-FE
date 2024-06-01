@@ -73,8 +73,12 @@ const Header = () => {
                 placeholder="Nhập sản phẩm cần tìm"
                 onChange={inputHandler}
               />
-              <button className="w-41px h-[41px] flex items-center justify-center p-[10px] bg-primary text-white">
-                <img src="/icons/search.svg" alt="" className="w-[18px]" />
+              <button className="w-41px h-[41px] flex items-center justify-center p-[10px] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 ">
+                <img
+                  src="/icons/search.svg"
+                  alt=""
+                  className="w-[18px] white-icon"
+                />
               </button>
             </div>
             {laptops.length > 0 && (
@@ -100,14 +104,14 @@ const Header = () => {
           </div>
           <div className="col-span-4 sm:hidden ml-auto flex items-center gap-[20px]">
             <Link to={ROUTES.CART}>
-              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-primary transition ease-in-out duration-500">
+              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-gradient-to-r from-green-400 to-blue-500 transition ease-in-out duration-500">
                 <img
-                  className="w-[24px] h-[24px]"
+                  className="w-[24px] h-[24px] "
                   src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjY1MzcgNi42ODk5NUw1Ljk2Njg0IDUuMDg5NjNDNS44NzUzIDUuMDc4NTUgNS43ODkxNSA1LjA3ODU1IDUuNzAyOTkgNS4wODQwOUw1LjAzNTMgMS43NjE2MkM1LjAxOTE1IDEuNjk1MTcgNS4wMDMgMS42Mjg3MiA0Ljk3NjA3IDEuNTczMzVDNC44NzM3NiAxLjMwNzU1IDQuNjU4MzggMS4wOTE1OSA0LjM3MyAxLjAwMjk5TDEuMTkwNjkgMC4wMzk0NzYzQzAuNzAwNjkzIC0wLjExMDAzNSAwLjE4Mzc3MSAwLjE3NzkxMyAwLjAzODM4NjcgMC42ODczNThDLTAuMTA2OTk4IDEuMTkxMjcgMC4xNzMwMDIgMS43MjI4NiAwLjY2ODM4NiAxLjg3MjM3TDMuMzIzIDIuNjc1M0w2LjUxNjA3IDE4LjUwMTNDNi41NzUzIDE4Ljk2NjUgNi45NjI5OSAxOS4zMjY0IDcuNDM2ODQgMTkuMzI2NEwyMS4xNjc2IDE5LjMyMDlDMjEuNjc5MSAxOS4zMjA5IDIyLjA5MzcgMTguODk0NSAyMi4wOTM3IDE4LjM2ODRDMjIuMDkzNyAxNy44NDI0IDIxLjY3OTEgMTcuNDE2IDIxLjE2NzYgMTcuNDE2TDguMTk2MDcgMTcuNDIxNUw3Ljc1NDUzIDE1LjIzNDJIMjEuNDA5OUMyMi4xMjYgMTUuMjM0MiAyMi43NDUzIDE0Ljc0NjkgMjIuODc0NSAxNC4wNzY5TDIzLjk3ODQgOC4zNTY3MkMyNC4xMjM3IDcuNTM3MTggMjMuNTIwNyA2Ljc3MzAxIDIyLjY1MzcgNi42ODk5NVoiIGZpbGw9IiM0RjRGNEYiLz4KPHBhdGggZD0iTTEwLjA3NTIgMjRDMTEuMDk4MiAyNCAxMS45Mjc1IDIzLjE0NzIgMTEuOTI3NSAyMi4wOTUxQzExLjkyNzUgMjEuMDQzMSAxMS4wOTgyIDIwLjE5MDIgMTAuMDc1MiAyMC4xOTAyQzkuMDUyMjEgMjAuMTkwMiA4LjIyMjkgMjEuMDQzMSA4LjIyMjkgMjIuMDk1MUM4LjIyMjkgMjMuMTQ3MiA5LjA1MjIxIDI0IDEwLjA3NTIgMjRaIiBmaWxsPSIjNEY0RjRGIi8+CjxwYXRoIGQ9Ik0xOC45Mjc2IDI0QzE5Ljk1MDYgMjQgMjAuNzc5OSAyMy4xNDcyIDIwLjc3OTkgMjIuMDk1MUMyMC43Nzk5IDIxLjA0MzEgMTkuOTUwNiAyMC4xOTAyIDE4LjkyNzYgMjAuMTkwMkMxNy45MDQ2IDIwLjE5MDIgMTcuMDc1MyAyMS4wNDMxIDE3LjA3NTMgMjIuMDk1MUMxNy4wNzUzIDIzLjE0NzIgMTcuOTA0NiAyNCAxOC45Mjc2IDI0WiIgZmlsbD0iIzRGNEY0RiIvPgo8L3N2Zz4K"
                   alt=""
                 />
-                <p className="text-[13px] text-[#4f4f4f]">Giỏ hàng</p>
-                <span className="absolute bg-primary text-xl text-white py-[4px] px-[7px] rounded-full top-[-8px] right-[-3px] ">
+                <p className="text-[13px] text-[#4f4f4f] ">Giỏ hàng</p>
+                <span className="absolute bg-gradient-to-r from-green-400 to-blue-500 text-xl text-white py-[4px] px-[7px] rounded-full top-[-8px] right-[-3px] ">
                   {cart.products.length}
                 </span>
               </div>
@@ -130,7 +134,7 @@ const Header = () => {
             {token && (
               <div className="relative group">
                 <Link to={ROUTES.PROFILE}>
-                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-primary transition ease-in-out duration-500">
+                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:bg-gradient-to-r from-green-400 to-blue-500 transition ease-in-out duration-500">
                     <img
                       className="w-[24px] h-[24px] icon"
                       src="/icons/account.svg"
@@ -139,16 +143,23 @@ const Header = () => {
                     <p className="text-[13px] text-[#4f4f4f]">Tài khoản</p>
                   </div>
 
-                  <div className="hidden  absolute w-[200px] top-[100%]  group-hover:block dark:text-[#B9BABE] right-0 z-30 bg-white dark:bg-dark-dropdown-bg p-[30px] shadow-[0px_40px_90px_20px_rgba(200,200,200,0.40)] dark:shadow-[0px_40px_90px_20px_rgba(23,28,40,0.40)] rounded-3xl md:hidden shadow-xl ">
+                  <div className="hidden absolute w-[200px] top-[100%]  group-hover:block dark:text-[#B9BABE] right-0 z-30 bg-white dark:bg-dark-dropdown-bg p-[30px] shadow-[0px_40px_90px_20px_rgba(200,200,200,0.40)] dark:shadow-[0px_40px_90px_20px_rgba(23,28,40,0.40)] rounded-3xl md:hidden ">
                     <div className="relative ">
-                      <ul className="text-center">
+                      <ul className="w-full">
                         {user.user.role === 'admin' && (
                           <>
                             <Link
                               to="./admin"
-                              className="hover:text-active-sidebar"
+                              className="hover:text-active-sidebar w-full"
                             >
-                              <li>Trang quản lý</li>
+                              <li className="flex items-center justify-center gap-[10px]">
+                                <img
+                                  src="/icons/admin.svg"
+                                  alt=""
+                                  className="w-[24px] h-[24px]"
+                                />
+                                Admin
+                              </li>
                             </Link>
                             <div className="w-full h-[1px] bg-text my-[10px]"></div>
                           </>
@@ -156,17 +167,29 @@ const Header = () => {
 
                         <Link
                           to={ROUTES.PROFILE}
-                          className="hover:text-active-sidebar"
+                          className="hover:text-active-sidebar w-full text-center"
                         >
-                          <li>Tài khoản</li>
+                          <li className="flex items-center justify-center gap-[10px]">
+                            <img
+                              src="/icons/profile.svg"
+                              alt=""
+                              className="w-[24px] h-[24px]"
+                            />
+                            Tài khoản
+                          </li>
                         </Link>
                         <div className="w-full h-[1px] bg-text my-[10px]"></div>
-                        <li>
+                        <li className="w-full flex items-center justify-center">
                           <button
-                            className="text-[#de1f27] font-medium"
+                            className="text-[#de1f27] font-medium flex gap-[10px]"
                             onClick={logoutHandler}
                           >
-                            Đăng xuất
+                            <img
+                              src="/icons/sign-out.svg"
+                              alt=""
+                              className="w-[24px] h-[24px] red-icon"
+                            />
+                            <p>Đăng xuất</p>
                           </button>
                         </li>
                       </ul>
@@ -179,7 +202,7 @@ const Header = () => {
         </div>
       </div>
       {/* Navbar */}
-      <nav className="bg-primary">
+      <nav className="bg-gradient-to-r from-green-400 to-blue-500 ">
         <div className="container relative">
           <button
             className="white-icon hidden py-[10px] xl:block"

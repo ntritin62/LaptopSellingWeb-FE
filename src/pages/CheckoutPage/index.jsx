@@ -15,7 +15,7 @@ const CheckoutPage = () => {
         <title>Giỏ hàng</title>
       </Helmet>
       <div className="container pt-[10px]">
-        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[20px] rounded-[10px] bg-background p-[15px] dark:bg-dark-sidebar">
+        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] shadow-md mt-[20px] rounded-[10px] bg-background p-[15px] dark:bg-dark-sidebar">
           <Link to={ROUTES.HOME}>Trang chủ</Link>
           <img src="/icons/arrow-right.svg" alt="" />
           <p className="text-primary dark:text-dark-text">Giỏ hàng</p>
@@ -33,7 +33,7 @@ const CheckoutPage = () => {
           </p>
           <Link
             to={ROUTES.HOME}
-            className="text-3xl min-w-[150px] hover:opacity-80 text-center block  bg-primary p-[20px] rounded-lg font-medium"
+            className="text-3xl min-w-[150px] hover:opacity-80 text-center block  bg-gradient-to-r from-green-400 to-blue-500 text-white p-[20px] rounded-lg font-medium"
           >
             Trở về
           </Link>
@@ -41,7 +41,7 @@ const CheckoutPage = () => {
       )}
       {cart.products.length > 0 && (
         <div className="container grid grid-cols-11 xl:flex xl:flex-col my-[30px] gap-[30px] dark:text-checkout-text">
-          <div className="col-span-8 p-[30px] rounded-[20px] bg-background dark:bg-dark-sidebar">
+          <div className="col-span-8 p-[30px] rounded-[20px] bg-background  shadow-xl dark:bg-dark-sidebar">
             <ul className="flex flex-col gap-[30px]">
               {cart.products.map((product) => {
                 return (

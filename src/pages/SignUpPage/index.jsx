@@ -32,7 +32,7 @@ const SignUpPage = () => {
       </Helmet>
       <main className="grid grid-cols-2 md:grid-cols-1 ">
         <div className="  md:hidden flex flex-col items-center  gap-[20px]">
-          <div className="dark:bg-white rounded-full w-[250px] h-[250px] flex mt-[70px] items-center justify-center">
+          <div className="dark:bg-white rounded-full w-[250px] flex mt-[70px] items-center justify-center">
             <img src="/images/logo.png" alt="" className="" />
           </div>
           <img

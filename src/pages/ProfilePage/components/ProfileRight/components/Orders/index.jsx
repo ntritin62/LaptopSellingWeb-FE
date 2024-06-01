@@ -7,7 +7,7 @@ const OrdersPage = () => {
   const { orders } = useLoaderData();
 
   return (
-    <section className="col-span-8 p-[30px] bg-background dark:bg-dark-profile-right rounded-[20px]">
+    <section className="col-span-8 p-[30px] bg-background shadow-xl dark:bg-dark-profile-right rounded-[20px]">
       <div className="flex items-center gap-[10px]">
         <Link to={ROUTES.PROFILE}>
           <img src="/icons/arrow-left.svg" alt="" className="dark-icon" />
@@ -37,13 +37,43 @@ const OrdersPage = () => {
                 key={order._id}
                 className="mt-[10px] rounded-[10px] p-[20px] bg-bg-secondary dark:bg-header-shadow"
               >
-                <div className=" justify-between items-center p-[10px] ">
+                <div className="sm:hidden">
                   <CustomStepper
                     activeStep={status.findIndex(
                       (status) => status === order.status
                     )}
                   />
-                  <p className="text-3xl font-medium mt-[20px]">
+                </div>
+                <div className="hidden sm:block">
+                  {order.status === 'pending' && (
+                    <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-full text-center rounded-lg">
+                      Đang xác nhận
+                    </p>
+                  )}
+                  {order.status === 'delivering' && (
+                    <p className="bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-full text-center rounded-lg">
+                      Đang giao
+                    </p>
+                  )}
+
+                  {order.status === 'paid' && (
+                    <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-full text-center rounded-lg">
+                      Đã thanh toán
+                    </p>
+                  )}
+                  {order.status === 'canceled' && (
+                    <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-full text-center rounded-lg">
+                      Đã huỷ
+                    </p>
+                  )}
+                </div>
+                {order.status === 'delivered' && (
+                  <p className="bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-full text-center rounded-lg">
+                    Đã giao
+                  </p>
+                )}
+                <div className="p-[10px] ">
+                  <p className="text-3xl sm:text-2xl font-medium mt-[20px]">
                     <span>Ngày mua: </span>
                     {new Date(order.createdAt).toLocaleDateString('vi-VI')}
                   </p>
@@ -59,9 +89,11 @@ const OrdersPage = () => {
                             className="col-span-2 sm:col-span-4 w-[100px] h-[100px] object-contain rounded-[10px] overflow-hidden"
                           />
                           <div className="col-span-8 sm:col-span-5 flex flex-col justify-between px-[10px]">
-                            <p className="text-2xl font-medium">{name}</p>
+                            <p className="text-2xl font-medium sm:text-xl">
+                              {name}
+                            </p>
                           </div>
-                          <p className="col-span-2 sm:col-span-3 text-right">
+                          <p className="col-span-2 sm:col-span-3 text-right sm:text-xl">
                             {price
                               .toString()
                               .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
@@ -71,7 +103,7 @@ const OrdersPage = () => {
                       </section>
                     )
                   )}
-                  <div className="sm:text-2xl mt-[20px] flex justify-between">
+                  <div className="sm:text-xl mt-[20px] flex justify-between">
                     <div className=" sm:pr-[20px]">
                       <p>
                         <span className="font-medium">Tên:</span>{' '}
@@ -86,7 +118,7 @@ const OrdersPage = () => {
                         {order.address.contactNumber}
                       </p>
                     </div>
-                    <p className="text-right text-3xl font-bold">
+                    <p className="text-right text-3xl sm:text-2xl font-bold">
                       Tổng cộng:{' '}
                       {order.total
                         .toString()

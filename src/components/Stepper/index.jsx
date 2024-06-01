@@ -8,7 +8,7 @@ import {
 
 export function CustomStepper({ activeStep }) {
   return (
-    <div className="w-full py-6 px-10">
+    <div className="w-full py-6 px-10 sm:p-0 sm:t sm:text-base">
       <CardHeader
         floated={false}
         variant="gradient"

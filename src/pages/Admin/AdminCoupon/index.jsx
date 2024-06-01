@@ -15,7 +15,7 @@ const AdminCoupon = () => {
   const fetcher = useFetcher();
   const clickHandler = async (couponId) => {
     const response = await axios.delete(
-      `http://localhost:3000/api/v1/coupons/${couponId}`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/coupons/${couponId}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const AdminCoupon = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold">Mã giảm giá</h1>
         <Link to={ADD_COUPON}>
-          <button className="bg-primary text-white shadow-lg px-[10px] py-[10px] flex font-medium gap-5 rounded-[10px]">
+          <button className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-8 text-white shadow-lg px-[10px] py-[10px] flex font-medium gap-5 rounded-[10px]">
             <img
               src="/icons/plus.svg"
               alt=""
@@ -43,7 +43,7 @@ const AdminCoupon = () => {
         </Link>
       </div>
       <div className="mt-[50px] bg-white shadow-xl p-[20px] rounded-xl ">
-        <div className="h-[500px] overflow-scroll">
+        <div className="h-[500px] overflow-auto">
           <table className="w-full  ">
             <tr className="grid grid-cols-10 text-[#595959] text-xl">
               <thead className="col-span-2">Tên</thead>
