@@ -9,7 +9,7 @@ export default async function action({ params, request }) {
 
   try {
     const response = await axios.patch(
-      'http://localhost:3000/api/v1/users//updateUserPassword',
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/users//updateUserPassword`,
       {
         ...data,
       },

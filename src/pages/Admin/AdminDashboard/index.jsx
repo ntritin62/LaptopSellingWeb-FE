@@ -98,29 +98,29 @@ const AdminDashboard = () => {
               </td>
               <td className="col-span-2">
                 {order.status === 'pending' && (
-                  <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[100px] text-center rounded-lg">
-                    Pending
+                  <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
+                    Đang xác nhận
                   </p>
                 )}
-                {order.status === 'delivered' && (
-                  <p className="bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[100px] text-center rounded-lg">
-                    Delivered
+                {order.status === 'delivering' && (
+                  <p className="bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[200px] text-center rounded-lg">
+                    Đang giao
                   </p>
                 )}
 
                 {order.status === 'paid' && (
-                  <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[100px] text-center rounded-lg">
-                    Paid
+                  <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[200px] text-center rounded-lg">
+                    Đã thanh toán
                   </p>
                 )}
                 {order.status === 'canceled' && (
-                  <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[100px] text-center rounded-lg">
-                    Canceled
+                  <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[200px] text-center rounded-lg">
+                    Đã huỷ
                   </p>
                 )}
-                {order.status === 'failed' && (
-                  <p className="bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[100px] text-center rounded-lg">
-                    Failed
+                {order.status === 'delivered' && (
+                  <p className="bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[200px] text-center rounded-lg">
+                    Đã giao
                   </p>
                 )}
               </td>

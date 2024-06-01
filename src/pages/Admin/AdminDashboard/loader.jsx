@@ -8,12 +8,18 @@ export async function loader({ request, params }) {
   const currentYear = now.getFullYear();
 
   try {
-    const response = await axios.get(`http://localhost:3000/api/v1/orders/`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const response2 = await axios.get(`http://localhost:3000/api/v1/users/`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.get(
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    const response2 = await axios.get(
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/users/`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
     const filteredOrders = response.data.orders.filter((item) => {
       const itemDate = new Date(item.createdAt);

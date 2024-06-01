@@ -8,7 +8,7 @@ const ProductCard = ({ product, setShow, laptops, setLaptops, setData }) => {
   const deleteHandler = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/v1/laptops/${product._id}`,
+        `${import.meta.env.VITE_SERVER_URL}api/v1/laptops/${product._id}`,
         {
           headers: {
             'Content-Type': 'application/json',

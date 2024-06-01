@@ -5,9 +5,12 @@ export async function loader({ request, params }) {
   const couponId = params.id;
 
   try {
-    const response = await axios.get(`http://localhost:3000/api/v1/coupons/`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.get(
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/coupons/`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
     return response.data.coupons;
   } catch (err) {

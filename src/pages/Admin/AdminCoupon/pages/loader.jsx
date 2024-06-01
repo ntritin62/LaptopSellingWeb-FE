@@ -6,7 +6,7 @@ export async function loader({ request, params }) {
 
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/v1/coupons/${couponId}`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/coupons/${couponId}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     console.log(response);

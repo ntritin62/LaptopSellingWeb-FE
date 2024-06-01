@@ -19,7 +19,7 @@ const CouponForm = ({ coupon, setShow }) => {
     if (coupon) {
       try {
         const response = await axios.patch(
-          `http://localhost:3000/api/v1/coupons/${coupon._id}`,
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/coupons/${coupon._id}`,
           data,
           {
             headers: {
@@ -40,7 +40,7 @@ const CouponForm = ({ coupon, setShow }) => {
       console.log(123);
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/v1/coupons',
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/coupons`,
           data,
           {
             headers: {

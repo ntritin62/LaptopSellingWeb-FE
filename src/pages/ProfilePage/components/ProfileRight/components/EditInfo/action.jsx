@@ -8,7 +8,7 @@ export default async function action({ params, request }) {
 
   try {
     return await axios.patch(
-      'http://localhost:3000/api/v1/users/updateUser',
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/users/updateUser`,
       {
         ...data,
       },

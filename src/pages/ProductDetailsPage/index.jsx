@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import { Alert } from '@material-tailwind/react';
@@ -8,12 +8,18 @@ import AlertCustomStyles from '../../components/Alert';
 import { CART } from '../../constants/routes';
 const ProductDetailsPage = () => {
   const [messageIsShowed, setMessageIsShowed] = useState(false);
+  const [msg, setMsg] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { laptop, similarItems } = useLoaderData();
+  const cart = useSelector((state) => state.cart);
 
   const addCart = () => {
     setMessageIsShowed(true);
+
+    if (cart.products.find((product) => product.name === laptop.name)) {
+      setMsg('Sản phẩm đã trong giỏ hàng');
+    }
     setTimeout(() => {
       setMessageIsShowed(false);
     }, 1000);
@@ -26,7 +32,7 @@ const ProductDetailsPage = () => {
   return (
     <main className="container mt-[50px] ">
       {messageIsShowed && (
-        <AlertCustomStyles msg="Thêm vào giỏ hàng thành công" />
+        <AlertCustomStyles msg={msg || 'Thêm vào giỏ hàng thành công'} />
       )}
       <h1 className="text-5xl font-bold">{laptop.name}</h1>
       <div className="mt-[20px] grid grid-cols-12 lg:grid-cols-1 gap-[30px]">

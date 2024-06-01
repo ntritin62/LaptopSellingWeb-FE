@@ -8,7 +8,7 @@ const Input = ({ setLaptop, index }) => {
     async function fetchData() {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/v1/laptops'
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops`
         );
         setData(response.data.laptops);
       } catch (error) {

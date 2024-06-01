@@ -28,7 +28,7 @@ const Sidebar = () => {
                     className={isActive ? 'action-icon' : 'sidebar-icon'}
                   />
                   <p className={isActive ? 'text-primary' : 'text-text'}>
-                    Dashboard
+                    Trang chủ
                   </p>
                 </>
               )}
@@ -49,7 +49,7 @@ const Sidebar = () => {
                     } w-[24px]`}
                   />
                   <p className={isActive ? 'text-primary' : 'text-text'}>
-                    Products
+                    Sản phẩm
                   </p>
                 </>
               )}
@@ -67,7 +67,7 @@ const Sidebar = () => {
                     } w-[24px]`}
                   />
                   <p className={isActive ? 'text-primary' : 'text-text'}>
-                    Orders
+                    Đơn hàng
                   </p>
                 </>
               )}
@@ -85,7 +85,7 @@ const Sidebar = () => {
                     } w-[24px]`}
                   />
                   <p className={isActive ? 'text-primary' : 'text-text'}>
-                    Coupon
+                    Mã khuyến mãi
                   </p>
                 </>
               )}

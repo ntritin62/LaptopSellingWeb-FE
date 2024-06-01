@@ -15,7 +15,7 @@ const Header = () => {
     async function fetchData() {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/v1/laptops'
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops`
         );
         setData(response.data.laptops);
       } catch (error) {
@@ -41,7 +41,7 @@ const Header = () => {
   const [token, setToken] = useState(getAuthToken());
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
-  console.log(user);
+
   const location = useLocation();
   useEffect(() => {
     setToken(getAuthToken());

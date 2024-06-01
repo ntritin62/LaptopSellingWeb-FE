@@ -24,7 +24,7 @@ const ProductForm = ({ laptop, setShow }) => {
     if (laptop) {
       try {
         const response = await axios.patch(
-          `http://localhost:3000/api/v1/laptops/${laptop._id}`,
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops/${laptop._id}`,
           data,
           {
             headers: {
@@ -45,7 +45,7 @@ const ProductForm = ({ laptop, setShow }) => {
     } else {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/v1/laptops',
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops`,
           data,
           {
             headers: {
