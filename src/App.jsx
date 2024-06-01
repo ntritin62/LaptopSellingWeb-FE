@@ -6,6 +6,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { getUserCart } from './redux/cartSlice';
 import { getUser } from './redux/userSlice';
+import { getUserService } from './services/userService';
 import { Suspense, useEffect } from 'react';
 import * as ROUTES from './constants/routes';
 import { lazy } from 'react';
@@ -279,6 +280,23 @@ const router = createBrowserRouter([
         <AdminLayout />
       </Suspense>
     ),
+    loader: async () => {
+      const token = getAuthToken();
+      if (!token) {
+        return redirect(ROUTES.HOME);
+      }
+      try {
+        const res = await getUserService();
+        console.log(res);
+        const role = res.data.user.role;
+        if (role != 'admin') {
+          return redirect(ROUTES.HOME);
+        }
+        return null;
+      } catch (e) {
+        console.log(e);
+      }
+    },
     children: [
       {
         index: true,

@@ -27,7 +27,7 @@ export function CustomStepper({ activeStep }) {
               completedClassName="bg-[#D1FAE5] text-[#0cd39b]"
             >
               <div className="absolute -bottom-[2.3rem] w-max text-center text-xs">
-                <Typography variant="h4">Pending</Typography>
+                <Typography variant="h4">Đang xác nhận</Typography>
               </div>
             </Step>
             <Step
@@ -36,7 +36,7 @@ export function CustomStepper({ activeStep }) {
               completedClassName="bg-[#D1FAE5] text-[#0cd39b]"
             >
               <div className="absolute -bottom-[2.3rem] w-max text-center text-xs">
-                <Typography variant="h4">Paid</Typography>
+                <Typography variant="h4">Đã thanh toán</Typography>
               </div>
             </Step>
 
@@ -46,7 +46,7 @@ export function CustomStepper({ activeStep }) {
               completedClassName="bg-[#D1FAE5] text-[#0cd39b]"
             >
               <div className="absolute -bottom-[2.3rem] w-max text-center text-xs">
-                <Typography variant="h4">Delivering</Typography>
+                <Typography variant="h4">Đang giao</Typography>
               </div>
             </Step>
             <Step
@@ -55,7 +55,7 @@ export function CustomStepper({ activeStep }) {
               completedClassName="bg-[#D1FAE5] text-[#0cd39b]"
             >
               <div className="absolute -bottom-[2.3rem] w-max text-center text-xs">
-                <Typography variant="h4">Delivered</Typography>
+                <Typography variant="h4">Đã giao</Typography>
               </div>
             </Step>
             <Step
@@ -64,7 +64,7 @@ export function CustomStepper({ activeStep }) {
               completedClassName="bg-[#D1FAE5] text-[#0cd39b]"
             >
               <div className="absolute -bottom-[2.3rem] w-max text-center text-xs">
-                <Typography variant="h4">Cancelled</Typography>
+                <Typography variant="h4">Đã huỷ</Typography>
               </div>
             </Step>
           </Stepper>

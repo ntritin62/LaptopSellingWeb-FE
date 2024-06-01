@@ -1,19 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {
   ADMIN,
   ADMIN_COUPON,
   ADMIN_ORDERS,
   ADMIN_PRODUCTS,
+  HOME,
 } from '../../../../constants/routes';
 
 const Sidebar = () => {
   return (
     <>
       <div className="bg-white mx-auto fixed top-0 left-0 bottom-0 w-[230px] shadow">
-        <figure className="w-[124px] pt-[16px] mx-auto">
-          <img src="/images/logo.png" alt="" className="w-full " />
-        </figure>
+        <Link to={HOME}>
+          <figure className="w-[124px] pt-[16px] mx-auto">
+            <img src="/images/logo.png" alt="" className="w-full " />
+          </figure>
+        </Link>
         <ul className="mt-[30px] flex flex-col gap-[15px]">
           <li className=" p-[20px]">
             <NavLink to={ADMIN} end className="flex items-center gap-[20px]">

@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 import * as ROUTES from '../../../../../../constants/routes';
 import { CustomStepper } from '../../../../../../components/Stepper';
+const status = ['pending', 'paid', 'delivering', 'delivered', 'canceled'];
 const OrdersPage = () => {
   const { orders } = useLoaderData();
 
@@ -37,40 +38,15 @@ const OrdersPage = () => {
                 className="mt-[10px] rounded-[10px] p-[20px] bg-bg-secondary dark:bg-header-shadow"
               >
                 <div className=" justify-between items-center p-[10px] ">
-                  <CustomStepper activeStep={0} />
+                  <CustomStepper
+                    activeStep={status.findIndex(
+                      (status) => status === order.status
+                    )}
+                  />
                   <p className="text-3xl font-medium mt-[20px]">
                     <span>Ngày mua: </span>
                     {new Date(order.createdAt).toLocaleDateString('vi-VI')}
                   </p>
-
-                  {/* <div className="flex gap-[10px]">
-                    {order.status === 'pending' && (
-                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
-                        Pending
-                      </p>
-                    )}
-                    {order.status === 'delivered' && (
-                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[200px] text-center rounded-lg">
-                        Delivered
-                      </p>
-                    )}
-
-                    {order.status === 'paid' && (
-                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[200px] text-center rounded-lg">
-                        Đã thanh toán
-                      </p>
-                    )}
-                    {order.status === 'canceled' && (
-                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[200px] text-center rounded-lg">
-                        Canceled
-                      </p>
-                    )}
-                    {order.status === 'failed' && (
-                      <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[200px] text-center rounded-lg">
-                        Failed
-                      </p>
-                    )}
-                  </div> */}
                 </div>
                 <div className="mt-[10px]">
                   {order.orderItems.map(

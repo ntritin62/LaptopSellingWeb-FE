@@ -4,11 +4,13 @@ import PhoneNavbar from './PhoneNavbar';
 import Navbar from './Navbar';
 import * as ROUTES from '../../../constants/routes';
 import getAuthToken from '../../../services/getToken';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { getUser } from '../../../redux/userSlice';
 
 const Header = () => {
   const [data, setData] = useState();
+  const dispatch = useDispatch();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -20,7 +22,7 @@ const Header = () => {
         console.error('Error fetching data:', error);
       }
     }
-
+    dispatch(getUser);
     fetchData();
   }, []);
 
@@ -38,6 +40,8 @@ const Header = () => {
   };
   const [token, setToken] = useState(getAuthToken());
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
+  console.log(user);
   const location = useLocation();
   useEffect(() => {
     setToken(getAuthToken());
@@ -138,17 +142,17 @@ const Header = () => {
                   <div className="hidden  absolute w-[200px] top-[100%]  group-hover:block dark:text-[#B9BABE] right-0 z-30 bg-white dark:bg-dark-dropdown-bg p-[30px] shadow-[0px_40px_90px_20px_rgba(200,200,200,0.40)] dark:shadow-[0px_40px_90px_20px_rgba(23,28,40,0.40)] rounded-3xl md:hidden shadow-xl ">
                     <div className="relative ">
                       <ul className="text-center">
-                        {/* {user.user.role === 'admin' && (
+                        {user.user.role === 'admin' && (
                           <>
                             <Link
                               to="./admin"
                               className="hover:text-active-sidebar"
                             >
-                              <li>Admin Panel</li>
+                              <li>Trang quản lý</li>
                             </Link>
-                            <div className="w-full h-[1px] bg-login-text my-[10px]"></div>
+                            <div className="w-full h-[1px] bg-text my-[10px]"></div>
                           </>
-                        )} */}
+                        )}
 
                         <Link
                           to={ROUTES.PROFILE}

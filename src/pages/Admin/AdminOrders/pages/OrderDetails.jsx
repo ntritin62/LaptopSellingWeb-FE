@@ -1,49 +1,31 @@
 import React, { useState } from 'react';
-const DUMMY_ORDER = {
-  _id: 'I293DSA39',
-  total: 32990000,
-  createdAt: 'January 20, 2022',
-  status: 'delivered',
-  user: {
-    name: 'Nguyễn Trí Tín',
-    address: 'Đường Hàn Thuyên, khu phố 6 P, Thủ Đức, Thành phố Hồ Chí Minh',
-    phoneNumber: '123456789',
-  },
-  orderItems: [
-    {
-      name: 'ASUS TUF Gaming A15 FA507UV LP090W',
-      imageUrl:
-        'https://product.hstatic.net/200000722513/product/3c8369547fcabdb9bb7246d4bfd_08d3a41e75cb4d01a3964f93b53f34b3_1024x1024_4e4ad72c9a5d4c4da144e68ef4de5dec_1024x1024.png',
-      price: 32990000,
-      product: {},
-    },
-    {
-      name: 'ASUS TUF Gaming A15 FA507UV LP090W',
-      imageUrl:
-        'https://product.hstatic.net/200000722513/product/3c8369547fcabdb9bb7246d4bfd_08d3a41e75cb4d01a3964f93b53f34b3_1024x1024_4e4ad72c9a5d4c4da144e68ef4de5dec_1024x1024.png',
-      price: 32990000,
-      product: {},
-    },
-    {
-      name: 'ASUS TUF Gaming A15 FA507UV LP090W',
-      imageUrl:
-        'https://product.hstatic.net/200000722513/product/3c8369547fcabdb9bb7246d4bfd_08d3a41e75cb4d01a3964f93b53f34b3_1024x1024_4e4ad72c9a5d4c4da144e68ef4de5dec_1024x1024.png',
-      price: 32990000,
-      product: {},
-    },
-  ],
-};
+const status = ['pending', 'paid', 'delivering', 'delivered', 'canceled'];
 import AlertCustomStyles from '../../../../components/Alert';
 import { useLoaderData } from 'react-router-dom';
+import { CustomStepper } from '../../../../components/Stepper';
+import getAuthToken from '../../../../services/getToken';
+import axios from 'axios';
 const OrderDetails = () => {
   const data = useLoaderData();
-  console.log(data);
+  const token = getAuthToken();
+
   const [messageIsShowed, setMessageIsShowed] = useState(false);
   const [order, setOrder] = useState(data);
-  const changeStatus = (e) => {
+  const changeStatus = async (e) => {
     setOrder((prev) => {
       return { ...prev, status: e.target.value };
     });
+
+    const response = await axios.patch(
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/updateOrderStatus`,
+      { orderId: order._id, orderStatus: e.target.value },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     setMessageIsShowed(true);
     setTimeout(() => {
       setMessageIsShowed(false);
@@ -73,45 +55,18 @@ const OrderDetails = () => {
           onChange={changeStatus}
           defaultValue={order.status}
         >
-          <option value="pending">Pending</option>
-          <option value="delivered">Delivered</option>
-          <option value="paid">Paid</option>
-          <option value="canceled">Canceled</option>
-          <option value="failed">Failed</option>
+          <option value="delivering">Đang giao</option>
+          <option value="delivered">Đã giao</option>
+          <option value="canceled">Đã huỷ</option>
         </select>
+        <CustomStepper
+          activeStep={status.findIndex((status) => status === order.status)}
+        />
         <div className="flex justify-between items-center p-[10px]">
           <p>
             <span className="text-3xl font-medium">Ngày mua: </span>
             {new Date(order.createdAt).toLocaleDateString('vi-VI')}
           </p>
-          <div className="flex gap-[10px]">
-            {order.status === 'pending' && (
-              <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[150px] text-center rounded-lg">
-                Pending
-              </p>
-            )}
-            {order.status === 'delivered' && (
-              <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[150px] text-center rounded-lg">
-                Delivered
-              </p>
-            )}
-
-            {order.status === 'paid' && (
-              <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[150px] text-center rounded-lg">
-                Paid
-              </p>
-            )}
-            {order.status === 'canceled' && (
-              <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[150px] text-center rounded-lg">
-                Canceled
-              </p>
-            )}
-            {order.status === 'failed' && (
-              <p className="px-[20px] py-[5px] text-3xl font-medium  bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[150px] text-center rounded-lg">
-                Failed
-              </p>
-            )}
-          </div>
         </div>
         <div className="mt-[10px]">
           {order.orderItems.map(({ product, name, imageUrl, price }) => (
