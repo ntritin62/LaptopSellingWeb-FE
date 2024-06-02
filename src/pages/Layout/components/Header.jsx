@@ -10,6 +10,7 @@ import { getUser } from '../../../redux/userSlice';
 
 const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
   const [data, setData] = useState();
+  const [isClickInside, setIsClickInside] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     async function fetchData() {
@@ -51,6 +52,13 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
     localStorage.removeItem('token');
     window.location.reload();
   };
+  const handleBlur = () => {
+    if (!isClickInside) {
+      setLaptops([]);
+    }
+    setIsClickInside(false);
+  };
+
   return (
     <header>
       <div className="container ">
@@ -61,7 +69,10 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
             </Link>
           </figure>
 
-          <div className="relative col-span-4 sm:col-span-1 ">
+          <div
+            onBlur={handleBlur}
+            className="relative col-span-4 sm:col-span-1 "
+          >
             <div className=" flex justify-between items-center rounded-lg overflow-hidden border-primary border-[1px] border-solid">
               <input
                 type="text"
@@ -78,7 +89,10 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
               </button>
             </div>
             {laptops.length > 0 && (
-              <div className="absolute z-50 rounded-xl top-[50px] left-0 right-0  bg-white shadow-xl border-solid border-[1px] border-[#ccc] rounded-sm  h-[300px] overflow-y-scroll">
+              <div
+                onMouseDown={() => setIsClickInside(true)}
+                className="absolute z-50 rounded-xl top-[50px] left-0 right-0  bg-white shadow-xl border-solid border-[1px] border-[#ccc] rounded-sm  h-[300px] overflow-auto"
+              >
                 {laptops.map((laptop) => (
                   <Link
                     to={`./laptop/${laptop._id}`}
