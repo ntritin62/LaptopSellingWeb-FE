@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import * as ROUTES from '../../constants/routes';
 import { Link, useNavigate } from 'react-router-dom';
 import PaymentCard from '../../components/PaymentCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
 import {
@@ -11,6 +11,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from '@material-tailwind/react';
+import { getUserCart } from '../../redux/cartSlice';
 
 const PaymentPage = () => {
   const navigate = useNavigate();

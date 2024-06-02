@@ -18,6 +18,7 @@ const CartBox = ({ path, setShow, address }) => {
 
     const code = e.target.elements.couponCode.value;
     const data = { code };
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/api/v1/coupons/addCouponToCart`,

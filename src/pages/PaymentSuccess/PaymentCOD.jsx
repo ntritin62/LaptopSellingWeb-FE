@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import { useDispatch } from 'react-redux';
+import { getUserCart } from '../../redux/cartSlice';
+
 const PaymentCOD = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserCart());
+  });
   return (
     <div className="container mt-[100px] flex items-center">
       <div className="mx-auto">

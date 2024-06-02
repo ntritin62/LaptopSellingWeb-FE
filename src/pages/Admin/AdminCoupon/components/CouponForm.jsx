@@ -37,7 +37,6 @@ const CouponForm = ({ coupon, setShow }) => {
         console.log(error);
       }
     } else {
-      console.log(123);
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_SERVER_URL}/api/v1/coupons`,
