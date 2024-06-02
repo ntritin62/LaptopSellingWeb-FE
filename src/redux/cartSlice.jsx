@@ -99,12 +99,15 @@ export const cartSlice = createSlice({
       const productToRemove = state.products.find(
         (product) => product.product === action.payload
       );
-      console.log(action);
+
       const index = state.products.findIndex(
         (product) => product.product === action.payload
       );
       state.totalPrice -= state.products[index].price;
 
+      if (state.totalPrice < 0) {
+        state.totalPrice = 0;
+      }
       state.products.splice(index, 1);
     });
     // builder.addCase(incrementInCart.fulfilled, (state, action) => {

@@ -91,15 +91,21 @@ const OrderDetails = () => {
             <div className=" sm:pr-[20px]">
               <p>
                 <span className="font-medium">Tên:</span>{' '}
-                {order.address.recipientName}
+                {order.address && order.address.recipientName !== null
+                  ? order.address.recipientName
+                  : ''}
               </p>
               <p>
                 <span className="font-medium">Địa chỉ:</span>{' '}
-                {order.address.deliveryAddress}
+                {order.address && order.address.deliveryAddress !== null
+                  ? order.address.deliveryAddress
+                  : ''}
               </p>
               <p>
                 <span className="font-medium">SĐT:</span>{' '}
-                {order.address.contactNumber}
+                {order.address && order.address.contactNumber !== null
+                  ? order.address.contactNumber
+                  : ''}
               </p>
             </div>
             <p className="text-right text-3xl font-bold">

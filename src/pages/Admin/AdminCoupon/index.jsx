@@ -74,7 +74,7 @@ const AdminCoupon = () => {
                       alt=""
                       className="w-[24px] h-[24px] action-icon"
                     />
-                    <p className="text-primary">Sửa</p>
+                    <p className="text-primary font-medium">Sửa</p>
                   </Link>
                 </td>
                 <td className="col-span-1">
@@ -87,9 +87,9 @@ const AdminCoupon = () => {
                     <img
                       src="/icons/delete.svg"
                       alt=""
-                      className="w-[24px] h-[24px] action-icon"
+                      className="w-[24px] h-[24px] red-icon"
                     />
-                    <p className="text-primary">Xoá</p>
+                    <p className="text-red-800 font-medium">Xoá</p>
                   </button>
                 </td>
               </tr>

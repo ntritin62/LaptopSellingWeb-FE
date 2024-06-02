@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../redux/cartSlice';
+import { addToCart, getUserCart } from '../../redux/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import { Alert } from '@material-tailwind/react';
 import AlertCustomStyles from '../../components/Alert';
@@ -27,6 +27,7 @@ const ProductDetailsPage = () => {
   };
   const buyNow = () => {
     dispatch(addToCart(laptop));
+    dispatch(getUserCart());
     navigate(CART);
   };
   return (

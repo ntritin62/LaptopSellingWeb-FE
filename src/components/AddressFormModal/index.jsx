@@ -40,6 +40,8 @@ const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
           },
         }
       );
+      dispatch(getUser());
+      closeForm();
     } else {
       await axios.patch(
         `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${info._id}`,
@@ -53,9 +55,9 @@ const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
           },
         }
       );
+      dispatch(getUser());
+      closeForm();
     }
-    dispatch(getUser());
-    closeForm();
   };
   return (
     <>
@@ -141,7 +143,7 @@ const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
             </button>
             <button
               type="submit"
-              className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 text-[#1A162E]"
+              className="text-2xl font-medium py-[10px] px-[20px] rounded-[30px] bg-primary text-white hover:opacity-80 "
             >
               Lưu
             </button>

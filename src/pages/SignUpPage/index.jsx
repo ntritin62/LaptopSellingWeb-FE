@@ -156,7 +156,7 @@ const SignUpPage = () => {
 
             <button
               type="submit"
-              className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80  text-white rounded-[10px] bg-primary hover:shadow-2xl  py-[12px] text-3xl font-medium"
+              className=" hover:opacity-80  text-white rounded-[10px] bg-primary hover:shadow-2xl  py-[12px] text-3xl font-medium"
             >
               Đăng ký
             </button>

@@ -115,7 +115,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              className="bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-80 rounded-[10px] bg-primary text-white py-[12px] text-3xl font-medium hover:shadow-xl"
+              className=" hover:opacity-80 rounded-[10px] bg-primary text-white py-[12px] text-3xl font-medium hover:shadow-xl"
             >
               Đăng nhập
             </button>

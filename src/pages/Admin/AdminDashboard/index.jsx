@@ -76,7 +76,8 @@ const AdminDashboard = () => {
             />
           </Link>
         </div>
-        <table className="w-full mt-[20px]">
+
+        <table className="w-full mt-[20px] ">
           <tr className="grid grid-cols-9 text-[#595959] text-xl">
             <thead className="col-span-2">ID</thead>
             <thead className="col-span-1">Sản phẩm</thead>
@@ -85,47 +86,52 @@ const AdminDashboard = () => {
             <thead className="col-span-2">Trạng thái</thead>
           </tr>
           <div className="bg-[#bfbfbf] h-[2px] w-full mt-[5px]"></div>
-          {ordersInfo.orders.map((order) => (
-            <tr className="grid grid-cols-9 mt-[20px] text-[#303030]">
-              <td className="col-span-2">{order._id}</td>
-              <td className="col-span-1">{order.orderItems.length}</td>
-              <td className="col-span-2">
-                {' '}
-                {new Date(order.createdAt).toLocaleDateString('en-GB', options)}
-              </td>
-              <td className="col-span-2">
-                {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-              </td>
-              <td className="col-span-2">
-                {order.status === 'pending' && (
-                  <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
-                    Đang xác nhận
-                  </p>
-                )}
-                {order.status === 'delivering' && (
-                  <p className="bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[200px] text-center rounded-lg">
-                    Đang giao
-                  </p>
-                )}
+          <div className="max-h-[400px] overflow-y-auto">
+            {ordersInfo.orders.map((order) => (
+              <tr className="grid grid-cols-9 mt-[20px] text-[#303030]">
+                <td className="col-span-2">{order._id}</td>
+                <td className="col-span-1">{order.orderItems.length}</td>
+                <td className="col-span-2">
+                  {' '}
+                  {new Date(order.createdAt).toLocaleDateString(
+                    'en-GB',
+                    options
+                  )}
+                </td>
+                <td className="col-span-2">
+                  {order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                </td>
+                <td className="col-span-2">
+                  {order.status === 'pending' && (
+                    <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
+                      Đang xác nhận
+                    </p>
+                  )}
+                  {order.status === 'delivering' && (
+                    <p className=" bg-amber-50 text-orange-400 border-orange-400 border-[1px] border-solid  w-[200px] text-center rounded-lg">
+                      Đang giao
+                    </p>
+                  )}
 
-                {order.status === 'paid' && (
-                  <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[200px] text-center rounded-lg">
-                    Đã thanh toán
-                  </p>
-                )}
-                {order.status === 'canceled' && (
-                  <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[200px] text-center rounded-lg">
-                    Đã huỷ
-                  </p>
-                )}
-                {order.status === 'delivered' && (
-                  <p className="bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[200px] text-center rounded-lg">
-                    Đã giao
-                  </p>
-                )}
-              </td>
-            </tr>
-          ))}
+                  {order.status === 'paid' && (
+                    <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[200px] text-center rounded-lg">
+                      Đã thanh toán
+                    </p>
+                  )}
+                  {order.status === 'canceled' && (
+                    <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[200px] text-center rounded-lg">
+                      Đã huỷ
+                    </p>
+                  )}
+                  {order.status === 'delivered' && (
+                    <p className=" bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7]  w-[200px] text-center rounded-lg">
+                      Đã giao
+                    </p>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </div>
         </table>
       </div>
     </div>

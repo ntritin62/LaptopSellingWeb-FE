@@ -42,54 +42,58 @@ const AdminOrders = () => {
             <thead className="col-span-1"></thead>
           </tr>
           <div className="bg-[#bfbfbf] h-[2px] w-full mt-[5px]"></div>
-          {orders.map((order) => (
-            <tr className="grid grid-cols-12 mt-[20px] text-[#303030]">
-              <td className="col-span-3">{order._id}</td>
-              <td className="col-span-1">{order.orderItems.length}</td>
-              <td className="col-span-2">
-                {new Date(order.createdAt).toLocaleDateString('en-GB', options)}
-              </td>
-              <td className="col-span-2">{order.user.fullName}</td>
-              <td className="col-span-3">
-                {order.status === 'pending' && (
-                  <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
-                    Đang xác nhận
-                  </p>
-                )}
-                {order.status === 'delivering' && (
-                  <p className="bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-[200px] text-center rounded-lg">
-                    Đang giao
-                  </p>
-                )}
-
-                {order.status === 'paid' && (
-                  <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[200px] text-center rounded-lg">
-                    Đã thanh toán
-                  </p>
-                )}
-                {order.status === 'canceled' && (
-                  <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[200px] text-center rounded-lg">
-                    Đã huỷ
-                  </p>
-                )}
-                {order.status === 'delivered' && (
-                  <p className="bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-[200px] text-center rounded-lg">
-                    Đã giao
-                  </p>
-                )}
-              </td>
-              <td className="col-span-1 ">
-                <Link to={order._id} className="flex gap-[5px]">
-                  <img
-                    src="/icons/view.svg"
-                    alt=""
-                    className="w-[24px] h-[24px]"
-                  />
-                  <p>Xem</p>
-                </Link>
-              </td>
-            </tr>
-          ))}
+          <div className="max-h-[480px] overflow-y-auto">
+            {orders.map((order) => (
+              <tr className="grid grid-cols-12 mt-[20px] text-[#303030]">
+                <td className="col-span-3">{order._id}</td>
+                <td className="col-span-1">{order.orderItems.length}</td>
+                <td className="col-span-2">
+                  {new Date(order.createdAt).toLocaleDateString(
+                    'en-GB',
+                    options
+                  )}
+                </td>
+                <td className="col-span-2">{order.user.fullName}</td>
+                <td className="col-span-3">
+                  {order.status === 'pending' && (
+                    <p className="bg-[#DBEAFE] text-[#1E40AF] border-[1px] border-solid border-[#93C5FD] w-[200px] text-center rounded-lg">
+                      Đang xác nhận
+                    </p>
+                  )}
+                  {order.status === 'delivering' && (
+                    <p className=" bg-amber-50 text-orange-400 border-orange-400 border-[1px] border-solid  w-[200px] text-center rounded-lg">
+                      Đang giao
+                    </p>
+                  )}
+                  {order.status === 'paid' && (
+                    <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-[200px] text-center rounded-lg">
+                      Đã thanh toán
+                    </p>
+                  )}
+                  {order.status === 'canceled' && (
+                    <p className="bg-[#FCE7F3] text-[#9D174D] border-[1px] border-solid border-[#F9A8D4] w-[200px] text-center rounded-lg">
+                      Đã huỷ
+                    </p>
+                  )}
+                  {order.status === 'delivered' && (
+                    <p className=" bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7]  w-[200px] text-center rounded-lg">
+                      Đã giao
+                    </p>
+                  )}
+                </td>
+                <td className="col-span-1 ">
+                  <Link to={order._id} className="flex gap-[5px]">
+                    <img
+                      src="/icons/view.svg"
+                      alt=""
+                      className="w-[24px] h-[24px]"
+                    />
+                    <p>Xem</p>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </div>
         </table>
       </div>
     </div>

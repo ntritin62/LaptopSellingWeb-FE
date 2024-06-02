@@ -91,7 +91,7 @@ const AddCard = () => {
             />
             {errors.contactNumber && (
               <p className="absolute bottom-[-25px] text-2xl font-medium text-rose-900">
-                Số điện thoại không được để trống.
+                Số điện thoại không hợp lệ.
               </p>
             )}
           </div>

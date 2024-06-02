@@ -51,11 +51,10 @@ const OrdersPage = () => {
                     </p>
                   )}
                   {order.status === 'delivering' && (
-                    <p className="bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7] w-full text-center rounded-lg">
+                    <p className=" bg-amber-50 text-orange-400 border-orange-400 border-[1px] border-solid  w-full text-center rounded-lg">
                       Đang giao
                     </p>
                   )}
-
                   {order.status === 'paid' && (
                     <p className="bg-[#FEF3C7] text-[#92400E] border-[1px] border-solid border-[#FCD34D] w-full text-center rounded-lg">
                       Đã thanh toán
@@ -66,12 +65,13 @@ const OrdersPage = () => {
                       Đã huỷ
                     </p>
                   )}
+                  {order.status === 'delivered' && (
+                    <p className=" bg-[#D1FAE5] text-[#065F46] border-[1px] border-solid border-[#6EE7B7]  w-full text-center rounded-lg">
+                      Đã giao
+                    </p>
+                  )}
                 </div>
-                {order.status === 'delivered' && (
-                  <p className="bg-[#FEE2E2] text-[#991B1B] border-[1px] border-solid border-[#FCA5A5] w-full text-center rounded-lg">
-                    Đã giao
-                  </p>
-                )}
+
                 <div className="p-[10px] ">
                   <p className="text-3xl sm:text-2xl font-medium mt-[20px]">
                     <span>Ngày mua: </span>
@@ -107,15 +107,21 @@ const OrdersPage = () => {
                     <div className=" sm:pr-[20px]">
                       <p>
                         <span className="font-medium">Tên:</span>{' '}
-                        {order.address.recipientName}
+                        {order.address && order.address.recipientName !== null
+                          ? order.address.recipientName
+                          : ''}
                       </p>
                       <p>
                         <span className="font-medium">Địa chỉ:</span>{' '}
-                        {order.address.deliveryAddress}
+                        {order.address && order.address.deliveryAddress !== null
+                          ? order.address.deliveryAddress
+                          : ''}
                       </p>
                       <p>
                         <span className="font-medium">SĐT:</span>{' '}
-                        {order.address.contactNumber}
+                        {order.address && order.address.contactNumber !== null
+                          ? order.address.contactNumber
+                          : ''}
                       </p>
                     </div>
                     <p className="text-right text-3xl sm:text-2xl font-bold">
