@@ -38,7 +38,9 @@ const ProfileLeft = () => {
                   alt=""
                   className={isActive ? 'action-icon' : ''}
                 />
-                <p className={isActive ? 'text-primary' : ''}>Thông tin</p>
+                <p className={isActive ? 'text-primary' : ''}>
+                  Xem thông tin cá nhân
+                </p>
               </>
             )}
           </NavLink>
@@ -59,7 +61,7 @@ const ProfileLeft = () => {
                   alt=""
                   className={isActive ? 'action-icon' : ''}
                 />
-                <p className={isActive ? 'text-primary' : ''}>Địa chỉ</p>
+                <p className={isActive ? 'text-primary' : ''}>Thêm địa chỉ</p>
               </>
             )}
           </NavLink>
@@ -80,7 +82,7 @@ const ProfileLeft = () => {
                   alt=""
                   className={isActive ? 'action-icon' : ''}
                 />
-                <p className={isActive ? 'text-primary' : ''}>Mật khẩu</p>
+                <p className={isActive ? 'text-primary' : ''}>Đổi mật khẩu</p>
               </>
             )}
           </NavLink>

@@ -8,7 +8,7 @@ const ProfilePage = () => {
   return (
     <>
       <Helmet>
-        <title>Profile</title>
+        <title>Thông tin cá nhân</title>
       </Helmet>
       <main className="dark:text-dark-profile-text container grid grid-cols-11 pt-[30px] lg:flex lg:flex-col gap-[30px]">
         <ProfileLeft />

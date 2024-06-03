@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import { getUser } from '../../redux/userSlice';
 
 export async function action({ request }) {
   const data = Object.fromEntries(await request.formData());

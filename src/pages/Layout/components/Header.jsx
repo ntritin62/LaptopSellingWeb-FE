@@ -23,7 +23,7 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
         console.error('Error fetching data:', error);
       }
     }
-    dispatch(getUser);
+
     fetchData();
   }, []);
 
@@ -46,6 +46,7 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
   const location = useLocation();
   useEffect(() => {
     setToken(getAuthToken());
+    dispatch(getUser());
   }, [location]);
 
   const logoutHandler = () => {

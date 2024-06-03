@@ -5,10 +5,13 @@ import { Form, Link, useLocation } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import { useSubmit, useActionData, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useDispatch } from 'react-redux';
+import { getUser } from '../../redux/userSlice';
 const LoginPage = () => {
   const submit = useSubmit();
   const [passwordIsShowed, setPasswordIsShowed] = useState(false);
 
+  const dispatch = useDispatch();
   const err = useActionData();
 
   const {

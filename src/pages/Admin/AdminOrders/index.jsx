@@ -61,7 +61,7 @@ const AdminOrders = () => {
                     </p>
                   )}
                   {order.status === 'delivering' && (
-                    <p className=" bg-amber-50 text-orange-400 border-orange-400 border-[1px] border-solid  w-[200px] text-center rounded-lg">
+                    <p className=" bg-amber-50 text-orange-600 border-orange-600 border-[1px] border-solid  w-[200px] text-center rounded-lg">
                       Đang giao
                     </p>
                   )}
