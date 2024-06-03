@@ -28,8 +28,9 @@ const ProductDetailsPage = () => {
   };
   const buyNow = () => {
     dispatch(addToCart(laptop));
-    dispatch(getUserCart());
+
     navigate(CART);
+    // dispatch(getUserCart());
   };
   return (
     <>
@@ -42,11 +43,20 @@ const ProductDetailsPage = () => {
         )}
         <h1 className="text-5xl font-bold">{laptop.name}</h1>
         <div className="mt-[20px] grid grid-cols-12 lg:grid-cols-1 gap-[30px]">
-          <img
-            src={laptop.imageUrl}
-            alt=""
-            className="col-span-4 lg:col-span-1 flex  rounded-lg border-[1px] border-solid border-[#eee] lg:w-full w-[380px] h-[380px] object-contain"
-          />
+          <div className="relative col-span-4 lg:col-span-1 rounded-lg border-[1px] border-solid border-[#eee]">
+            {laptop.saleOff > 0 && (
+              <div className="inline-block absolute top-0 left-[-4px] w-full h-full bg-no-repeat bg-[url('/icons/product-sale.svg')]">
+                <p className="text-xl font-medium text-white ml-[10px] mt-[5px]">
+                  Giảm {laptop.saleOff}%
+                </p>
+              </div>
+            )}
+            <img
+              src={laptop.imageUrl}
+              alt=""
+              className="flex  lg:w-full w-[380px] h-[380px] object-contain"
+            />
+          </div>
           <div className="col-span-5 lg:col-span-1 lg:p-[20px]">
             <h2 className="text-3xl font-bold">Cấu hình cơ bản</h2>
             <ul className="list-disc text-2xl leading-8 mt-[10px]">
@@ -87,8 +97,15 @@ const ProductDetailsPage = () => {
                 </p>
               </li>
             </ul>
-            <p className="mt-[30px] text-center text-3xl font-medium">
+            <p className="mt-[30px] text-center text-3xl font-medium gap-[20px]">
               Giá:
+              <span className="ml-[15px] text-[#919aae] line-through text-3xl font-bold ">
+                {laptop.saleOff > 0
+                  ? laptop.price
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+                  : ''}
+              </span>
               <span className="ml-[15px] text-[#E30019] text-5xl font-bold ">
                 {laptop.saleOff > 0
                   ? (laptop.price - laptop.price * (laptop.saleOff / 100))
@@ -99,6 +116,16 @@ const ProductDetailsPage = () => {
                       .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
               </span>
             </p>
+            <div className="flex mt-[30px] mx-auto w-full items-center justify-center">
+              <p className="text-3xl font-bold mr-[10px]">Đánh giá: </p>
+              <div className="flex  gap-[5px]">
+                <img src="/icons/star.svg" className="w-[24px] h-[24px]" />
+                <img src="/icons/star.svg" className="w-[24px] h-[24px]" />
+                <img src="/icons/star.svg" className="w-[24px] h-[24px]" />
+                <img src="/icons/star.svg" className="w-[24px] h-[24px]" />
+                <img src="/icons/star.svg" className="w-[24px] h-[24px]" />
+              </div>
+            </div>
           </div>
           <div className="col-span-3 lg:col-span-1 border-[1px] border-solid border-[#ddd] rounded-[10px] overflow-hidden">
             <p className="bg-[#e8fee0] font-bold border-b-[#bcbcbc] border-solid border-[1px] p-[10px] text-center">

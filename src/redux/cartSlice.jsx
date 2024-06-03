@@ -28,6 +28,7 @@ export const addToCart = createAsyncThunk(
         name: params.name,
         imageUrl: params.imageUrl,
         price: params.price,
+        saleOff: params.saleOff,
       };
     } catch (e) {
       console.log(e);
@@ -93,7 +94,13 @@ export const cartSlice = createSlice({
           ...action.payload,
         });
       }
-      state.totalPrice += action.payload.price;
+      if (action.payload.saleOff > 0) {
+        state.totalPrice +=
+          action.payload.price -
+          action.payload.price * (action.payload.saleOff / 100);
+      } else {
+        state.totalPrice += action.payload.price;
+      }
     });
     builder.addCase(removeFromCart.fulfilled, (state, action) => {
       const productToRemove = state.products.find(
@@ -103,7 +110,13 @@ export const cartSlice = createSlice({
       const index = state.products.findIndex(
         (product) => product.product === action.payload
       );
-      state.totalPrice -= state.products[index].price;
+      if (state.products[index].saleOff > 0) {
+        state.totalPrice -=
+          state.products[index].price -
+          (state.products[index].price * state.products[index].saleOff) / 100;
+      } else {
+        state.totalPrice -= state.products[index].price;
+      }
 
       if (state.totalPrice < 0) {
         state.totalPrice = 0;

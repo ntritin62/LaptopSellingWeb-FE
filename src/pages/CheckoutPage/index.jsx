@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CardItem from '../../components/CardItem';
 import { Link } from 'react-router-dom';
 import CartBox from '../../components/Cart';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as ROUTES from '../../constants/routes';
 import { Helmet } from 'react-helmet';
+import { getUserCart } from '../../redux/cartSlice';
+import { useLocation } from 'react-router-dom';
 
 const CheckoutPage = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    dispatch(getUserCart());
+  }, [location]);
+
   const cart = useSelector((state) => state.cart);
 
   return (
