@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import { useSelector } from 'react-redux';
 
 const BottomNavbar = ({ setSidebarIsShowed }) => {
+  const cart = useSelector((state) => state.cart);
   return (
     <div className="bg-white h-[60px] shadow-2xl border-t-solid border-t-[2px] border-t-primary p-[10px]">
       <ul className="flex justify-around">
@@ -45,7 +47,7 @@ const BottomNavbar = ({ setSidebarIsShowed }) => {
           className="hover:text-active-sidebar w-full text-center"
         >
           {({ isActive }) => (
-            <li className="flex flex-col items-center justify-center gap-[5px]">
+            <li className="flex relative flex-col items-center justify-center gap-[5px]">
               <img
                 src="/icons/cart.svg"
                 alt=""
@@ -53,6 +55,9 @@ const BottomNavbar = ({ setSidebarIsShowed }) => {
                   isActive ? ' action-icon' : ''
                 }`}
               />
+              <span className="absolute bg-primary text-xl text-white py-[4px] px-[7px] rounded-full top-[-8px] right-[10px] text-center w-[24px] h-[24px]">
+                {cart.products.length}
+              </span>
               <p className={`text-base ${isActive ? ' text-primary ' : ''}`}>
                 Giỏ hàng
               </p>

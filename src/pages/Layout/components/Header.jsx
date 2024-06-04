@@ -152,7 +152,7 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
             {token && (
               <div className="relative group">
                 <Link to={ROUTES.PROFILE}>
-                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg  hover:bg-primary group transition ease-in-out duration-200">
+                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg  group-hover:bg-primary group transition ease-in-out duration-200">
                     <img
                       className="w-[24px] h-[24px] icon group-hover:hidden absolute top-[10px]"
                       src="/icons/account.svg"
