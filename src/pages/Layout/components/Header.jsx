@@ -115,13 +115,20 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
           </div>
           <div className="col-span-4 sm:hidden ml-auto flex items-center gap-[20px]">
             <Link to={ROUTES.CART}>
-              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg hover:hover:bg-primary transition ease-in-out duration-500">
+              <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px] group rounded-lg hover:hover:bg-primary transition ease-in-out duration-200">
                 <img
-                  className="w-[24px] h-[24px] "
+                  className="w-[24px] h-[24px] icon group-hover:hidden absolute top-[10px]"
                   src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjY1MzcgNi42ODk5NUw1Ljk2Njg0IDUuMDg5NjNDNS44NzUzIDUuMDc4NTUgNS43ODkxNSA1LjA3ODU1IDUuNzAyOTkgNS4wODQwOUw1LjAzNTMgMS43NjE2MkM1LjAxOTE1IDEuNjk1MTcgNS4wMDMgMS42Mjg3MiA0Ljk3NjA3IDEuNTczMzVDNC44NzM3NiAxLjMwNzU1IDQuNjU4MzggMS4wOTE1OSA0LjM3MyAxLjAwMjk5TDEuMTkwNjkgMC4wMzk0NzYzQzAuNzAwNjkzIC0wLjExMDAzNSAwLjE4Mzc3MSAwLjE3NzkxMyAwLjAzODM4NjcgMC42ODczNThDLTAuMTA2OTk4IDEuMTkxMjcgMC4xNzMwMDIgMS43MjI4NiAwLjY2ODM4NiAxLjg3MjM3TDMuMzIzIDIuNjc1M0w2LjUxNjA3IDE4LjUwMTNDNi41NzUzIDE4Ljk2NjUgNi45NjI5OSAxOS4zMjY0IDcuNDM2ODQgMTkuMzI2NEwyMS4xNjc2IDE5LjMyMDlDMjEuNjc5MSAxOS4zMjA5IDIyLjA5MzcgMTguODk0NSAyMi4wOTM3IDE4LjM2ODRDMjIuMDkzNyAxNy44NDI0IDIxLjY3OTEgMTcuNDE2IDIxLjE2NzYgMTcuNDE2TDguMTk2MDcgMTcuNDIxNUw3Ljc1NDUzIDE1LjIzNDJIMjEuNDA5OUMyMi4xMjYgMTUuMjM0MiAyMi43NDUzIDE0Ljc0NjkgMjIuODc0NSAxNC4wNzY5TDIzLjk3ODQgOC4zNTY3MkMyNC4xMjM3IDcuNTM3MTggMjMuNTIwNyA2Ljc3MzAxIDIyLjY1MzcgNi42ODk5NVoiIGZpbGw9IiM0RjRGNEYiLz4KPHBhdGggZD0iTTEwLjA3NTIgMjRDMTEuMDk4MiAyNCAxMS45Mjc1IDIzLjE0NzIgMTEuOTI3NSAyMi4wOTUxQzExLjkyNzUgMjEuMDQzMSAxMS4wOTgyIDIwLjE5MDIgMTAuMDc1MiAyMC4xOTAyQzkuMDUyMjEgMjAuMTkwMiA4LjIyMjkgMjEuMDQzMSA4LjIyMjkgMjIuMDk1MUM4LjIyMjkgMjMuMTQ3MiA5LjA1MjIxIDI0IDEwLjA3NTIgMjRaIiBmaWxsPSIjNEY0RjRGIi8+CjxwYXRoIGQ9Ik0xOC45Mjc2IDI0QzE5Ljk1MDYgMjQgMjAuNzc5OSAyMy4xNDcyIDIwLjc3OTkgMjIuMDk1MUMyMC43Nzk5IDIxLjA0MzEgMTkuOTUwNiAyMC4xOTAyIDE4LjkyNzYgMjAuMTkwMkMxNy45MDQ2IDIwLjE5MDIgMTcuMDc1MyAyMS4wNDMxIDE3LjA3NTMgMjIuMDk1MUMxNy4wNzUzIDIzLjE0NzIgMTcuOTA0NiAyNCAxOC45Mjc2IDI0WiIgZmlsbD0iIzRGNEY0RiIvPgo8L3N2Zz4K"
                   alt=""
                 />
-                <p className="text-[13px] text-[#4f4f4f] ">Giỏ hàng</p>
+                <img
+                  className="w-[24px] h-[24px] white-icon hidden group-hover:block absolute top-[10px]"
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjY1MzcgNi42ODk5NUw1Ljk2Njg0IDUuMDg5NjNDNS44NzUzIDUuMDc4NTUgNS43ODkxNSA1LjA3ODU1IDUuNzAyOTkgNS4wODQwOUw1LjAzNTMgMS43NjE2MkM1LjAxOTE1IDEuNjk1MTcgNS4wMDMgMS42Mjg3MiA0Ljk3NjA3IDEuNTczMzVDNC44NzM3NiAxLjMwNzU1IDQuNjU4MzggMS4wOTE1OSA0LjM3MyAxLjAwMjk5TDEuMTkwNjkgMC4wMzk0NzYzQzAuNzAwNjkzIC0wLjExMDAzNSAwLjE4Mzc3MSAwLjE3NzkxMyAwLjAzODM4NjcgMC42ODczNThDLTAuMTA2OTk4IDEuMTkxMjcgMC4xNzMwMDIgMS43MjI4NiAwLjY2ODM4NiAxLjg3MjM3TDMuMzIzIDIuNjc1M0w2LjUxNjA3IDE4LjUwMTNDNi41NzUzIDE4Ljk2NjUgNi45NjI5OSAxOS4zMjY0IDcuNDM2ODQgMTkuMzI2NEwyMS4xNjc2IDE5LjMyMDlDMjEuNjc5MSAxOS4zMjA5IDIyLjA5MzcgMTguODk0NSAyMi4wOTM3IDE4LjM2ODRDMjIuMDkzNyAxNy44NDI0IDIxLjY3OTEgMTcuNDE2IDIxLjE2NzYgMTcuNDE2TDguMTk2MDcgMTcuNDIxNUw3Ljc1NDUzIDE1LjIzNDJIMjEuNDA5OUMyMi4xMjYgMTUuMjM0MiAyMi43NDUzIDE0Ljc0NjkgMjIuODc0NSAxNC4wNzY5TDIzLjk3ODQgOC4zNTY3MkMyNC4xMjM3IDcuNTM3MTggMjMuNTIwNyA2Ljc3MzAxIDIyLjY1MzcgNi42ODk5NVoiIGZpbGw9IiM0RjRGNEYiLz4KPHBhdGggZD0iTTEwLjA3NTIgMjRDMTEuMDk4MiAyNCAxMS45Mjc1IDIzLjE0NzIgMTEuOTI3NSAyMi4wOTUxQzExLjkyNzUgMjEuMDQzMSAxMS4wOTgyIDIwLjE5MDIgMTAuMDc1MiAyMC4xOTAyQzkuMDUyMjEgMjAuMTkwMiA4LjIyMjkgMjEuMDQzMSA4LjIyMjkgMjIuMDk1MUM4LjIyMjkgMjMuMTQ3MiA5LjA1MjIxIDI0IDEwLjA3NTIgMjRaIiBmaWxsPSIjNEY0RjRGIi8+CjxwYXRoIGQ9Ik0xOC45Mjc2IDI0QzE5Ljk1MDYgMjQgMjAuNzc5OSAyMy4xNDcyIDIwLjc3OTkgMjIuMDk1MUMyMC43Nzk5IDIxLjA0MzEgMTkuOTUwNiAyMC4xOTAyIDE4LjkyNzYgMjAuMTkwMkMxNy45MDQ2IDIwLjE5MDIgMTcuMDc1MyAyMS4wNDMxIDE3LjA3NTMgMjIuMDk1MUMxNy4wNzUzIDIzLjE0NzIgMTcuOTA0NiAyNCAxOC45Mjc2IDI0WiIgZmlsbD0iIzRGNEY0RiIvPgo8L3N2Zz4K"
+                  alt=""
+                />
+                <p className="text-[13px]  mt-[30px] group-hover:text-white text-[#4f4f4f] ">
+                  Giỏ hàng
+                </p>
                 <span className="absolute  bg-primary text-xl text-white py-[4px] px-[7px] rounded-full top-[-8px] right-[-3px] ">
                   {cart.products.length}
                 </span>
@@ -145,13 +152,20 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
             {token && (
               <div className="relative group">
                 <Link to={ROUTES.PROFILE}>
-                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg  hover:bg-primary transition ease-in-out duration-500">
+                  <div className=" relative flex flex-col items-center justify-center w-[70px] h-[60px]  rounded-lg  hover:bg-primary group transition ease-in-out duration-200">
                     <img
-                      className="w-[24px] h-[24px] icon"
+                      className="w-[24px] h-[24px] icon group-hover:hidden absolute top-[10px]"
                       src="/icons/account.svg"
                       alt=""
                     />
-                    <p className="text-[13px] text-[#4f4f4f]">Tài khoản</p>
+                    <img
+                      className="w-[24px] h-[24px]  white-icon hidden group-hover:block absolute top-[10px]"
+                      src="/icons/account.svg"
+                      alt=""
+                    />
+                    <p className="text-[13px] mt-[30px] text-[#4f4f4f] group-hover:text-white ">
+                      Tài khoản
+                    </p>
                   </div>
 
                   <div className="hidden absolute w-[200px] top-[100%]  group-hover:block dark:text-[#B9BABE] right-0 z-30 bg-white dark:bg-dark-dropdown-bg p-[30px] shadow-[0px_40px_90px_20px_rgba(200,200,200,0.40)] dark:shadow-[0px_40px_90px_20px_rgba(23,28,40,0.40)] rounded-3xl md:hidden ">
