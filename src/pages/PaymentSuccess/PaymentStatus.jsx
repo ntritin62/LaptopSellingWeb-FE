@@ -4,8 +4,11 @@ import axios from 'axios';
 
 import { useParams } from 'react-router-dom';
 import getAuthToken from '../../services/getToken';
+import { useDispatch } from 'react-redux';
+import { resetCart } from '../../redux/cartSlice';
 
 const PaymentStatus = () => {
+  const dispatch = useDispatch();
   const token = getAuthToken();
   const stripe = useStripe();
   const { id } = useParams();
@@ -27,9 +30,16 @@ const PaymentStatus = () => {
         switch (paymentIntent.status) {
           case 'succeeded':
             setMessage('Thanh toán thành công');
-            await axios.patch(
-              `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/${id}`,
-              { paymentIntentId: paymentIntent.id },
+            dispatch(resetCart());
+            await axios.post(
+              `${
+                import.meta.env.VITE_SERVER_URL
+              }/api/v1/orders/createOrderStripe`,
+              {
+                paymentIntentId: paymentIntent.id,
+                addressId: id,
+                clientSecret: clientSecret,
+              },
               {
                 headers: {
                   'Content-Type': 'application/json',

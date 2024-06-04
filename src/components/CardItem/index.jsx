@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getUserCart, removeFromCart } from '../../redux/cartSlice';
 const CardItem = ({ product }) => {
   const dispatch = useDispatch();
-  console.log(product);
+
   return (
     <div>
       <li className="flex gap-[30px] items-center mb-[10px]">

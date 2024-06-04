@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import getAuthToken from '../../../services/getToken';
 import { resetCart } from '../../../redux/cartSlice';
 
-export default function CheckoutForm({ order }) {
+export default function CheckoutForm({ address }) {
   const dispatch = useDispatch();
   const token = getAuthToken();
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ export default function CheckoutForm({ order }) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `http://localhost:5173/checkout/complete/${order}`,
+        return_url: `http://localhost:5173/checkout/complete/${address}`,
       },
     });
 

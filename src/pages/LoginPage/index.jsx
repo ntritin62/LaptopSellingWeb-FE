@@ -124,7 +124,7 @@ const LoginPage = () => {
             </button>
 
             <p className="font-normal text-2xl text-login-text text-center mt-[20px]">
-              Bạn chưa có tài khoản?{' '}
+              Bạn chưa có tài khoản ?{' '}
               <Link to={ROUTES.SIGNUP} className="text-[#0071DC] font-medium ">
                 Đăng ký
               </Link>

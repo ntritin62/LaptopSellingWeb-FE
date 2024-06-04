@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import PaymentCard from '../../components/PaymentCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 import {
   Accordion,
@@ -12,8 +13,11 @@ import {
   AccordionBody,
 } from '@material-tailwind/react';
 import { getUserCart } from '../../redux/cartSlice';
+import getAuthToken from '../../services/getToken';
+import { get } from 'react-hook-form';
 
 const PaymentPage = () => {
+  const token = getAuthToken();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
@@ -26,24 +30,38 @@ const PaymentPage = () => {
   const [open, setOpen] = React.useState(1);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
-  const onClickHandler = () => {
-    navigate(ROUTES.PAYMENTSUCCESS_COD);
+  const onClickHandler = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/createOrderCOD`,
+        { addressId: address._id },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      navigate(ROUTES.PAYMENTSUCCESS_COD);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  useEffect(() => {
-    const onBeforeUnload = (event) => {
-      alert('Bạn có chắc chắn muốn rời khỏi trang này không?');
+  // useEffect(() => {
+  //   const onBeforeUnload = (event) => {
+  //     alert('Bạn có chắc chắn muốn rời khỏi trang này không?');
 
-      event.preventDefault();
-      event.returnValue = '';
-    };
+  //     event.preventDefault();
+  //     event.returnValue = '';
+  //   };
 
-    window.addEventListener('beforeunload', onBeforeUnload);
+  //   window.addEventListener('beforeunload', onBeforeUnload);
 
-    return () => {
-      window.removeEventListener('beforeunload', onBeforeUnload);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', onBeforeUnload);
+  //   };
+  // }, []);
 
   return (
     <>
@@ -66,12 +84,12 @@ const PaymentPage = () => {
           <div className="p-[30px] rounded-[20px] bg-background shadow-xl dark:bg-dark-sidebar">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-medium">1. Địa chỉ giao hàng</h2>
-              {/* <Link to={ROUTES.SHIPPING}>
+              <Link to={ROUTES.SHIPPING}>
                 <button className="flex gap-[10px] mt-auto mr-[15px]">
                   <img src="/icons/edit.svg" alt="" className="dark-icon" />
                   <span>Sửa</span>
                 </button>
-              </Link> */}
+              </Link>
             </div>
             <div className="my-[30px] bg-bg-secondary dark:bg-dark-body-bg p-[20px] rounded-[20px] flex justify-between items-center">
               {address && (
@@ -95,7 +113,7 @@ const PaymentPage = () => {
                 <img src="/icons/check.svg" alt="" className="w-full h-full" />
               </div>
             </div>
-            {/* <div className="my-[30px] bg-bg-secondary dark:bg-dark-body-bg p-[20px] rounded-[20px] flex justify-between items-center">
+            <div className="my-[30px] bg-bg-secondary dark:bg-dark-body-bg p-[20px] rounded-[20px] flex justify-between items-center">
               <div>
                 <p className="text-2xl font-medium mb-[4px]">Chi tiết</p>
                 <p>{cart.products.length} sản phẩm</p>
@@ -106,7 +124,7 @@ const PaymentPage = () => {
               >
                 Xem chi tiết
               </Link>
-            </div> */}
+            </div>
           </div>
           <div className="p-[30px] rounded-[20px] bg-background shadow-xl dark:bg-dark-sidebar mt-[30px]">
             <div className="flex items-center justify-between">
