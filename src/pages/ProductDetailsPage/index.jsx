@@ -141,7 +141,6 @@ const ProductDetailsPage = () => {
               <li>Giao Nhanh Nội Thành TP.HCM 2 Giờ.</li>
               <li>Tặng Balo, Túi Chống Sốc.</li>
               <li>Giảm 10% Khi Mua Phụ Kiện Kèm Theo.</li>
-              <li>Miễn Phí Giao Hàng Toàn Quốc.</li>
             </ul>
             <div className="bg-[#eee] w-full h-[2px] my-[10px]"></div>
             <div className="p-[10px] flex flex-col items-center justify-center gap-[10px]">

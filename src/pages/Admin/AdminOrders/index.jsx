@@ -6,9 +6,15 @@ const AdminOrders = () => {
   const data = useLoaderData();
 
   const [orders, setOrders] = useState(data);
+
   const filterStatus = (e) => {
-    setOrders(data.filter((order) => order.status === e.target.value));
+    if (e.target.value == 'all') {
+      setOrders(data);
+    } else {
+      setOrders(data.filter((order) => order.status === e.target.value));
+    }
   };
+
   return (
     <div className="container mt-[70px]">
       <h1 className="text-4xl font-bold ">Đơn hàng</h1>
@@ -26,7 +32,8 @@ const AdminOrders = () => {
           className="w-[150px] bg-white text-text border-solid border-[1px] border-[#D1D5DB] p-[10px] rounded-xl"
           onChange={filterStatus}
         >
-          <option value="pending">Đã xác nhận</option>
+          <option value="all">Tất cả</option>
+          <option value="pending">Đang xác nhận</option>
           <option value="paid">Đã thanh toán</option>
           <option value="delivering">Đang giao</option>
           <option value="delivered">Đã giao</option>

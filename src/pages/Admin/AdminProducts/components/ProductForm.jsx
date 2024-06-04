@@ -147,7 +147,7 @@ const ProductForm = ({ laptop, setShow }) => {
       </div>
       <div className="relative w-full flex flex-col">
         <label htmlFor="ram" className="mt-[20px]">
-          ram
+          RAM
         </label>
         <input
           type="text"

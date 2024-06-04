@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ProductCard = ({ product }) => {
   return (
     <Link to={`/laptop/${product._id}`} className="col-span-1">
-      <section className="max-h-[350px] sm:max-h-[250px] relative rounded-xl hover:scale-102 hover:shadow-[0_1px_2px_0_rgba(60,64,67,10%),0_2px_6px_2px_rgba(60,64,67,15%)] transition-transform duration-200 ease-out w-full h-full bg-white flex flex-col items-center justify-between p-[20px] sm:p-[5px] border-[1px] border-solid border-[#eee]">
+      <section className="h-[350px] sm:h-[250px] relative rounded-xl hover:scale-102 hover:shadow-[0_1px_2px_0_rgba(60,64,67,10%),0_2px_6px_2px_rgba(60,64,67,15%)] transition-transform duration-200 ease-out bg-white flex flex-col items-center justify-between p-[20px] sm:p-[5px] border-[1px] border-solid border-[#eee]">
         {product.saleOff > 0 && (
           <div className="inline-block absolute top-0 left-[-4px] w-full h-full bg-no-repeat bg-[url('/icons/product-sale.svg')]">
             <p className="text-xl font-medium text-white ml-[10px] mt-[5px]">

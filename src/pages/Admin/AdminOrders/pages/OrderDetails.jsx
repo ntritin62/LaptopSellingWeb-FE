@@ -12,13 +12,14 @@ const OrderDetails = () => {
   const [messageIsShowed, setMessageIsShowed] = useState(false);
   const [order, setOrder] = useState(data);
   const changeStatus = async (e) => {
-    setOrder((prev) => {
-      return { ...prev, status: e.target.value };
-    });
+    e.preventDefault();
 
+    setOrder((prev) => {
+      return { ...prev, status: e.target[0].value };
+    });
     const response = await axios.patch(
       `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/updateOrderStatus`,
-      { orderId: order._id, orderStatus: e.target.value },
+      { orderId: order._id, orderStatus: e.target[0].value },
       {
         headers: {
           'Content-Type': 'application/json',
@@ -26,11 +27,13 @@ const OrderDetails = () => {
         },
       }
     );
+
     setMessageIsShowed(true);
     setTimeout(() => {
       setMessageIsShowed(false);
     }, 1000);
   };
+
   return (
     <div className="container mb-[50px]">
       {messageIsShowed && (
@@ -42,23 +45,30 @@ const OrderDetails = () => {
         key={order._id}
         className="mt-[10px] rounded-[10px] p-[20px] bg-white shadow-xl dark:bg-header-shadow"
       >
-        <label
-          htmlFor="status"
-          className="text-[#595959] text-2xl font-medium mr-[10px]"
-        >
-          Cập nhật trạng thái:{' '}
-        </label>
-        <select
-          name="status"
-          id="status"
-          className="w-[150px] bg-white text-text border-solid border-[1px] border-[#D1D5DB] p-[10px] rounded-xl"
-          onChange={changeStatus}
-          defaultValue={order.status}
-        >
-          <option value="delivering">Đang giao</option>
-          <option value="delivered">Đã giao</option>
-          <option value="canceled">Đã huỷ</option>
-        </select>
+        <form onSubmit={changeStatus}>
+          <label
+            htmlFor="status"
+            className="text-[#595959] text-2xl font-medium mr-[10px]"
+          >
+            Cập nhật trạng thái:{' '}
+          </label>
+          <select
+            name="status"
+            id="status"
+            className="w-[150px] bg-white text-text border-solid border-[1px] border-[#D1D5DB] p-[10px] rounded-xl"
+            defaultValue={order.status}
+          >
+            <option value="delivering">Đang giao</option>
+            <option value="delivered">Đã giao</option>
+            <option value="canceled">Đã huỷ</option>
+          </select>
+          <button
+            type="submit"
+            className="bg-primary px-[20px] py-[10px] text-2xl font-medium text-white hover:opacity-80 rounded-md ml-[15px]"
+          >
+            Cập nhập
+          </button>
+        </form>
         <CustomStepper
           activeStep={status.findIndex((status) => status === order.status)}
         />
