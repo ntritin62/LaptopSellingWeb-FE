@@ -24,12 +24,13 @@ const CheckoutPage = () => {
         <title>Giỏ hàng</title>
       </Helmet>
       <div className="container pt-[10px]">
-        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] shadow-md mt-[20px] rounded-[10px] bg-background p-[15px] dark:bg-dark-sidebar">
+        <div className="flex text-checkout-text text-2xl font-medium gap-[20px] mt-[30px] rounded-[10px] shadow-md bg-background p-[20px] dark:bg-dark-sidebar">
           <Link to={ROUTES.HOME}>Trang chủ</Link>
           <img src="/icons/arrow-right.svg" alt="" />
           <p className="text-primary dark:text-dark-text">Giỏ hàng</p>
         </div>
       </div>
+
       {cart.products.length === 0 && (
         <div className="container items-center flex flex-col my-[30px] gap-[30px] dark:text-checkout-text">
           <img

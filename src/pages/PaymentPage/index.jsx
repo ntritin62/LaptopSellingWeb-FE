@@ -29,6 +29,22 @@ const PaymentPage = () => {
   const onClickHandler = () => {
     navigate(ROUTES.PAYMENTSUCCESS_COD);
   };
+
+  useEffect(() => {
+    const onBeforeUnload = (event) => {
+      alert('Bạn có chắc chắn muốn rời khỏi trang này không?');
+
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', onBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', onBeforeUnload);
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -36,7 +52,7 @@ const PaymentPage = () => {
       </Helmet>
       <div className="container pt-[10px] ">
         <div className="flex text-checkout-text text-2xl lg:text-base font-medium gap-[20px] mt-[30px] rounded-[10px] bg-background shadow-md p-[20px] dark:bg-dark-sidebar">
-          <Link to={ROUTES.HOME}>Trang trủ</Link>
+          <Link to={ROUTES.HOME}>Trang chủ</Link>
           <img src="/icons/arrow-right.svg" alt="" />
           <Link to={ROUTES.CART}>Giỏ hàng</Link>
           <img src="/icons/arrow-right.svg" alt="" />
