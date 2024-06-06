@@ -115,11 +115,18 @@ const ProfileRight = () => {
         </Link>
       </Link>
       <h2 className="text-3xl mt-[20px]  font-bold">Danh sách địa chỉ</h2>
+      {}
       <ul className=" mt-[20px] max-h-[300px] bg-bg-secondary  rounded-lg shadow-lg overflow-y-auto flex flex-col gap-[15px] bg-bg p-[20px]">
+        {user.address.length === 0 && (
+          <p className="text-center font-medium text-primary flex justify-center gap-[10px]">
+            <img src="/icons/address.svg" alt="" className="action-icon" />
+            Bạn chưa thêm địa chỉ nào.
+          </p>
+        )}
         {user.address.length != 0 &&
           user.address.map((address) => (
             <>
-              <li className="flex justify-between border-b-solid border-b-[1px] border-b-[#ccc] pb-[10px] sm:flex-col sm:gap-[16px]">
+              <li className="flex items-center justify-between border-b-solid border-b-[1px] border-b-[#ccc] pb-[10px] sm:flex-col sm:gap-[16px]">
                 <div className="flex gap-[16px]">
                   <div>
                     <p className="text-2xl font-medium sm:text-2xl">
@@ -136,7 +143,7 @@ const ProfileRight = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-[20px]">
+                <div className="flex gap-[20px] ">
                   <button
                     onClick={() => {
                       showAddressModal(address);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import { useSelector } from 'react-redux';
 import getAuthToken from '../../services/getToken';
@@ -13,6 +13,8 @@ const CartBox = ({ path, setShow, address }) => {
   const token = getAuthToken();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -44,15 +46,11 @@ const CartBox = ({ path, setShow, address }) => {
   return (
     <div className="col-span-3 shadow-xl bg-background rounded-[20px] p-[30px] h-fit">
       <div className="flex justify-between text-3xl font-medium lg:text-3xl  ">
-        <p>
-          Tổng <span className="font-normal">(items)</span>
-        </p>
+        <p>Số lượng</p>
         <p>{cart.products.length}</p>
       </div>
       <div className="flex justify-between text-3xl font-medium mt-[10px] lg:text-3xl  ">
-        <p>
-          Giá <span className="font-normal">(Total)</span>
-        </p>
+        <p>Tạm tính</p>
         <p>
           {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
         </p>
@@ -88,16 +86,17 @@ const CartBox = ({ path, setShow, address }) => {
         </form>
       )}
       <button
-        className={`w-full ${
-          address === '' ? 'pointer-events-none cursor-not-allowed' : ''
+        className={`w-full mt-[30px] hover:opacity-80 text-white py-[18px] block rounded-full text-3xl font-medium w-full  text-center ${
+          address === '' ? 'cursor-not-allowed bg-[#ccc]' : 'bg-primary'
         }`}
+        disabled={address === ''}
+        onClick={() => {
+          navigate(
+            path === 'shipping' ? ROUTES.PAYMENTMETHOD : ROUTES.SHIPPING
+          );
+        }}
       >
-        <Link
-          to={path === 'shipping' ? ROUTES.PAYMENTMETHOD : ROUTES.SHIPPING}
-          className="mt-[30px]  bg-primary hover:opacity-80 text-white py-[18px] block rounded-full text-3xl font-medium w-full  text-center "
-        >
-          Tiếp tục thanh toán
-        </Link>
+        Tiếp tục thanh toán
       </button>
     </div>
   );

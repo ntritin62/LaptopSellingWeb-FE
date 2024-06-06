@@ -167,15 +167,11 @@ const PaymentPage = () => {
         </div>
         <div className="col-span-3 p-[30px] rounded-[20px] bg-background shadow-xl dark:bg-dark-sidebar">
           <div className="flex justify-between text-2xl font-medium lg:text-3xl  ">
-            <p>
-              Tổng <span className="font-normal">(sản phẩm)</span>
-            </p>
+            <p>Số lượng</p>
             <p>{cart.products.length}</p>
           </div>
           <div className="flex justify-between text-2xl font-medium mt-[10px] lg:text-3xl  ">
-            <p>
-              Giá <span className="font-normal">(Total)</span>
-            </p>
+            <p>Tạm tính</p>
             <p>
               {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
             </p>

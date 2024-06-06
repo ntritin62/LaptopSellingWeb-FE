@@ -66,7 +66,7 @@ const OrderDetails = () => {
             type="submit"
             className="bg-primary px-[20px] py-[10px] text-2xl font-medium text-white hover:opacity-80 rounded-md ml-[15px]"
           >
-            Cập nhập
+            Cập nhật
           </button>
         </form>
         <CustomStepper

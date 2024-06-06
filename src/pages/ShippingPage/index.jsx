@@ -89,6 +89,11 @@ const ShippingPage = () => {
               </button>
             </div>
             <ul className="max-h-[200px] overflow-y-auto flex flex-col gap-[30px]">
+              {user.address.length == 0 && (
+                <p className="text-red-500 text-center font-bold text-3xl">
+                  Bạn phải thêm địa chỉ để tiếp tục.
+                </p>
+              )}
               {user.address.length != 0 &&
                 user.address.map((address) => (
                   <li className="flex justify-between sm:flex-col sm:gap-[16px]">
@@ -124,8 +129,7 @@ const ShippingPage = () => {
                           {address.deliveryAddress}
                         </p>
                         <ul className="list-disc flex gap-[30px] mt-[20px] sm:text-xl ml-[15px]">
-                          <li>Shipping</li>
-                          <li>Delivery from store</li>
+                          <li>Giao hàng tận nơi</li>
                         </ul>
                       </div>
                     </div>
