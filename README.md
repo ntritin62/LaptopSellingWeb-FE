@@ -61,7 +61,7 @@ Admin:
 
 <table>
   <tr>
-    <td><img  alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/1719940a-a9a9-433f-9b7b-fac8791cc938"></td>
-    <td><img  alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/81723061-eed8-49a7-b0bb-a16b07ee5549"></td>
+    <td><img width="500px"  alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/1719940a-a9a9-433f-9b7b-fac8791cc938"></td>
+    <td><img width="500px" alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/81723061-eed8-49a7-b0bb-a16b07ee5549"></td>
   </tr>
 </table>
