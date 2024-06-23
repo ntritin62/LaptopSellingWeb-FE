@@ -1,7 +1,7 @@
 # T-Laptop website
 
 <p>T-Laptop store Website using MERN Stack.</p>
-<img src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/deaa5bb7-e82d-4f8b-be67-a77418c49d9c" alt="mockup" />
+<img width="200px" height="100px" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/deaa5bb7-e82d-4f8b-be67-a77418c49d9c" alt="mockup" />
 
 
 ## 🖥️ Tech Stack
@@ -41,7 +41,7 @@ Admin:
 - Admin can CRUD product, discount code, orders
 
 ## Preview :
-<img src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/2bea098a-f624-4fcb-8fd4-9d06861ce492" alt="mockup" />
+<img width="1388" alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/4ff23f12-1b0c-46a7-bbe0-a768f0db8211">
 
 
 <table>
@@ -62,6 +62,6 @@ Admin:
 <table>
   <tr>
     <td><img width="500px"  alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/1719940a-a9a9-433f-9b7b-fac8791cc938"></td>
-    <td><img width="500px" alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/81723061-eed8-49a7-b0bb-a16b07ee5549"></td>
+    <td><img width="500px" alt="image" src="https://github.com/ntritin62/LaptopSellingWeb-FE/assets/104788686/2b4682d1-e9a2-4c1c-9baa-9baeaa1f9191"></td>
   </tr>
 </table>
