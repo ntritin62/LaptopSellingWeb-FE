@@ -8,7 +8,7 @@ const ProductCard = ({ product, setShow, laptops, setLaptops, setData }) => {
   const deleteHandler = async () => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_SERVER_URL}api/v1/laptops/${product._id}`,
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops/${product._id}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -16,8 +16,9 @@ const ProductCard = ({ product, setShow, laptops, setLaptops, setData }) => {
           },
         }
       );
-      setShow(true);
 
+      setShow(true);
+      console.log(response);
       setTimeout(() => {
         setLaptops((prev) =>
           laptops.filter((laptop) => laptop._id !== product._id)

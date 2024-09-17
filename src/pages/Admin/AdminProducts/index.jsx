@@ -74,6 +74,7 @@ const AdminProducts = () => {
         <div className="grid grid-cols-5 h-[540px] overflow-auto gap-[15px]">
           {laptops.map((laptop) => (
             <ProductCard
+              key={laptop._id}
               product={laptop}
               setShow={setMessageIsShowed}
               laptops={laptops}

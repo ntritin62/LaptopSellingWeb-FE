@@ -11,6 +11,7 @@ const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
 const AdminCoupon = () => {
   const token = getAuthToken();
   const data = useLoaderData();
+  console.log(data);
   const [coupons, setCoupons] = useState(data);
   const fetcher = useFetcher();
   const clickHandler = async (couponId) => {
