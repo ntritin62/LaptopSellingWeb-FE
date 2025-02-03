@@ -12,7 +12,11 @@ export default withMT({
         102: '1.02',
       },
       colors: {
+<<<<<<< HEAD
         primary: 'rgb(13 148 136)',
+=======
+        primary: '#62C9C6',
+>>>>>>> 1c915e6 (change logo and primary color)
         secondary: '#54595F',
         background: 'rgb(250 250 250)',
         'bg-secondary': 'rgb(243 244 246)',

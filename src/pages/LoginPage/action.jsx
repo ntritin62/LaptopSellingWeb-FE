@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+<<<<<<< HEAD
 import { getUser } from '../../redux/userSlice';
+=======
+import { getUserService } from '../../services/userService';
+>>>>>>> 1c915e6 (change logo and primary color)
 
 export async function action({ request }) {
   const data = Object.fromEntries(await request.formData());
@@ -16,8 +20,19 @@ export async function action({ request }) {
     );
 
     const resData = response.data;
+<<<<<<< HEAD
     localStorage.setItem('token', resData.token);
 
+=======
+
+    localStorage.setItem('token', resData.token);
+    const {
+      data: { user },
+    } = await getUserService();
+    if (user.role === 'admin') {
+      return redirect(ROUTES.ADMIN);
+    }
+>>>>>>> 1c915e6 (change logo and primary color)
     return redirect(ROUTES.HOME);
   } catch (error) {
     return error.response.data.msg;
