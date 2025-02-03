@@ -18,17 +18,12 @@ const Sidebar = () => {
       <div className="bg-white mx-auto fixed top-0 left-0 bottom-0 w-[230px] shadow flex flex-col justify-between">
         <div>
           <Link to={HOME}>
-<<<<<<< HEAD
-            <figure className="w-[124px] pt-[16px] mx-auto">
-              <img src="/images/logo.png" alt="" className="w-full " />
-=======
             <figure className="w-[124px] h-[124px] rounded-full overflow-hidden mt-5 mx-auto ">
               <img
                 src="/images/lappu-store-logo.png"
                 alt=""
                 className="w-full h-full"
               />
->>>>>>> 1c915e6 (change logo and primary color)
             </figure>
           </Link>
           <ul className="mt-[30px] flex flex-col gap-[15px]">

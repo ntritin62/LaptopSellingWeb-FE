@@ -20,10 +20,6 @@ export async function action({ request }) {
     );
 
     const resData = response.data;
-<<<<<<< HEAD
-    localStorage.setItem('token', resData.token);
-
-=======
 
     localStorage.setItem('token', resData.token);
     const {
@@ -32,7 +28,6 @@ export async function action({ request }) {
     if (user.role === 'admin') {
       return redirect(ROUTES.ADMIN);
     }
->>>>>>> 1c915e6 (change logo and primary color)
     return redirect(ROUTES.HOME);
   } catch (error) {
     return error.response.data.msg;

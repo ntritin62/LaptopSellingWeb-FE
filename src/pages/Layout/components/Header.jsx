@@ -227,11 +227,7 @@ const Header = ({ setSidebarIsShowed, sidebarIsShowed, closeSidebar }) => {
         </div>
       </div>
       {/* Navbar */}
-<<<<<<< HEAD
-      <nav className="bg-gradient-to-r from-[#1D976C] to-[#93F9B9] ">
-=======
       <nav className="bg-gradient-to-r from-[#4BB8B4] to-[#62C9C6] ">
->>>>>>> 1c915e6 (change logo and primary color)
         <div className="container relative">
           <button
             className="white-icon hidden py-[10px] xl:block"
