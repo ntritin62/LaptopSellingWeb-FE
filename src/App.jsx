@@ -384,8 +384,11 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUser());
-    dispatch(getUserCart());
+    const authToken = getAuthToken();
+    if (authToken) {
+      dispatch(getUser());
+      dispatch(getUserCart());
+    }
   }, []);
   return (
     <>

@@ -8,11 +8,11 @@ export async function loader({ request, params }) {
       `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops`
     );
     if (brandName) {
-      return response.data.laptops.filter((laptop) => {
+      return response.data.data.products.filter((laptop) => {
         return laptop.name.toLowerCase().includes(brandName.replace(/-/g, ' '));
       });
     }
-    return response.data.laptops;
+    return response.data.data.products;
   } catch (err) {
     console.log(err);
   }

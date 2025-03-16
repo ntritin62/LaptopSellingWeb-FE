@@ -1,11 +1,7 @@
 import axios from 'axios';
 import { redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-<<<<<<< HEAD
-import { getUser } from '../../redux/userSlice';
-=======
 import { getUserService } from '../../services/userService';
->>>>>>> 1c915e6 (change logo and primary color)
 
 export async function action({ request }) {
   const data = Object.fromEntries(await request.formData());

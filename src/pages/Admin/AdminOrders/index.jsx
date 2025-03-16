@@ -5,7 +5,11 @@ const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
 const AdminOrders = () => {
   const data = useLoaderData();
 
-  const [orders, setOrders] = useState(data);
+  const sortedData = [...data].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
+  const [orders, setOrders] = useState(sortedData);
 
   const filterStatus = (e) => {
     if (e.target.value == 'all') {

@@ -14,6 +14,8 @@ const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const { laptop, similarItems } = useLoaderData();
   const cart = useSelector((state) => state.cart);
+  console.log(similarItems);
+
 
   const addCart = () => {
     setMessageIsShowed(true);
@@ -277,7 +279,7 @@ const ProductDetailsPage = () => {
             <div className="mt-[20px]">
               <ul className="flex flex-col gap-[8px]">
                 {similarItems.map((item) => (
-                  <Link to={`/laptop/${item._id}`} className="flex gap-[32px]">
+                  <Link to={`/laptop/${item.id}`} className="flex gap-[32px]">
                     <img
                       src={item.imageUrl}
                       alt=""

@@ -4,7 +4,7 @@ export default async function getCart() {
   const token = getAuthToken();
 
   return await axios.get(
-    `${import.meta.env.VITE_SERVER_URL}/api/v1/cart/showMyCart`,
+    `${import.meta.env.VITE_SERVER_URL}/api/v1/carts/showMyCart`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const addToCartService = async (productId) => {
   const token = getAuthToken();
 
   return await axios.post(
-    `${import.meta.env.VITE_SERVER_URL}/api/v1/cart/addItemToCart`,
+    `${import.meta.env.VITE_SERVER_URL}/api/v1/carts/addItemToCart`,
     { productId: productId._id },
     {
       headers: {
@@ -33,7 +33,7 @@ export const deleteItemInCartService = async (itemId) => {
   const token = getAuthToken();
 
   return await axios.delete(
-    `${import.meta.env.VITE_SERVER_URL}/api/v1/cart/deleteItemInCart`,
+    `${import.meta.env.VITE_SERVER_URL}/api/v1/carts/deleteItemInCart`,
     {
       headers: {
         'Content-Type': 'application/json',
