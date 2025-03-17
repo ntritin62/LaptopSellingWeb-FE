@@ -8,7 +8,7 @@ export async function action({ request }) {
 
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_SERVER_URL}/api/v1/auth/login`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/login`,
       data,
       {
         headers: { 'Content-Type': 'application/json' },
@@ -16,14 +16,16 @@ export async function action({ request }) {
     );
 
     const resData = response.data;
+    console.log(resData);
 
-    localStorage.setItem('token', resData.token);
+    localStorage.setItem('token', resData.data.jwt_token);
     const {
-      data: { user },
+      data: { data: user },
     } = await getUserService();
     if (user.role === 'admin') {
       return redirect(ROUTES.ADMIN);
     }
+    
     return redirect(ROUTES.HOME);
   } catch (error) {
     return error.response.data.msg;

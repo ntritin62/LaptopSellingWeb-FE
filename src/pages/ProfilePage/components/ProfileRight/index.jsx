@@ -38,7 +38,7 @@ const ProfileRight = () => {
     const token = getAuthToken();
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${address._id}`,
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${address.id}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -123,8 +123,8 @@ const ProfileRight = () => {
             Bạn chưa thêm địa chỉ nào.
           </p>
         )}
-        {user.address.length != 0 &&
-          user.address.map((address) => (
+        {user.address.addresses.length != 0 &&
+          user.address.addresses.map((address) => (
             <>
               <li className="flex items-center justify-between border-b-solid border-b-[1px] border-b-[#ccc] pb-[10px] sm:flex-col sm:gap-[16px]">
                 <div className="flex gap-[16px]">

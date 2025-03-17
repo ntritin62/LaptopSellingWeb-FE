@@ -9,8 +9,7 @@ export const getUser = createAsyncThunk(
   'user/getUser',
   async (params, thunkAPI) => {
     const userCart = await getUserService();
-
-    return userCart.data.user;
+    return userCart.data.data.user;
   }
 );
 export const userSlice = createSlice({

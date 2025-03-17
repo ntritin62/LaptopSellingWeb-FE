@@ -5,12 +5,13 @@ export async function action({ request }) {
   const data = Object.fromEntries(await request.formData());
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_SERVER_URL}/api/v1/auth/register`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/signup`,
       data,
       {
         headers: { 'Content-Type': 'application/json' },
       }
     );
+
 
     return redirect(ROUTES.LOGIN);
   } catch (error) {

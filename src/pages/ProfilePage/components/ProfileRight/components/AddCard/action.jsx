@@ -18,6 +18,6 @@ export default async function action({ params, request }) {
       },
     }
   );
-  return response;
-  // return redirect('/profile');
+  // return response;
+  return redirect('/profile');
 }

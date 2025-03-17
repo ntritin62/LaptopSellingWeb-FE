@@ -44,7 +44,7 @@ const AddressFormModal = ({ closeForm, info, setSelectedOption }) => {
       closeForm();
     } else {
       await axios.patch(
-        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${info._id}`,
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/addresses/${info.id}`,
         {
           ...data,
         },
