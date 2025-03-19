@@ -188,7 +188,7 @@ const ChangePassword = () => {
         </div>
       </Form>
       {error && (
-        <p className="text-right mt-[20px] text-rose-900 font-medium">Lưu</p>
+        <p className="text-right mt-[20px] text-rose-900 font-medium">{error}</p>
       )}
     </section>
   );

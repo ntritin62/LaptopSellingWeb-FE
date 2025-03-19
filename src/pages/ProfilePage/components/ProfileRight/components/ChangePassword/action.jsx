@@ -6,10 +6,11 @@ export default async function action({ params, request }) {
   const data = Object.fromEntries(formData);
 
   const token = getAuthToken();
+  console.log(data);
 
   try {
     const response = await axios.patch(
-      `${import.meta.env.VITE_SERVER_URL}/api/v1/users//updateUserPassword`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/users/updateUserPassword/?locale=vi`,
       {
         ...data,
       },
@@ -22,7 +23,6 @@ export default async function action({ params, request }) {
     );
     return response;
   } catch (e) {
-    console.log(e.response.data.msg);
-    return e.response.data.msg;
+    return e.response.data.message;
   }
 }
