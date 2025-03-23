@@ -14,7 +14,6 @@ const ProductDetailsPage = () => {
   const dispatch = useDispatch();
   const { laptop, similarItems } = useLoaderData();
   const cart = useSelector((state) => state.cart);
-  console.log(similarItems);
 
 
   const addCart = () => {
@@ -32,7 +31,7 @@ const ProductDetailsPage = () => {
     dispatch(addToCart(laptop));
 
     navigate(CART);
-    // dispatch(getUserCart());
+    dispatch(getUserCart());
   };
   return (
     <>

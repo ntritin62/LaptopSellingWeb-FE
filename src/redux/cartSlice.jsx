@@ -10,8 +10,7 @@ export const getUserCart = createAsyncThunk(
   'cart/getUserCart',
   async (params, thunkAPI) => {
     const userCart = await getCart();
-
-    return userCart.data.cart[0];
+    return userCart.data.data;
   }
 );
 
@@ -19,17 +18,12 @@ export const addToCart = createAsyncThunk(
   'cart/addToCart',
   async (params, _) => {
     const product = {
-      _id: params._id,
+      id: params.id,
     };
     try {
       await addToCartService(product);
-      return {
-        product: params._id,
-        name: params.name,
-        imageUrl: params.imageUrl,
-        price: params.price,
-        saleOff: params.saleOff,
-      };
+     
+      return params;
     } catch (e) {
       console.log(e);
     }
@@ -79,12 +73,12 @@ export const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getUserCart.fulfilled, (state, action) => {
-      state.products = action.payload.cartItems;
-      state.totalPrice = action.payload.subtotal;
+      state.products = action.payload.cart_items.map(item => item.product);
+      state.totalPrice = action.payload.total_price;
     });
     builder.addCase(addToCart.fulfilled, (state, action) => {
       const addProductExists = state.products.find(
-        (product) => product.product === action.payload.product
+        (product) => product.id === action.payload.id
       );
 
       if (addProductExists) {
@@ -94,29 +88,29 @@ export const cartSlice = createSlice({
           ...action.payload,
         });
       }
-      if (action.payload.saleOff > 0) {
-        state.totalPrice +=
-          action.payload.price -
-          action.payload.price * (action.payload.saleOff / 100);
-      } else {
+      // if (action.payload.saleOff > 0) {
+      //   state.totalPrice +=
+      //     action.payload.price -
+      //     action.payload.price * (action.payload.saleOff / 100);
+      // } else {
         state.totalPrice += action.payload.price;
-      }
+      // }
     });
     builder.addCase(removeFromCart.fulfilled, (state, action) => {
       const productToRemove = state.products.find(
-        (product) => product.product === action.payload
+        (product) => product.id === action.payload.id
       );
 
       const index = state.products.findIndex(
-        (product) => product.product === action.payload
+        (product) => product.id === action.payload.id
       );
-      if (state.products[index].saleOff > 0) {
-        state.totalPrice -=
-          state.products[index].price -
-          (state.products[index].price * state.products[index].saleOff) / 100;
-      } else {
+      // if (state.products[index].saleOff > 0) {
+      //   state.totalPrice -=
+      //     state.products[index].price -
+      //     (state.products[index].price * state.products[index].saleOff) / 100;
+      // } else {
         state.totalPrice -= state.products[index].price;
-      }
+      // }
 
       if (state.totalPrice < 0) {
         state.totalPrice = 0;

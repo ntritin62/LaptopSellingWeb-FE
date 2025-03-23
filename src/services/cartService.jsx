@@ -14,36 +14,27 @@ export default async function getCart() {
   );
 }
 
-export const addToCartService = async (productId) => {
+export const addToCartService = async (product) => {
   const token = getAuthToken();
 
   return await axios.post(
     `${import.meta.env.VITE_SERVER_URL}/api/v1/carts/addItemToCart`,
-    { productId: productId._id },
+    { productId: product.id },
     {
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     }
   );
 };
-
-export const deleteItemInCartService = async (itemId) => {
+export const deleteItemInCartService = async (product) => {
   const token = getAuthToken();
 
-  return await axios.delete(
-    `${import.meta.env.VITE_SERVER_URL}/api/v1/carts/deleteItemInCart`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      data: {
-        itemId,
-      },
-    }
-  );
+  return await axios.delete(`${import.meta.env.VITE_SERVER_URL}/api/v1/carts/deleteItemInCart`, {
+    headers: { Authorization: `Bearer ${token}` },
+    data: { productId: product.id },
+  });
+  
 };
 
 // export const incrementInCartService = async (productId) => {

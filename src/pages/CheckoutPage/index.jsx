@@ -55,7 +55,7 @@ const CheckoutPage = () => {
             <ul className="flex flex-col gap-[30px]">
               {cart.products.map((product) => {
                 return (
-                  <li key={product._id}>
+                  <li>
                     <CardItem product={product} />
                     <div className="h-[1px] w-full bg-border bg-top-menu-border"></div>
                   </li>

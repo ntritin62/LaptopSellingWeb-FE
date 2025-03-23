@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getUserCart, removeFromCart } from '../../redux/cartSlice';
-const CardItem = ({ product }) => {
+const CardItem = ({product}) => {
   const dispatch = useDispatch();
 
   return (
@@ -9,7 +9,7 @@ const CardItem = ({ product }) => {
       <li className="flex gap-[30px] items-center mb-[10px]">
         <figure className="w-[175px] h-[175px] sm:w-[60px] sm:h-[60px] bg-[#fff] rounded-xl">
           <img
-            src={product.imageUrl}
+            src={product.image_url}
             alt=""
             className="w-full h-full object-contain rounded-lg overflow-hidden "
           />
@@ -60,7 +60,7 @@ const CardItem = ({ product }) => {
             <button
               className="flex gap-[10px] text-rose-900"
               onClick={() => {
-                dispatch(removeFromCart(product.product));
+                dispatch(removeFromCart(product));
                 dispatch(getUserCart);
               }}
             >
