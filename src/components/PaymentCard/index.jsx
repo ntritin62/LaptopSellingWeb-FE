@@ -11,16 +11,15 @@ function Payment({ addressId }) {
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_SERVER_URL}/api/v1/stripe`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/api/v1/orders/stripe`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     })
       .then(async (r) => {
-        const { publishableKey } = await r.json();
-
-        setStripePromise(loadStripe(publishableKey));
+        const resData = await r.json();
+        setStripePromise(loadStripe(resData.data.publishableKey));
       })
       .catch((error) => {
         console.log(error);
@@ -31,7 +30,6 @@ function Payment({ addressId }) {
     fetch(
       `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/createPaymentIntent`,
       {
-        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
@@ -39,8 +37,8 @@ function Payment({ addressId }) {
       }
     )
       .then(async (result) => {
-        var { clientSecret } = await result.json();
-        setClientSecret(clientSecret);
+        const resData = await result.json();
+        setClientSecret(resData.data.clientSecret);
       })
       .catch((error) => {
         console.log(error);

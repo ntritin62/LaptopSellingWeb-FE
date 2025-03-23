@@ -66,7 +66,7 @@ const CartBox = ({ path, setShow, address }) => {
           {cart.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
         </p>
       </div>
-      {path === 'shipping' && (
+      {/* {path === 'shipping' && (
         <form
           onSubmit={submitHandler}
           className="relative my-[30px] rounded-lg w-full h-[50px] flex items-center justify-between p-[10px] border-solid border-[1px] border-[#ccc]"
@@ -84,7 +84,7 @@ const CartBox = ({ path, setShow, address }) => {
             {error}
           </span>
         </form>
-      )}
+      )} */}
       <button
         className={`w-full mt-[30px] hover:opacity-80 text-white py-[18px] block rounded-full text-3xl font-medium w-full  text-center ${
           address === '' ? 'cursor-not-allowed bg-[#ccc]' : 'bg-primary'

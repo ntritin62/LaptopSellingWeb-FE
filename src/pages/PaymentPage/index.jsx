@@ -20,11 +20,12 @@ const PaymentPage = () => {
   const token = getAuthToken();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  console.log(cart);
   const { user } = useSelector((state) => state.user);
   const [address, setAddress] = useState();
 
   useEffect(() => {
-    setAddress(user.address.find((address) => address._id === cart.address));
+    setAddress(user.address.addresses.find((address) => address.id === cart.address));
   }, [cart, user]);
 
   const [open, setOpen] = React.useState(1);
@@ -34,7 +35,7 @@ const PaymentPage = () => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/createOrderCOD`,
-        { addressId: address._id },
+        { addressId: address.id },
         {
           headers: {
             'Content-Type': 'application/json',
@@ -209,7 +210,7 @@ const PaymentPage = () => {
               </AccordionHeader>
               <AccordionBody>
                 <div className="mt-[30px]">
-                  {address && <PaymentCard addressId={address._id} />}
+                  {address && <PaymentCard addressId={address.id} />}
                 </div>
               </AccordionBody>
             </Accordion>

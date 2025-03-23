@@ -30,6 +30,7 @@ const PaymentStatus = () => {
         switch (paymentIntent.status) {
           case 'succeeded':
             setMessage('Thanh toán thành công');
+            console.log(paymentIntent);
             dispatch(resetCart());
             await axios.post(
               `${

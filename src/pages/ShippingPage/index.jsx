@@ -20,18 +20,17 @@ const ShippingPage = () => {
   const [messageIsShowed, setMessageIsShowed] = useState(false);
 
   const { user } = useSelector((state) => state.user);
-
   const [selectedOption, setSelectedOption] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
-    if (user.address.length > 0) {
-      setSelectedOption(user.address[0]._id);
-      dispatch(setAddress(user.address[0]._id));
+    if (user.address.addresses.length > 0) {
+      setSelectedOption(user.address.addresses[0].id);
+      dispatch(setAddress(user.address.addresses[0].id));
     }
   }, [user]);
   const handleInputChange = (event) => {
-    setSelectedOption(event.target.value);
-    dispatch(setAddress(event.target.value));
+    setSelectedOption(parseInt(event.target.value, 10));
+    dispatch(setAddress(parseInt(event.target.value, 10)));
   };
 
   const closeAddressModal = () => {
@@ -89,29 +88,29 @@ const ShippingPage = () => {
               </button>
             </div>
             <ul className="max-h-[200px] overflow-y-auto flex flex-col gap-[30px]">
-              {user.address.length == 0 && (
+              {user.address.addresses.length == 0 && (
                 <p className="text-red-500 text-center font-bold text-3xl">
                   Bạn phải thêm địa chỉ để tiếp tục.
                 </p>
               )}
-              {user.address.length != 0 &&
-                user.address.map((address) => (
-                  <li className="flex justify-between sm:flex-col sm:gap-[16px]">
+              {user.address.addresses.length != 0 &&
+                user.address.addresses.map((address) => (
+                  <li key={address.id} className="flex justify-between sm:flex-col sm:gap-[16px]">
                     <div className="flex gap-[16px]">
                       <input
                         type="radio"
                         name="address"
-                        id={address._id}
-                        value={address._id}
-                        checked={selectedOption === address._id}
+                        id={address.id}
+                        value={address.id}
+                        checked={selectedOption === address.id}
                         onChange={handleInputChange}
                         hidden
                       />
                       <label
-                        htmlFor={address._id}
+                        htmlFor={address.id}
                         className="w-[19px] h-[19px] shrink-0 "
                       >
-                        {selectedOption === address._id ? (
+                        {selectedOption === address.id ? (
                           <img
                             src="/icons/check.svg"
                             alt=""

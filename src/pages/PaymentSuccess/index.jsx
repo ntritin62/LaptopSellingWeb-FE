@@ -10,15 +10,15 @@ const PaymentSuccess = () => {
   const token = getAuthToken();
   const [stripePromise, setStripePromise] = useState(null);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_SERVER_URL}/api/v1/stripe`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/api/v1/orders/stripe`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
     })
       .then(async (r) => {
-        const { publishableKey } = await r.json();
-        setStripePromise(loadStripe(publishableKey));
+        const resData = await r.json();
+        setStripePromise(loadStripe(resData.data.publishableKey));
       })
       .catch((error) => {
         console.log(error);
