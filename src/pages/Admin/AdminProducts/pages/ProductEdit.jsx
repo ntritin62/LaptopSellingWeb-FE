@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 const ProductEdit = () => {
   const { laptop } = useLoaderData();
+  console.log(laptop);
   const [messageIsShowed, setMessageIsShowed] = useState(false);
 
   return (

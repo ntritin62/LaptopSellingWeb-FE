@@ -24,7 +24,7 @@ const ProductForm = ({ laptop, setShow }) => {
     if (laptop) {
       try {
         const response = await axios.patch(
-          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops/${laptop._id}`,
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops/${laptop.id}`,
           data,
           {
             headers: {
@@ -45,8 +45,8 @@ const ProductForm = ({ laptop, setShow }) => {
     } else {
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops`,
-          data,
+          `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops/`,
+          {laptop: data},
           {
             headers: {
               'Content-Type': 'application/json',
@@ -54,6 +54,7 @@ const ProductForm = ({ laptop, setShow }) => {
             },
           }
         );
+        console.log(response);
 
         setShow(true);
         setTimeout(() => {

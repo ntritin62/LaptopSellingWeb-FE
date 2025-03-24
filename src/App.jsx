@@ -287,8 +287,7 @@ const router = createBrowserRouter([
       }
       try {
         const res = await getUserService();
-        console.log(res);
-        const role = res.data.user.role;
+        const role = res.data.data.user.role;
         if (role != 'admin') {
           return redirect(ROUTES.HOME);
         }

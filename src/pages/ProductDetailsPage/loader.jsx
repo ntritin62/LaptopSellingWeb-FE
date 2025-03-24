@@ -8,6 +8,7 @@ function extractBrandName(productName) {
 
 export async function loader({ request, params }) {
   const productId = params.productId;
+  console.log(productId);
 
   try {
     const response = await axios.get(

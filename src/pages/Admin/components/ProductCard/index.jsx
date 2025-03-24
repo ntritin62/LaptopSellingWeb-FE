@@ -8,7 +8,7 @@ const ProductCard = ({ product, setShow, laptops, setLaptops, setData }) => {
   const deleteHandler = async () => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops/${product._id}`,
+        `${import.meta.env.VITE_SERVER_URL}/api/v1/laptops/${product.id}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -18,13 +18,12 @@ const ProductCard = ({ product, setShow, laptops, setLaptops, setData }) => {
       );
 
       setShow(true);
-      console.log(response);
       setTimeout(() => {
         setLaptops((prev) =>
-          laptops.filter((laptop) => laptop._id !== product._id)
+          laptops.filter((laptop) => laptop.id !== product.id)
         );
         setData((prev) =>
-          laptops.filter((laptop) => laptop._id !== product._id)
+          laptops.filter((laptop) => laptop.id !== product.id)
         );
         setShow(false);
       }, 500);
@@ -41,7 +40,7 @@ const ProductCard = ({ product, setShow, laptops, setLaptops, setData }) => {
       />
       <h2 className="text-text text-xl font-medium h-[30px]">{product.name}</h2>
       <div className="mt-[20px] flex items-center gap-[20px] justify-center">
-        <Link to={`/admin/products/edit-product/${product._id}`}>
+        <Link to={`/admin/products/edit-product/${product.id}`}>
           <button className="flex border-[1px] border-solid border-[#ccc] py-[5px] px-[10px] rounded-lg text-2xl font-medium gap-[5px]">
             <img src="/icons/edit.svg" alt="" className="w-[20px]" />
             Sửa

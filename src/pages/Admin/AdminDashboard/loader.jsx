@@ -15,13 +15,13 @@ export async function loader({ request, params }) {
       }
     );
     const response2 = await axios.get(
-      `${import.meta.env.VITE_SERVER_URL}/api/v1/users/`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/users`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
 
-    const filteredOrders = response.data.orders.filter((item) => {
+    const filteredOrders = response.data.data.orders.filter((item) => {
       const itemDate = new Date(item.createdAt);
       return (
         itemDate.getMonth() === currentMonth &&
@@ -29,7 +29,7 @@ export async function loader({ request, params }) {
       );
     });
 
-    const filteredUsers = response2.data.users.filter((item) => {
+    const filteredUsers = response2.data.data.filter((item) => {
       const itemDate = new Date(item.createdAt);
       return (
         itemDate.getMonth() === currentMonth &&
