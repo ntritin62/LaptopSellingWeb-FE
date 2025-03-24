@@ -13,9 +13,9 @@ export const loader = async ({ request, params }) => {
         },
       }
     );
-
+    console.log(response);
     return {
-      orders: response.data.orders,
+      orders: response.data.data.orders,
     };
   } catch (e) {
     console.log(e);

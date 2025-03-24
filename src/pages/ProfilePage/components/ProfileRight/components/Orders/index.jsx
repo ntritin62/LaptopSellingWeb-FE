@@ -5,6 +5,7 @@ import { CustomStepper } from '../../../../../../components/Stepper';
 const status = ['pending', 'paid', 'delivering', 'delivered', 'canceled'];
 const OrdersPage = () => {
   const { orders } = useLoaderData();
+  console.log(orders);
 
   return (
     <section className="col-span-8 p-[30px] bg-background shadow-xl dark:bg-dark-profile-right rounded-[20px]">
@@ -80,21 +81,21 @@ const OrdersPage = () => {
                 </div>
                 <div className="mt-[10px]">
                   {order.orderItems.map(
-                    ({ product, name, imageUrl, price }) => (
-                      <section key={product._id} className="">
+                    ({ product }) => (
+                      <section key={product.id} className="">
                         <section className="grid grid-cols-12">
                           <img
-                            src={imageUrl}
+                            src={product.image_url}
                             alt=""
                             className="col-span-2 sm:col-span-4 w-[100px] h-[100px] object-contain rounded-[10px] overflow-hidden"
                           />
                           <div className="col-span-8 sm:col-span-5 flex flex-col justify-between px-[10px]">
                             <p className="text-2xl font-medium sm:text-xl">
-                              {name}
+                              {product.name}
                             </p>
                           </div>
                           <p className="col-span-2 sm:col-span-3 text-right sm:text-xl">
-                            {price
+                            {product.price
                               .toString()
                               .replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                           </p>
