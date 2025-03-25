@@ -10,8 +10,8 @@ export async function loader({ request, params }) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-
-    return response.data.orders;
+   
+    return response.data.data.orders;
   } catch (err) {
     console.log(err);
   }

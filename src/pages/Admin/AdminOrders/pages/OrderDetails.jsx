@@ -8,6 +8,7 @@ import axios from 'axios';
 const OrderDetails = () => {
   const data = useLoaderData();
   const token = getAuthToken();
+  console.log(data);
 
   const [messageIsShowed, setMessageIsShowed] = useState(false);
   const [order, setOrder] = useState(data);
@@ -17,9 +18,10 @@ const OrderDetails = () => {
     setOrder((prev) => {
       return { ...prev, status: e.target[0].value };
     });
+
     const response = await axios.patch(
       `${import.meta.env.VITE_SERVER_URL}/api/v1/orders/updateOrderStatus`,
-      { orderId: order._id, orderStatus: e.target[0].value },
+      { orderId: order.id, orderStatus: e.target[0].value },
       {
         headers: {
           'Content-Type': 'application/json',
@@ -75,23 +77,23 @@ const OrderDetails = () => {
         <div className="flex justify-between items-center p-[10px]">
           <p>
             <span className="text-3xl font-medium">Ngày mua: </span>
-            {new Date(order.createdAt).toLocaleDateString('vi-VI')}
+            {new Date(order.created_at).toLocaleDateString('vi-VI')}
           </p>
         </div>
         <div className="mt-[10px]">
-          {order.orderItems.map(({ product, name, imageUrl, price }) => (
-            <section key={product._id} className="">
+          {order.order_items.map((item) => (
+            <section key={item.product.id} className="">
               <section className="grid grid-cols-12">
                 <img
-                  src={imageUrl}
+                  src={item.product.image_url}
                   alt=""
                   className="col-span-2 sm:col-span-4 w-[100px] h-[100px] object-contain rounded-[10px] overflow-hidden"
                 />
                 <div className="col-span-8 sm:col-span-5 flex flex-col justify-between px-[10px]">
-                  <p className="text-2xl font-medium">{name}</p>
+                  <p className="text-2xl font-medium">{item.product.name}</p>
                 </div>
                 <p className="col-span-2 sm:col-span-3 text-right">
-                  {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                  {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                 </p>
               </section>
               <div className="w-full h-[1px] my-[20px] bg-border"></div>

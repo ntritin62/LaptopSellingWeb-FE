@@ -11,8 +11,7 @@ export async function loader({ request, params }) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-
-    return response.data.order;
+    return response.data.data;
   } catch (err) {
     console.log(err);
   }

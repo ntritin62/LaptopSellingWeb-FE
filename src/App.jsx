@@ -359,23 +359,23 @@ const router = createBrowserRouter([
         ),
         loader: CouponLoader,
       },
-      {
-        path: ROUTES.ADD_COUPON,
-        element: (
-          <Suspense fallback={<p>Loading...</p>}>
-            <AddCoupon />
-          </Suspense>
-        ),
-      },
-      {
-        path: ROUTES.EDIT_COUPON,
-        element: (
-          <Suspense fallback={<p>Loading...</p>}>
-            <EditCoupon />
-          </Suspense>
-        ),
-        loader: EditCouponLoader,
-      },
+      // {
+      //   path: ROUTES.ADD_COUPON,
+      //   element: (
+      //     <Suspense fallback={<p>Loading...</p>}>
+      //       <AddCoupon />
+      //     </Suspense>
+      //   ),
+      // },
+      // {
+      //   path: ROUTES.EDIT_COUPON,
+      //   element: (
+      //     <Suspense fallback={<p>Loading...</p>}>
+      //       <EditCoupon />
+      //     </Suspense>
+      //   ),
+      //   loader: EditCouponLoader,
+      // },
     ],
   },
 ]);

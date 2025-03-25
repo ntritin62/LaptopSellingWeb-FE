@@ -85,7 +85,7 @@ const Sidebar = () => {
                 )}
               </NavLink>
             </li>
-            <li className="p-[20px]">
+            {/* <li className="p-[20px]">
               <NavLink
                 to={ADMIN_COUPON}
                 className="flex items-center gap-[20px]"
@@ -105,7 +105,7 @@ const Sidebar = () => {
                   </>
                 )}
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="p-[20px] mb-[20px] mx-auto">

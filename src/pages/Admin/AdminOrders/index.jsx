@@ -4,6 +4,7 @@ const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
 
 const AdminOrders = () => {
   const data = useLoaderData();
+  console.log(data[0]);
 
   const sortedData = [...data].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -55,8 +56,8 @@ const AdminOrders = () => {
           <div className="bg-[#bfbfbf] h-[2px] w-full mt-[5px]"></div>
           <div className="max-h-[480px] overflow-y-auto">
             {orders.map((order) => (
-              <tr className="grid grid-cols-12 mt-[20px] text-[#303030]">
-                <td className="col-span-3">{order._id}</td>
+              <tr key={order.id} className="grid grid-cols-12 mt-[20px] text-[#303030]">
+                <td className="col-span-3">{order.id}</td>
                 <td className="col-span-1">{order.orderItems.length}</td>
                 <td className="col-span-2">
                   {new Date(order.createdAt).toLocaleDateString(
@@ -93,7 +94,7 @@ const AdminOrders = () => {
                   )}
                 </td>
                 <td className="col-span-1 ">
-                  <Link to={order._id} className="flex gap-[5px]">
+                  <Link to={`${order.id}`} className="flex gap-[5px]">
                     <img
                       src="/icons/view.svg"
                       alt=""
